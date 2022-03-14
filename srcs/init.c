@@ -12,32 +12,9 @@
 
 #include "cub.h"
 
-void	ft_name_check(char *carta)
-{
-	char	*point;
 
-	point = ft_strrchr(carta, '.');
-	if (!point || ft_strncmp(point, ".ber", 4) || ft_strlen(point) != 4)
-	{
-		printf("%s\n", strerror(EINVAL));
-		exit(EINVAL);
-	}
-}
 
-int	ft_check_file(char *carta)
-{
-	int	fd;
-	int	error;
 
-	fd = open(carta, O_RDONLY);
-	error = errno;
-	if (fd == -1)
-	{
-		printf("%s\n", strerror(error));
-		exit(error);
-	}
-	return (fd);
-}
 
 t_map	*ft_map_init(t_map *map)
 {

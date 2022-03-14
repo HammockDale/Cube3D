@@ -15,42 +15,42 @@
 int	main(int argc, char **argv)
 {
 	int		i;
-	t_map	*map;
+	t_data	*data;
 
-	map = NULL;
+	data = NULL;
 	if (argc == 1)
 	{
 		printf("%s\n",
 			"Please, use cub3D with arguments 'map' in format *.cub");
-		exit(1);
+		return(1);
 	}
 	else
 	{
 		i = 1;
 		while (i < argc)
 		{
-			ft_so_long(argv[i], map);
+			ft_cube(argv[i], data);
 			i++;
 		}
 	}
+	return(0);
 }
 
-void	ft_so_long(char *carta, t_map *map)
+void	ft_cube(char *carta, t_data *data)
 {
-	int		fd;
+	int	fd;
 
-	ft_name_check(carta);
-	fd = ft_check_file(carta);
-	map = ft_map_init(map);
-	ft_parce_map(map, fd);
-	ft_make_coords(map);
-	ft_make_map(map, fd);
-	ft_check_lines(map);
-	ft_win_init(map);
-	ft_free_all(map);
+	fd = ft_name_check(carta);
+	data = ft_map_init(data);
+	ft_parce_map(data, fd);
+	ft_make_coords(data);
+	ft_make_map(data, fd);
+	ft_check_lines(data);
+	ft_win_init(data);
+	ft_free_all(data);
 }
 
-void	ft_free_all(t_map *map)
+void	ft_free_all(t_data *data)
 {
 	int	i;
 

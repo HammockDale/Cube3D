@@ -58,6 +58,11 @@ typedef struct s_map
 	int		size_y;
 }				t_map;
 
+void	ft_cube(char *carta, t_map *map);
+
+/*checer.c */
+int		ft_name_check(char *carta);
+
 int		key_hook(int keycode, t_map *map);
 int		ft_player_action(t_map *map);
 void	ft_render_1(t_map *map);
@@ -78,8 +83,7 @@ void	ft_make_coords(t_map *map);
 void	ft_check_rect(int sh, int ne, char *line);
 void	ft_parce_map(t_map *map, int fd);
 t_map	*ft_map_init(t_map *map);
-void	ft_so_long(char *carta, t_map *map);
-int		ft_check_file(char *carta);
+
 void	ft_name_check(char *carta);
 void	ft_free_all(t_map *map);
 int		ft_exit(int keycode);

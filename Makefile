@@ -5,12 +5,13 @@ HEADER = includes/cub.h
 INCLUDES = -I includes -I libft -I mlx
 
 SRCS = srcs/main.c\
-		srcs/pacer.c\
-		srcs/init.c\
-		srcs/window.c\
-		srcs/action.c
+		init.c\
+		pacer/*.c\
+		game/*.c
+
 
 CC = gcc -g
+# CC = gcc
 FLAGS = -Wall -Werror -Wextra
 
 RM = rm -rf

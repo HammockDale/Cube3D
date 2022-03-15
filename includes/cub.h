@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/14 12:46:58 by marvin            #+#    #+#             */
-/*   Updated: 2022/03/14 12:46:58 by marvin           ###   ########.fr       */
+/*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
+/*   Updated: 2022/03/14 12:46:58 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,14 @@ typedef struct s_image
 	char	*loc;
 }				t_image;
 
-typedef struct s_map
+typedef struct s_player
+{
+	int		p_x;
+	int		p_y;
+	int		look;
+}				t_player;
+
+typedef struct s_window
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
@@ -41,28 +48,47 @@ typedef struct s_map
 	int		weight;
 	int		height;
 	int		**coords;
+}				t_window;
+
+typedef struct s_map
+{
 	int		loot;
 	int		exit;
-	int		player;
-	int		p_x;
-	int		p_y;
 	int		moves;
-	t_image	ground;
-	t_image	wall;
-	t_image	fish;
-	t_image	cat;
-	t_image	gate;
 	int		x;
 	int		y;
 	int		size_x;
 	int		size_y;
 }				t_map;
 
+typedef struct s_strite
+{
+	int	i;
+}				t_sprite;
+
+typedef struct s_data
+{
+	struct s_window;
+	struct s_map;
+	struct s_player;	
+	struct s_image;
+	t_image	ground;
+	t_image	cloud;
+	t_image	NO;
+	t_image	EA;
+	t_image	SO;
+	t_image	WE;	
+	struct s_strite;
+}				t_data;
+	
+/* main.c */
 void	ft_cube(char *carta, t_map *map);
 
-/*checer.c */
+/* checker.c */
 int		ft_name_check(char *carta);
 
+
+/*other*/
 int		key_hook(int keycode, t_map *map);
 int		ft_player_action(t_map *map);
 void	ft_render_1(t_map *map);

@@ -12,7 +12,6 @@
 
 #include "cub.h"
 
-// функция может вернуть -1!
 int	ft_name_check(char *carta)
 {
 	char	*point;
@@ -29,6 +28,9 @@ int	ft_name_check(char *carta)
 	else if(read(fd, NULL, 0) == -1)
 		error = errno;
 	if (error)
+	{
 		printf("%s\n", strerror(error));
+		fd = 0;
+	}
 	return (fd);
 }

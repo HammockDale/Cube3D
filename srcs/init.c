@@ -12,62 +12,37 @@
 
 #include "cub.h"
 
-
-
-
-
-t_map	*ft_map_init(t_map *map)
+t_data	*ft_data_init(t_data *data)
 {
 	int	error;
 
-	map = (t_map *)malloc(sizeof(t_map));
+	data = (t_data *)malloc(sizeof(t_data));
 	error = errno;
-	if (!map)
+	if (!data)
 	{
 		printf("%s\n", strerror(error));
-		exit(error);
+		return(NULL);
 	}
-	map->weight = 0;
-	map->height = 0;
-	map->loot = 0;
-	map->exit = 0;
-	map->player = 0;
-	return (map);
+	data->window = NULL;
+	data->map = NULL;
+	data->player = NULL;
+	data->ground = NULL;
+	data->cloud = NULL;
+	data->north = NULL;
+	data->east = NULL;
+	data->south = NULL;
+	data->west = NULL;
+	data->door = NULL;
+	data->loot = NULL;
+	if (ft_init_main_struct(data))
+		return(NULL);
+	return (data);
 }
 
-void	ft_check_rect(int sh, int ne, char *line)
+
+int	ft_init_main_struct(t_data *data)
+// функция инициализации (и удаления при неудаче) переменных основной структуры
 {
-	int	len;
-
-	len = (int)ft_strlen(line);
-	if (sh && ne)
-	{
-		if ((sh + 1) != len)
-		{
-			free(line);
-			printf("Map is not rectangular\n");
-			exit (22);
-		}
-	}
-}
-
-void	ft_parce_map(t_map *map, int fd)
-{
-	char	*line;
-	int		not_the_end;
-
-	line = NULL;
-	not_the_end = 1;
-	while (not_the_end)
-	{
-		not_the_end = get_next_line(fd, &line);
-		ft_check_rect(map->weight, not_the_end, line);
-		if (not_the_end)
-		{
-			map->weight = ft_strlen(line) - 1;
-			map->height++;
-		}
-		free(line);
-	}
-	lseek(fd, 0, SEEK_SET);
+	(void)data;
+	return (0);
 }

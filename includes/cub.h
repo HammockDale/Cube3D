@@ -69,30 +69,39 @@ typedef struct s_map
 
 typedef struct s_strite
 {
-	int	i;
+	int			*i;
+	t_image		*sprites;
+	int			status;
 }				t_sprite;
 
 typedef struct s_data
 {
-	struct s_window;
-	struct s_map;
-	struct s_player;	
-	struct s_image;
-	t_image	ground;
-	t_image	cloud;
-	t_image	NO;
-	t_image	EA;
-	t_image	SO;
-	t_image	WE;	
-	struct s_strite;
+	t_window		*window;
+	t_map			*map;
+	t_player		*player;	
+	t_image			*ground;
+	t_image			*cloud;
+	t_image			*north;
+	t_image			*east;
+	t_image			*south;
+	t_image			*west;
+	t_sprite		*door;
+	t_sprite		*loot;
 }				t_data;
 	
 /* main.c */
-void	ft_cube(char *carta, t_map *map);
+int		ft_cube(char *carta, t_map *map);
 
 /* checker.c */
 int		ft_name_check(char *carta);
 
+/* init.c */
+t_data	*ft_data_init(t_data *data);
+int		ft_init_main_struct(t_data *data);
+
+/* parcer.c */
+void	ft_parce_data(t_map *map, int fd);
+t_list	*ft_lstnew_m(char *content);
 
 /*other*/
 int		key_hook(int keycode, t_map *map);
@@ -113,7 +122,7 @@ void	ft_make_map(t_map *map, int fd);
 void	ft_make_coords(t_map *map);
 
 void	ft_check_rect(int sh, int ne, char *line);
-void	ft_parce_map(t_map *map, int fd);
+
 t_map	*ft_map_init(t_map *map);
 
 void	ft_name_check(char *carta);

@@ -49,13 +49,13 @@ int	ft_cube(char *carta, t_data *data)
 	data = ft_map_init(data);
 	if (!data)
 		return (2);
-	if (!ft_parce_map(data, fd))
+	if (!ft_parce_data(data, fd))
 		return (3);
-	ft_make_coords(data);
-	ft_make_map(data, fd);
-	ft_check_lines(data);
-	ft_win_init(data);
-	ft_free_all(data);
+	// ft_make_coords(data);
+	// ft_make_map(data, fd);
+	// ft_check_lines(data);
+	// ft_win_init(data);
+	// ft_free_all(data);
 	return (0);
 }
 

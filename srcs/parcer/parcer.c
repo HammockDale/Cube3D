@@ -1,16 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pacer.c                                            :+:      :+:    :+:   */
+/*   parcer.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/26 23:45:49 by esylva            #+#    #+#             */
-/*   Updated: 2021/10/26 23:45:53 by esylva           ###   ########.fr       */
+/*   Created: 2022/03/16 20:39:52 by esylva            #+#    #+#             */
+/*   Updated: 2022/03/16 20:39:52 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "cub.h"
+
+t_list	*ft_lstnew_m(char *content)
+{
+	t_list	*aa;
+
+	aa = (t_list *)malloc(sizeof (*aa));
+	if (!aa)
+		return (NULL);
+	aa->content = ft_strdup(content);
+	aa->next = NULL;
+	return (aa);
+}
+
+void	ft_parce_data(t_data *data, int fd)
+{
+	char	*line;
+	int		not_the_end;
+	t_list	cub;
+
+	line = NULL;
+	cub = NULL;
+	not_the_end = 1;
+	while (not_the_end > 0)
+	{
+		not_the_end = get_next_line(fd, &line);
+		new = ft_lstnew_m(line);
+		ft_lstadd_back(&cub, new);
+		free(line);
+		line = NULL;
+	}
+}
 
 void	ft_make_coords(t_map *map)
 {

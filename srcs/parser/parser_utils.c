@@ -40,63 +40,62 @@ int	ft_separate_textures(char *str, t_data *data)
 
 int	ft_save_texture(char *str, t_image *wall)
 {
-    char *tmp;
+	char *tmp;
 
-    tmp = ft_strtrim(str, "\t\v\n\f\r ");
-    wall = ft_init_image(wall);
-      if (!wall || open (tmp) == -1)
-        return (MAP_ERROR);  
-    wall->loc = tmp;
-    return (0);
+	tmp = ft_strtrim(str, "\t\v\n\f\r ");
+	wall = ft_init_image(wall);
+		if (!wall || open (tmp) == -1)
+		return (MAP_ERROR);  
+	wall->loc = tmp;
+	return (0);
 }
 
 int	ft_save_texture_c(char *str, t_image *wall, t_data *data)
 {
-    char *tmp;
+	char	*tmp;
 
-    if (data->bonus)
-        if(ft_save_texture(str, wall))
-            return(MAP_ERROR);
-    else
-    {
-        wall = ft_init_image(wall);
-        if (!wall)
-            return (MAP_ERROR);
-        tmp = ft_strtrim(str, "\t\v\n\f\r ");
-        wall->trgb = 0;    
-        if (ft_parsing_trgb(str, wall->trgb))
-            return(MAP_ERROR);  
-    }
-    return (0);
+	if (data->bonus)
+		if(ft_save_texture(str, wall))
+			return(MAP_ERROR);
+	else
+	{
+		wall = ft_init_image(wall);
+		if (!wall)
+			return (MAP_ERROR);
+		tmp = ft_strtrim(str, "\t\v\n\f\r ");
+		wall->trgb = 0;    
+		if (ft_parsing_trgb(str, wall->trgb))
+			return(MAP_ERROR);  
+	}
+	return (0);
 }
 
 int ft_parsing_trgb(char *str, int *trgb)
 {
-    int     n;
+int		n;
 
-    if (!ft_isdigit(*str))
-        return(MAP_ERROR);
-    while (*str)
-    {    
-        n = 0;   
-        while (ft_isdigit(*str))
-        {
-            n = n * 10 + *str - '0';
-            str++;
-        }
-        if (n > 255)
-            return(MAP_ERROR);
-        else
-        {
+	if (!ft_isdigit(*str))
+		return(MAP_ERROR);
+	while (*str)
+	{
+		n = 0;
+		while (ft_isdigit(*str))
+		{
+			n = n * 10 + *str - '0';
+			str++;
+		}
+		if (n > 255)
+			return(MAP_ERROR);
+		else
+		{
 
-        }
-        if (*str == ' ' || *str == ',')
-            str++;
-        else
-            return(MAP_ERROR);
-    }
-    
-    return (0);
+		}
+		while (*str == ' ' || *str == ',')
+		str++;
+		else
+			return(MAP_ERROR);
+	}
+	return (0);
 }
 
 int	ft_tind_map_begin(char *str)

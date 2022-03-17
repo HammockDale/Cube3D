@@ -21,17 +21,17 @@ int	ft_separate_textures(char *str, t_data *data)
 	flag = 1;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
-	if (str[i] && (str[i] == 'N' && (str[i + 1] == 'O'))
+	if (str[i] && (str[i] == 'N' && (str[i + 1] == 'O')))
 		flag = ft_save_texture(str[i + 2], data->north);
-	else if (str[i] && (str[i] == 'S' && (str[i + 1] == 'O'))
+	else if (str[i] && (str[i] == 'S' && (str[i + 1] == 'O')))
 		flag = ft_save_texture(str[i + 2], data->south);	
-	else if (str[i] && (str[i] == 'W' && (str[i + 1] == 'E'))
+	else if (str[i] && (str[i] == 'W' && (str[i + 1] == 'E')))
 		flag = ft_save_texture(str[i + 2], data->west);
-	else if (str[i] && (str[i] == 'E' && (str[i + 1] == 'A'))
+	else if (str[i] && (str[i] == 'E' && (str[i + 1] == 'A')))
 		flag = ft_save_texture(str[i + 2], data->east);
-	else if (str[i] && (str[i] == 'C' && (str[i + 1] == ' '))
+	else if (str[i] && (str[i] == 'C' && (str[i + 1] == ' ')))
 		flag = ft_save_texture_c(str[i + 2], data->cloud, data);
-	else if (str[i] && (str[i] == 'F' && (str[i + 1] == ' '))
+	else if (str[i] && (str[i] == 'F' && (str[i + 1] == ' ')))
 		flag = ft_save_texture_c(str[i + 2], data->ground, data);
 	if (flag)
 		return(0);

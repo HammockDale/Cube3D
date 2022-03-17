@@ -88,7 +88,7 @@ int		n;
 			return(MAP_ERROR);
 		else
 		{
-
+			*trgb = (*trgb << 8) + n;
 		}
 		while (*str == ' ' || *str == ',')
 		str++;
@@ -100,6 +100,7 @@ int		n;
 
 int	ft_tind_map_begin(char *str)
 {
+	(void)str;
 	return (1); //при успехе
 	// return(0); // при неудаче
 }

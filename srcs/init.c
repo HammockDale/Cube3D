@@ -52,8 +52,8 @@ t_image	*ft_init_image(t_image *wall)
 	wall = (t_image *)malloc(sizeof(t_image));
 	if (!wall)
 		return (NULL);
-    wall->loc = NULL;
-    wall->image = NULL;
+	wall->loc = NULL;
+	wall->image = NULL;
 	wall->addr = NULL;
 	wall->line = 0;
 	wall->bitpp = 0;

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parcer.c                                           :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -24,11 +24,11 @@ t_list	*ft_lstnew_m(char *content)
 	return (aa);
 }
 
-void	ft_parce_data(t_data *data, int fd)
+int	ft_parce_data(t_data *data, int fd)
 {
 	char	*line;
 	int		not_the_end;
-	t_list	cub;
+	t_list	*cub;
 
 	line = NULL;
 	cub = NULL;
@@ -41,7 +41,40 @@ void	ft_parce_data(t_data *data, int fd)
 		free(line);
 		line = NULL;
 	}
+	not_the_end = ft_config(&cub, data)
+	ft_lstclear(&cub, free());
+	if (not_the_end)
+		return (MAP_ERROR);
+	return (0);
 }
+
+int	ft_config(t_list **cub, t_data *data)
+{
+	t_list	tmp;
+	int		i;
+
+	i = 0;
+	tmp = *cub;
+	while (tmp)
+	{
+		
+		i += (ft_separate_textures(tmp->content; data)) //  ищем данные в строках
+		if (i == 6) // если все данные
+			if (ft_tind_map_begin(tmp->content)) // иначе ищем начало карты
+				break; // при успехе выходим из цикла или переходим к следующей строке
+		tmp = tmp->next;
+	}
+	if (i != 6 || ft_parse_map(tmp, data)) // требуется фикс для учета обработки ошибки предыдущего этапа
+		return (MAP_ERROR);
+	return(0);
+}
+
+
+
+
+
+
+
 
 void	ft_make_coords(t_map *map)
 {

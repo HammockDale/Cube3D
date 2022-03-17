@@ -23,9 +23,15 @@
 # include <sys/types.h>
 # include "../Libft/libft.h"
 
+# define BONUS 0
+
+# define ARGUMENT_OPEN_ERROR 1
+# define INIT_ERROR 2
+# define MAP_ERROR 3
+
 typedef struct s_list
 {
-	void		*content;
+	void			*content;
 	struct s_list	*next;
 }				t_list
 
@@ -37,6 +43,7 @@ typedef struct s_image
 	int		bitpp;
 	int		endian;
 	char	*loc;
+	int		trgb;
 }				t_image;
 
 typedef struct s_player
@@ -87,6 +94,7 @@ typedef struct s_data
 	t_image			*west;
 	t_sprite		*door;
 	t_sprite		*loot;
+	char			bonus;
 }				t_data;
 	
 /* main.c */
@@ -100,8 +108,17 @@ t_data	*ft_data_init(t_data *data);
 int		ft_init_main_struct(t_data *data);
 
 /* parcer.c */
-void	ft_parce_data(t_map *map, int fd);
 t_list	*ft_lstnew_m(char *content);
+int		ft_parce_data(t_map *map, int fd);
+int		ft_config(t_list **cub, t_data *data);
+int		ft_parse_map(l_list *tmp, t_data *data);
+
+/* parcer_utils.c */
+int		ft_separate_textures(char *str, t_data *data);
+int		ft_save_texture(char *str, t_image *wall);
+int		ft_save_texture_c(char *str, t_image *wall, t_data *data);
+int		ft_parsing_trgb(char *str, int *trgb);
+int		ft_tind_map_begin(char *str);
 
 /*other*/
 int		key_hook(int keycode, t_map *map);

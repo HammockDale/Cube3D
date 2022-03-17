@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "cub.h"
 
 void	ft_change_ground(t_map *map)
 {

@@ -34,15 +34,30 @@ t_data	*ft_data_init(t_data *data)
 	data->west = NULL;
 	data->door = NULL;
 	data->loot = NULL;
+	data->bonus = BONUS; 
 	if (ft_init_main_struct(data))
 		return(NULL);
 	return (data);
 }
-
 
 int	ft_init_main_struct(t_data *data)
 // функция инициализации (и удаления при неудаче) переменных основной структуры
 {
 	(void)data;
 	return (0);
+}
+
+t_image	*ft_init_image(t_image *wall)
+{
+	wall = (t_image *)malloc(sizeof(t_image));
+	if (!wall)
+		return (NULL);
+    wall->loc = NULL;
+    wall->image = NULL;
+	wall->addr = NULL;
+	wall->line = 0;
+	wall->bitpp = 0;
+	wall->endian = 0;
+	wall->trgb = 0;
+	return (wall);
 }

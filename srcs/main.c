@@ -45,17 +45,18 @@ int	ft_cube(char *carta, t_data *data)
 
 	fd = ft_name_check(carta);
 	if (!fd)
-		return (1);
+		return (ARGUMENT_OPEN_ERROR);
 	data = ft_map_init(data);
 	if (!data)
-		return (2);
+		return (INIT_ERROR);
 	if (!ft_parce_data(data, fd))
-		return (3);
+		ft_exit (MAP_ERROR);
 	// ft_make_coords(data);
 	// ft_make_map(data, fd);
 	// ft_check_lines(data);
 	// ft_win_init(data);
 	// ft_free_all(data);
+	close (fd);
 	return (0);
 }
 
@@ -87,7 +88,6 @@ void	ft_free_all(t_data *data)
 
 int	ft_exit(int keycode)
 {
-	(void)keycode;
-	printf("Exit");
-	exit (0);
+	ft_free_all(t_data *data);
+	exit (keycode);
 }

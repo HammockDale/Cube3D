@@ -91,7 +91,7 @@ int		n;
 			*trgb = (*trgb << 8) + n;
 		}
 		while (*str == ' ' || *str == ',')
-		str++;
+			str++;
 		else
 			return(MAP_ERROR);
 	}

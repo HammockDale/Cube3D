@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:49:52 by esylva            #+#    #+#             */
-/*   Updated: 2021/10/26 23:49:56 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/18 19:47:49 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
-int		ft_numspases(char *str);
 
 typedef struct s_list
 {
@@ -74,4 +73,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void *));
 int		get_next_line(int fd, char **line);
 char	*ft_strjoin_m(char const *s1, char const *s2);
 int		ft_new_strjoin(char **line, char **ost);
+int		ft_numspases(char *str);
+int		ft_strcmp(const char *str1, const char *str2);
+
 #endif

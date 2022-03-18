@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:05 by esylva            #+#    #+#             */
-/*   Updated: 2021/10/26 23:45:11 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/18 20:02:59 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	main(int argc, char **argv)
 		i = 1;
 		while (i < argc)
 		{
-			ret = ft_cube(argv[i], data)
+			ret = ft_cube(argv[i], data);
+printf("CUB3D!!!");
 			if(ret)
 				return (ret);
 			i++;
@@ -46,7 +47,7 @@ int	ft_cube(char *carta, t_data *data)
 	fd = ft_name_check(carta);
 	if (!fd)
 		return (ARGUMENT_OPEN_ERROR);
-	data = ft_map_init(data);
+	data = ft_data_init(data);
 	if (!data)
 		return (INIT_ERROR);
 	if (!ft_parce_data(data, fd))
@@ -60,34 +61,34 @@ int	ft_cube(char *carta, t_data *data)
 	return (0);
 }
 
-void	ft_free_all(t_data *data)
-{
-	int	i;
+// void	ft_free_all(t_data *data)
+// {
+// 	int	i;
 
-	i = 0;
-	while (i < map->height)
-	{
-		if (map->coords[i])
-		{
-			free(map->coords[i]);
-			map->coords[i] = NULL;
-		}
-		i++;
-	}
-	if (map->coords)
-	{
-		free(map->coords);
-		map->coords = NULL;
-	}
-	if (map)
-	{
-		free(map);
-		map = NULL;
-	}
-}
+// 	i = 0;
+// 	while (i < map->height)
+// 	{
+// 		if (map->coords[i])
+// 		{
+// 			free(map->coords[i]);
+// 			map->coords[i] = NULL;
+// 		}
+// 		i++;
+// 	}
+// 	if (map->coords)
+// 	{
+// 		free(map->coords);
+// 		map->coords = NULL;
+// 	}
+// 	if (map)
+// 	{
+// 		free(map);
+// 		map = NULL;
+// 	}
+// }
 
 int	ft_exit(int keycode)
 {
-	ft_free_all(t_data *data);
+	// ft_free_all(t_data *data);
 	exit (keycode);
 }

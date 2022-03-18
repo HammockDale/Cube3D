@@ -1,8 +1,8 @@
 NAME = cub3D
 
 HEADER = includes/cub.h
-# INCLUDES = -I includes -I libft -I mlx
-INCLUDES = -I includes -I libft
+INCLUDES = -I includes -I libft -I mlx
+# INCLUDES = -I includes -I libft
 
 SRC_DIR = srcs/
 SRCS_F = main.c init.c
@@ -29,18 +29,21 @@ FLAGS = -Wall -Werror -Wextra
 
 RM = rm -rf
 
-# MAKE_MLX = make -sC mlx
-# LINK_MLX = -lmlx -framework OpenGL -framework AppKit
+MAKE_MLX = make -sC mlx
+LINK_MLX = -lmlx -framework OpenGL -framework AppKit
 
 MAKE_LIBFT = make -sC libft
+
 LINK_LIBFT = -Llibft -lft
 
 all: init $(NAME)
 
 init:
 	@$(MAKE_LIBFT)
-# @$(MAKE_MLX)
+	@$(MAKE_MLX)
 
+%.o : %.c
+	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 $(NAME): $(OBJ) $(HEADER)
 # @$(CC) $(FLAGS) $(INCLUDES) $(OBJ) $(LINK_MLX) $(LINK_LIBFT) -o $@

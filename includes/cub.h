@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/14 12:46:58 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/18 20:03:31 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,13 @@
 # include <errno.h>
 # include <string.h>
 # include <sys/types.h>
-# include "../Libft/libft.h"
+# include "../libft/libft.h"
 
 # define BONUS 0
 
 # define ARGUMENT_OPEN_ERROR 1
 # define INIT_ERROR 2
 # define MAP_ERROR 3
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}				t_list
 
 typedef struct s_image
 {
@@ -98,7 +92,8 @@ typedef struct s_data
 }				t_data;
 	
 /* main.c */
-int		ft_cube(char *carta, t_map *map);
+int		ft_cube(char *carta, t_data *data);
+int		ft_exit(int keycode);
 
 /* checker.c */
 int		ft_name_check(char *carta);
@@ -106,12 +101,13 @@ int		ft_name_check(char *carta);
 /* init.c */
 t_data	*ft_data_init(t_data *data);
 int		ft_init_main_struct(t_data *data);
+t_image	*ft_init_image(t_image *wall);
 
 /* parcer.c */
 t_list	*ft_lstnew_m(char *content);
-int		ft_parce_data(t_map *map, int fd);
+int		ft_parce_data(t_data *data, int fd);
 int		ft_config(t_list **cub, t_data *data);
-int		ft_parse_map(l_list *tmp, t_data *data);
+int		ft_parse_map(t_list *tmp, t_data *data);
 
 /* parcer_utils.c */
 int		ft_separate_textures(char *str, t_data *data);
@@ -121,28 +117,27 @@ int		ft_parsing_trgb(char *str, int *trgb);
 int		ft_tind_map_begin(char *str);
 
 /*other*/
-int		key_hook(int keycode, t_map *map);
-int		ft_player_action(t_map *map);
-void	ft_render_1(t_map *map);
-int		render_next_frame(t_map *map);
-void	ft_change_ground(t_map *map);
+// int		key_hook(int keycode, t_map *map);
+// int		ft_player_action(t_map *map);
+// void	ft_render_1(t_map *map);
+// int		render_next_frame(t_map *map);
+// void	ft_change_ground(t_map *map);
 
-void	ft_put_img_to_win(t_map *map);
-void	ft_img_init(t_map *map);
-int		ft_win_init(t_map *map);
-void	ft_put_by_sym(t_map *map);
-void	ft_save_player_position(t_map *map);
-void	ft_check_player_position(t_map *map);
-void	ft_check_sym(int x, int y, t_map *map);
-void	ft_check_lines(t_map *map);
-void	ft_make_map(t_map *map, int fd);
-void	ft_make_coords(t_map *map);
+// void	ft_put_img_to_win(t_map *map);
+// void	ft_img_init(t_map *map);
+// int		ft_win_init(t_map *map);
+// void	ft_put_by_sym(t_map *map);
+// void	ft_save_player_position(t_map *map);
+// void	ft_check_player_position(t_map *map);
+// void	ft_check_sym(int x, int y, t_map *map);
+// void	ft_check_lines(t_map *map);
+// void	ft_make_map(t_map *map, int fd);
+// void	ft_make_coords(t_map *map);
 
-void	ft_check_rect(int sh, int ne, char *line);
+// void	ft_check_rect(int sh, int ne, char *line);
 
-t_map	*ft_map_init(t_map *map);
+// t_map	*ft_map_init(t_map *map);
 
-void	ft_name_check(char *carta);
-void	ft_free_all(t_map *map);
-int		ft_exit(int keycode);
+// void	ft_name_check(char *carta);
+// void	ft_free_all(t_map *map);
 #endif

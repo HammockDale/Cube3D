@@ -24,7 +24,7 @@ int	ft_separate_textures(char *str, t_data *data)
 	if (str[i] && (str[i] == 'N' && (str[i + 1] == 'O')))
 		flag = ft_save_texture(str[i + 2], data->north);
 	else if (str[i] && (str[i] == 'S' && (str[i + 1] == 'O')))
-		flag = ft_save_texture(str[i + 2], data->south);	
+		flag = ft_save_texture(str[i + 2], data->south);
 	else if (str[i] && (str[i] == 'W' && (str[i + 1] == 'E')))
 		flag = ft_save_texture(str[i + 2], data->west);
 	else if (str[i] && (str[i] == 'E' && (str[i + 1] == 'A')))
@@ -45,14 +45,14 @@ int	ft_save_texture(char *str, t_image *wall)
 	tmp = ft_strtrim(str, "\t\v\n\f\r ");
 	wall = ft_init_image(wall);
 		if (!wall || open (tmp) == -1)
-		return (MAP_ERROR);  
+		return (MAP_ERROR);
 	wall->loc = tmp;
 	return (0);
 }
 
 int	ft_save_texture_c(char *str, t_image *wall, t_data *data)
 {
-	char	*tmp;
+	char *tmp;
 
 	if (data->bonus)
 		if(ft_save_texture(str, wall))
@@ -63,22 +63,23 @@ int	ft_save_texture_c(char *str, t_image *wall, t_data *data)
 		if (!wall)
 			return (MAP_ERROR);
 		tmp = ft_strtrim(str, "\t\v\n\f\r ");
-		wall->trgb = 0;    
+		wall->trgb = 0;
 		if (ft_parsing_trgb(str, wall->trgb))
-			return(MAP_ERROR);  
+		return(MAP_ERROR);
 	}
 	return (0);
 }
 
-int ft_parsing_trgb(char *str, int *trgb)
+int	ft_parsing_trgb(char *str, int *trgb)
 {
-int		n;
+	int	n;
+	int	i
 
-	if (!ft_isdigit(*str))
-		return(MAP_ERROR);
+	i = 0;
 	while (*str)
 	{
 		n = 0;
+		str += ft_numspases(str);
 		while (ft_isdigit(*str))
 		{
 			n = n * 10 + *str - '0';
@@ -87,16 +88,16 @@ int		n;
 		if (n > 255)
 			return(MAP_ERROR);
 		else
-		{
 			*trgb = (*trgb << 8) + n;
-		}
-		while (*str == ' ' || *str == ',')
+		str += ft_numspases(str);
+		if (i++ < 3 && *str == ',')
 			str++;
-		else
+		else if (*str)
 			return(MAP_ERROR);
 	}
 	return (0);
 }
+
 
 int	ft_tind_map_begin(char *str)
 {

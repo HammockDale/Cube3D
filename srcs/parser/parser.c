@@ -57,7 +57,6 @@ int	ft_config(t_list **cub, t_data *data)
 	tmp = *cub;
 	while (tmp)
 	{
-		
 		i += (ft_separate_textures(tmp->content; data)) //  ищем данные в строках
 		if (i == 6) // если все данные
 			if (ft_tind_map_begin(tmp->content)) // иначе ищем начало карты

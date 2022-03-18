@@ -44,7 +44,7 @@ int	ft_save_texture(char *str, t_image *wall)
 
 	tmp = ft_strtrim(str, "\t\v\n\f\r ");
 	wall = ft_init_image(wall);
-		if (!wall || open (tmp) == -1)
+	if (!wall || open (tmp) == -1)
 		return (MAP_ERROR);
 	wall->loc = tmp;
 	return (0);
@@ -65,7 +65,7 @@ int	ft_save_texture_c(char *str, t_image *wall, t_data *data)
 		tmp = ft_strtrim(str, "\t\v\n\f\r ");
 		wall->trgb = 0;
 		if (ft_parsing_trgb(str, wall->trgb))
-		return(MAP_ERROR);
+			return(MAP_ERROR);
 	}
 	return (0);
 }

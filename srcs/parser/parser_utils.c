@@ -44,8 +44,14 @@ int	ft_save_texture(char *str, t_image *wall)
 
 	tmp = ft_strtrim(str, "\t\v\n\f\r ");
 	wall = ft_init_image(wall);
-	if (!wall || open (tmp) == -1)
+	if (!wall)
 		return (MAP_ERROR);
+	if (open (tmp) == -1)
+	{
+		free(wall)
+		wall = NULL;
+		return (MAP_ERROR);
+	}
 	wall->loc = tmp;
 	return (0);
 }
@@ -62,10 +68,13 @@ int	ft_save_texture_c(char *str, t_image *wall, t_data *data)
 		wall = ft_init_image(wall);
 		if (!wall)
 			return (MAP_ERROR);
-		tmp = ft_strtrim(str, "\t\v\n\f\r ");
 		wall->trgb = 0;
 		if (ft_parsing_trgb(str, wall->trgb))
+		{
+			free(wall)
+			wall = NULL;
 			return(MAP_ERROR);
+		}
 	}
 	return (0);
 }
@@ -101,7 +110,15 @@ int	ft_parsing_trgb(char *str, int *trgb)
 
 int	ft_tind_map_begin(char *str)
 {
-	(void)str;
-	return (1); //при успехе
-	// return(0); // при неудаче
+	int	i;
+
+	i = 0;
+	while(str[i])
+	{
+		if (str[i] == " " || str[i] == "1")
+			i++;
+		else
+			return (0);
+	}
+	return (i);
 }

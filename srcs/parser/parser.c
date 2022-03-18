@@ -63,7 +63,9 @@ int	ft_config(t_list **cub, t_data *data)
 				break; // при успехе выходим из цикла или переходим к следующей строке
 		tmp = tmp->next;
 	}
-	if (i != 6 || ft_parse_map(tmp, data)) // требуется фикс для учета обработки ошибки предыдущего этапа
+	if (i != 6)
+		return (MAP_ERROR);
+	if (ft_parse_map(tmp, data))
 		return (MAP_ERROR);
 	return(0);
 }

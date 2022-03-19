@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/19 17:49:24 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/19 18:35:03 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ typedef struct s_map
 	int		y;
 	int		size_x;
 	int		size_y;
+	char	**coords;
 }				t_map;
 
 typedef struct s_strite
@@ -119,7 +120,9 @@ int			ft_parsing_trgb(char *str, int *trgb);
 
 /* parcer_utils2.c */
 int			ft_empty_line(char *str);
+void		ft_copy_str(char *dest, char *src, int lim);
 int			ft_tind_map_begin(char *str);
+
 
 /*  window.c	*/
 int	ft_win_init(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:49:52 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/18 19:47:49 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/19 18:09:05 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,6 @@ char	*ft_strjoin_m(char const *s1, char const *s2);
 int		ft_new_strjoin(char **line, char **ost);
 int		ft_numspases(char *str);
 int		ft_strcmp(const char *str1, const char *str2);
+char	**free_2d_arr(char **p);
 
 #endif

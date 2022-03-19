@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:05 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/19 16:58:46 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/19 18:56:32 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ printf("CUB3D!!!\n ret = %d\n", ret);
 int	ft_cube(char *carta, t_data *data)
 {
 	int	fd;
-
+int i;
 	fd = ft_name_check(carta);
 	if (!fd)
 		return (ARGUMENT_OPEN_ERROR);
@@ -58,6 +58,10 @@ printf("%s\n", data->south->loc);
 printf("%s\n", data->west->loc);
 printf("%d\n", data->cloud->trgb);
 printf("%d\n", data->ground->trgb);
+i = -1;
+while (data->map->coords[++i])
+printf("0%s0\n", data->map->coords[i]);
+
 	// ft_make_coords(data);
 	// ft_make_map(data, fd);
 	// ft_check_lines(data);

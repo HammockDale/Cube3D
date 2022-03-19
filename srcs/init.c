@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:19 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/19 16:56:38 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/19 19:05:47 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,42 @@ t_image	*ft_init_image(t_image *wall)
 
 int		ft_init_map(t_data *data, t_list *map, int weght, int hight)
 {
-	(void)data;
-	(void)map;
-	(void)weght;
-	(void)hight;
+	int 	i;
+	t_list	*tmp;
+
+	i = -1;
+	tmp = map;
+	data->map = (t_map *)malloc(sizeof(t_map));
+	if (!data->map)
+		return(MAP_ERROR);
+	data->map->coords = NULL;
+	data->map->exit = 0;
+	data->map->loot = 0;
+	data->map->x = 0;
+	data->map->y = 0;
+	data->map->size_x = weght;
+	data->map->size_y = hight;
+
+	data->map->coords = (char **)malloc(sizeof(char *) * (hight + 1));
+	if (!data->map->coords)
+		return(MAP_ERROR);
+	data->map->coords[hight] = NULL;
+	while(i < hight)
+	{
+		data->map->coords[i] = (char *)malloc(sizeof(char) * (weght + 1));
+		if (!data->map->coords[i])
+		{
+			// data->map->coords = free_2d_arr(data->map->coords);
+			return(MAP_ERROR);
+		}
+		i++;
+	}
+	i = -1;
+	while (++i < hight)
+	{
+		ft_copy_str(data->map->coords[i], tmp->content, weght);
+		tmp = tmp->next;
+	}
 	return (0);
 }
 

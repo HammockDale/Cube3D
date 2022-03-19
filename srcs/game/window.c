@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:46:37 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/18 18:07:52 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/19 18:39:58 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_win_init(t_data *data)
 {
-	ft_coords(data);
+	// ft_coords(data);
 	data->window->mlx_ptr = mlx_init();
 	data->window->win_ptr = mlx_new_window(data->window->mlx_ptr, data->window->weight, data->window->height, "cub3D");
 	// ft_img_init(map);
@@ -94,23 +94,23 @@ int	ft_win_init(t_data *data)
 // 	}
 // }
 
-void ft_coords(t_data *data)
-{
-	int i;
+// void ft_coords(t_data *data)
+// {
+// 	int i;
 
-	i = 0;
-	data->window->coords = calloc(sizeof(int*) , 8);
-	while (i < 8)
-	{
-		data->window->coords[i] = (int *)calloc(sizeof(int), 10);
-	}
-	data->window->coords[0] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};   
-	data->window->coords[1] = {1, 0, 0, 0, 0, 0, 0, 0, 0, 1};
-	data->window->coords[2] = {1, 0, 0, 0, 0, 0, 0, 0, 0, 1};   
-	data->window->coords[3] = {1, 0, 1, 0, 0, 0, 1, 0, 0, 1};   
-	data->window->coords[4] = {1, 0, 1, 0, 0, 0, 0, 0, 0, 1};   
-	data->window->coords[5] = {1, 0, 0, 0, 1, 0, 0, 0, 0, 1};  
-	data->window->coords[6] = {1, 0, 1, 0, 0, 0, 0, N, 0, 1};   
-	data->window->coords[7] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};   
+// 	i = 0;
+// 	data->window->coords = calloc(sizeof(int*) , 8);
+// 	while (i < 8)
+// 	{
+// 		data->window->coords[i] = (int *)calloc(sizeof(int), 10);
+// 	}
+// 	data->window->coords[0] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};   
+// 	data->window->coords[1] = {1, 0, 0, 0, 0, 0, 0, 0, 0, 1};
+// 	data->window->coords[2] = {1, 0, 0, 0, 0, 0, 0, 0, 0, 1};   
+// 	data->window->coords[3] = {1, 0, 1, 0, 0, 0, 1, 0, 0, 1};   
+// 	data->window->coords[4] = {1, 0, 1, 0, 0, 0, 0, 0, 0, 1};   
+// 	data->window->coords[5] = {1, 0, 0, 0, 1, 0, 0, 0, 0, 1};  
+// 	data->window->coords[6] = {1, 0, 1, 0, 0, 0, 0, N, 0, 1};   
+// 	data->window->coords[7] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};   
 
-}
+// }

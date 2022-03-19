@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 12:40:15 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/19 17:49:09 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/19 18:36:45 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,26 @@ int	ft_empty_line(char *str)
 	if (*str)
 		return (1);
 	return (0);
+}
+
+void	ft_copy_str(char *dest, char *src, int lim)
+{
+	int	i;
+	int len;
+
+	len = ft_strlen(src);
+	i = 0;
+	while (i < len)
+	{		
+		*(dest + i) = *(src + i);
+			i++;
+	}
+	while (i < lim)
+	{
+		*(dest + i) = ' ';
+		i++;
+	}
+	*(dest + i) = 0;
 }
 
 int	ft_tind_map_begin(char *str)

@@ -1,10 +1,9 @@
-NO /Users/esylva/cub3D/Cube3D/img/fish.xpm
-SO /Users/esylva/cub3D/Cube3D/img/gate.xpm
-WE /Users/esylva/cub3D/Cube3D/img/ground.xpm
+NO img/fish.xpm
+SO img/gate.xpm
+WE img/ground.xpm
 EA img/wall.xpm
 F 220,100,0
 C 225,30,0
-
 
         1111111111111111111111111
         1000000000110000000000001

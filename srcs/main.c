@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:05 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/19 11:53:56 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/19 14:24:34 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,12 @@ int	ft_cube(char *carta, t_data *data)
 		return (INIT_ERROR);
 	if (ft_parce_data(data, fd))
 		ft_exit (MAP_ERROR);
+// printf("%s\n", data->north->loc);
+// printf("%s\n", data->east->loc);
+// printf("%s\n", data->south->loc);
+// printf("%s\n", data->west->loc);
+// printf("%d\n", data->cloud->trgb);
+// printf("%d\n", data->ground->trgb);
 	// ft_make_coords(data);
 	// ft_make_map(data, fd);
 	// ft_check_lines(data);

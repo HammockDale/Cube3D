@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 20:39:52 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/19 13:15:24 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/19 14:21:51 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int		ft_parse_map(t_list *tmp, t_data *data)
 {
 	while (tmp)
 	{
-		printf("0%s0\n", tmp->content);
+printf("0%s0\n", tmp->content);
 		tmp = tmp->next;
 	}
 	(void)data;

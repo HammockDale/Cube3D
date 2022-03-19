@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:19 by esylva            #+#    #+#             */
-/*   Updated: 2021/10/26 23:45:23 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/19 14:54:28 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,13 @@ t_image	*ft_init_image(t_image *wall)
 	wall->endian = 0;
 	wall->trgb = 0;
 	return (wall);
+}
+
+int		ft_init_map(t_data *data, t_list *map, int weght, int hight)
+{
+	(void)data;
+	(void)map;
+	(void)weght;
+	(void)hight;
+	return (0);
 }

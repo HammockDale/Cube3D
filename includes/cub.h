@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/19 12:41:49 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/19 14:53:21 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int		ft_name_check(char *carta);
 t_data	*ft_data_init(t_data *data);
 int		ft_init_main_struct(t_data *data);
 t_image	*ft_init_image(t_image *wall);
+int		ft_init_map(t_data *data, t_list *map, int weght, int hight);
 
 /* parcer.c */
 t_list	*ft_lstnew_m(char *content);

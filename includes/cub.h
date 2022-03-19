@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/19 16:30:40 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/19 17:49:24 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,11 +115,11 @@ int			ft_separate_textures_1(char *str, t_data *data);
 t_image		*ft_save_texture(char *str, t_image *wall);
 t_image		*ft_save_texture_c(char *str, t_image *wall, t_data *data);
 int			ft_parsing_trgb(char *str, int *trgb);
-int			ft_tind_map_begin(char *str);
+
 
 /* parcer_utils2.c */
 int			ft_empty_line(char *str);
-
+int			ft_tind_map_begin(char *str);
 
 /*  window.c	*/
 int	ft_win_init(t_data *data);

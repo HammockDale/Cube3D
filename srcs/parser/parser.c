@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 20:39:52 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/18 20:04:15 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/19 13:15:24 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,25 +54,28 @@ int	ft_config(t_list **cub, t_data *data)
 
 	i = 0;
 	tmp = *cub;
-	while (tmp)
+	while (i < 6 && tmp)
 	{
-		i += (ft_separate_textures(tmp->content, data)); //  ищем данные в строках
-		if (i == 6) // если все данные
-			if (ft_tind_map_begin(tmp->content)) // иначе ищем начало карты
-				break; // при успехе выходим из цикла или переходим к следующей строке
+		i += ft_separate_textures(tmp->content, data);
 		tmp = tmp->next;
 	}
 	if (i != 6)
-		return (MAP_ERROR);
+		return (MAP_ERROR);	
+	while (!ft_empty_line(tmp->content) && tmp)
+		tmp = tmp->next;
 	if (ft_parse_map(tmp, data))
 		return (MAP_ERROR);
 	return(0);
 }
 
-
+// check quantity of strings (at least 3)
 int		ft_parse_map(t_list *tmp, t_data *data)
 {
-	(void)tmp;
+	while (tmp)
+	{
+		printf("0%s0\n", tmp->content);
+		tmp = tmp->next;
+	}
 	(void)data;
 	return (0);
 }

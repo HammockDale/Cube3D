@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:05 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/18 20:02:59 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/19 11:53:56 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 		while (i < argc)
 		{
 			ret = ft_cube(argv[i], data);
-printf("CUB3D!!!");
+printf("CUB3D!!!\n ret = %d\n", ret);
 			if(ret)
 				return (ret);
 			i++;
@@ -50,7 +50,7 @@ int	ft_cube(char *carta, t_data *data)
 	data = ft_data_init(data);
 	if (!data)
 		return (INIT_ERROR);
-	if (!ft_parce_data(data, fd))
+	if (ft_parce_data(data, fd))
 		ft_exit (MAP_ERROR);
 	// ft_make_coords(data);
 	// ft_make_map(data, fd);
@@ -89,6 +89,7 @@ int	ft_cube(char *carta, t_data *data)
 
 int	ft_exit(int keycode)
 {
-	// ft_free_all(t_data *data);
+
+printf("CUB3D!!!\n ret = %d\n", keycode);
 	exit (keycode);
 }

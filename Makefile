@@ -8,7 +8,7 @@ SRC_DIR = srcs/
 SRCS_F = main.c init.c
 
 PARS_DIR = parser/
-PARS_F = parser.c parser_utils.c checker.c
+PARS_F = parser.c parser_utils.c checker.c parser_utils2.c 
 PARSER =  $(addprefix $(PARS_DIR), $(PARS_F))
 
 GAME_DIR = game/
@@ -23,8 +23,8 @@ OBJ = $(patsubst %.c, %.o, $(SRC_F))
 
 
 
-# CC = gcc -g
-CC = gcc
+CC = gcc -g
+# CC = gcc
 FLAGS = -Wall -Werror -Wextra
 
 RM = rm -rf
@@ -42,14 +42,19 @@ init:
 	@$(MAKE_LIBFT)
 	@$(MAKE_MLX)
 
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
 %.o : %.c
 	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 $(NAME): $(OBJ) $(HEADER)
-# @$(CC) $(FLAGS) $(INCLUDES) $(OBJ) $(LINK_MLX) $(LINK_LIBFT) -o $@
-	@$(CC) $(FLAGS) $(INCLUDES) $(LINK_LIBFT) $(OBJ) -o $@
+	@$(CC) $(FLAGS) $(INCLUDES) $(LINK_MLX) $(LINK_LIBFT) $(OBJ) -o $@
+# @$(CC) $(FLAGS) $(INCLUDES) $(LINK_LIBFT) $(OBJ) -o $@
+	@echo Done!
 
 clean:
+	@$(RM) $(OBJ_F)
 	@$(MAKE_MLX) clean
 	@$(MAKE_LIBFT) clean
 

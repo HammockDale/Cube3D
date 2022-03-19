@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:05 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/19 18:56:32 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/19 19:08:14 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,6 @@ printf("0%s0\n", data->map->coords[i]);
 int	ft_exit(int keycode)
 {
 
-printf("CUB3D!!!\n ret = %d\n", keycode);
+printf("CUB3D!!!\n keycode = %d\n", keycode);
 	exit (keycode);
 }

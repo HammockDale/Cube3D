@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:19 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/19 19:05:47 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/19 19:17:43 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	ft_init_main_struct(t_data *data)
 // функция инициализации (и удаления при неудаче) переменных основной структуры
 {
 	data->window = ft_init_window(data->window);
+	data->player = ft_init_player(data->player);
 	return (0);
 }
 
@@ -115,4 +116,15 @@ t_window	*ft_init_window(t_window *window)
 	window->height = 480;
 	window->coords = NULL;
 	return (window);
+}
+
+t_player *ft_init_player(t_player *player)
+{
+	player = (t_player)malloc(sizeof(t_player));
+	if (!player)
+		return (NULL);
+	player->look = 0;
+	player->p_x = 3;
+	player->p_y = 10;
+	return (player);
 }

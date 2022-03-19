@@ -55,10 +55,11 @@ $(NAME): $(OBJ) $(HEADER)
 
 clean:
 	@$(RM) $(OBJ_F)
+	@$(RM) $(OBJ)
 	@$(MAKE_MLX) clean
 	@$(MAKE_LIBFT) clean
 
-fclean:
+fclean: clean
 	@$(MAKE_LIBFT) fclean
 	@$(RM) $(NAME)
 

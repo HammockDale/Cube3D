@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:19 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/19 14:54:28 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/19 16:29:24 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,14 @@ int		ft_init_map(t_data *data, t_list *map, int weght, int hight)
 	(void)weght;
 	(void)hight;
 	return (0);
+}
+
+t_window	*ft_init_window(t_window *window)
+{
+	window->mlx_ptr = NULL;
+	window->win_ptr = NULL;
+	window->img = NULL;
+	window->weight = 0;
+	window->height = 0;
+	window->coords = NULL;
 }

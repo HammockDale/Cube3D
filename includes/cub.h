@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/19 14:53:21 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/19 16:30:40 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ typedef struct s_map
 {
 	int		loot;
 	int		exit;
-	int		moves;
 	int		x;
 	int		y;
 	int		size_x;
@@ -92,33 +91,33 @@ typedef struct s_data
 }				t_data;
 	
 /* main.c */
-int		ft_cube(char *carta, t_data *data);
-int		ft_exit(int keycode);
+int			ft_cube(char *carta, t_data *data);
+int			ft_exit(int keycode);
 
 /* checker.c */
-int		ft_name_check(char *carta);
+int			ft_name_check(char *carta);
 
 /* init.c */
-t_data	*ft_data_init(t_data *data);
-int		ft_init_main_struct(t_data *data);
-t_image	*ft_init_image(t_image *wall);
-int		ft_init_map(t_data *data, t_list *map, int weght, int hight);
-
+t_data		*ft_data_init(t_data *data);
+int			ft_init_main_struct(t_data *data);
+t_image		*ft_init_image(t_image *wall);
+int			ft_init_map(t_data *data, t_list *map, int weght, int hight);
+t_window	*ft_init_window(t_window *window);
 /* parcer.c */
-t_list	*ft_lstnew_m(char *content);
-int		ft_parce_data(t_data *data, int fd);
-int		ft_config(t_list **cub, t_data *data);
-int		ft_parse_map(t_list *tmp, t_data *data);
+t_list		*ft_lstnew_m(char *content);
+int			ft_parce_data(t_data *data, int fd);
+int			ft_config(t_list **cub, t_data *data);
+int			ft_parse_map(t_list *tmp, t_data *data);
 
 /* parcer_utils.c */
-int		ft_separate_textures(char *str, t_data *data);
-int		ft_save_texture(char *str, t_image *wall);
-int		ft_save_texture_c(char *str, t_image *wall, t_data *data);
-int		ft_parsing_trgb(char *str, int *trgb);
-int		ft_tind_map_begin(char *str);
+int			ft_separate_textures(char *str, t_data *data);
+t_image		*ft_save_texture(char *str, t_image *wall);
+t_image		*ft_save_texture_c(char *str, t_image *wall, t_data *data);
+int			ft_parsing_trgb(char *str, int *trgb);
+int			ft_tind_map_begin(char *str);
 
 /* parcer_utils2.c */
-int	ft_empty_line(char *str);
+int			ft_empty_line(char *str);
 
 
 /*other*/

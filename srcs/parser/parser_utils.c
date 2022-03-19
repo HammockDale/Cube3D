@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 13:49:56 by  esylva           #+#    #+#             */
-/*   Updated: 2022/03/19 16:46:49 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/19 17:48:58 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,20 +136,4 @@ int	ft_parsing_trgb(char *str, int *trgb)
 			return(MAP_ERROR);
 	}
 	return (0);
-}
-
-
-int	ft_tind_map_begin(char *str)
-{
-	int	i;
-
-	i = 0;
-	while(str[i])
-	{
-		if (str[i] == ' ' || str[i] == '1')
-			i++;
-		else
-			return (0);
-	}
-	return (i);
 }

@@ -68,7 +68,7 @@ int		ft_init_map(t_data *data, t_list *map, int weght, int hight)
 	int 	i;
 	t_list	*tmp;
 
-	i = -1;
+	i = 0;
 	tmp = map;
 	data->map = (t_map *)malloc(sizeof(t_map));
 	if (!data->map)
@@ -120,7 +120,7 @@ t_window	*ft_init_window(t_window *window)
 
 t_player *ft_init_player(t_player *player)
 {
-	player = (t_player)malloc(sizeof(t_player));
+	player = (t_player*)malloc(sizeof(t_player));
 	if (!player)
 		return (NULL);
 	player->look = 0;

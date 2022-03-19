@@ -104,6 +104,9 @@ int			ft_init_main_struct(t_data *data);
 t_image		*ft_init_image(t_image *wall);
 int			ft_init_map(t_data *data, t_list *map, int weght, int hight);
 t_window	*ft_init_window(t_window *window);
+
+t_player *ft_init_player(t_player *player);
+
 /* parcer.c */
 t_list		*ft_lstnew_m(char *content);
 int			ft_parce_data(t_data *data, int fd);

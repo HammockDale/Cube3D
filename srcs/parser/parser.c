@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 20:39:52 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/19 14:21:51 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/19 15:17:02 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,26 @@ int	ft_config(t_list **cub, t_data *data)
 	return(0);
 }
 
-// check quantity of strings (at least 3)
-int		ft_parse_map(t_list *tmp, t_data *data)
+int		ft_parse_map(t_list *map, t_data *data)
 {
+	t_list	*tmp;
+	int weght;
+	int	hight;
+	int a;
+
+	hight = 0;
+	weght = 0;
+	tmp = map;
 	while (tmp)
 	{
-printf("0%s0\n", tmp->content);
+		a = ft_strlen(tmp->content);
+		if (weght < a)
+			weght = a;
+		hight++;
 		tmp = tmp->next;
 	}
-	(void)data;
+	if (ft_init_map(data, map, weght, hight))
+		return(MAP_ERROR);
 	return (0);
 }
 
@@ -109,27 +120,6 @@ printf("0%s0\n", tmp->content);
 // 	}
 // }
 
-// void	ft_make_map(t_map *map, int fd)
-// {	
-// 	char	*line;
-// 	int		x;
-// 	int		y;
-
-// 	line = NULL;
-// 	y = 0;
-// 	while (y < map->height)
-// 	{
-// 		get_next_line(fd, &line);
-// 		x = ft_strlen(line) - 1;
-// 		while (--x >= 0)
-// 		{
-// 			map->coords[y][x] = line[x];
-// 		}
-// 		y++;
-// 		free(line);
-// 	}
-// 	close (fd);
-// }
 
 // void	ft_check_lines(t_map *map)
 // {

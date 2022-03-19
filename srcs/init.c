@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:19 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/19 16:29:24 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/19 16:56:38 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_data	*ft_data_init(t_data *data)
 int	ft_init_main_struct(t_data *data)
 // функция инициализации (и удаления при неудаче) переменных основной структуры
 {
-	(void)data;
+	data->window = ft_init_window(data->window);
 	return (0);
 }
 
@@ -73,10 +73,14 @@ int		ft_init_map(t_data *data, t_list *map, int weght, int hight)
 
 t_window	*ft_init_window(t_window *window)
 {
+	window = (t_window *)malloc(sizeof(t_window));
+	if (!window)
+		return (NULL);
 	window->mlx_ptr = NULL;
 	window->win_ptr = NULL;
 	window->img = NULL;
 	window->weight = 0;
 	window->height = 0;
 	window->coords = NULL;
+	return (window);
 }

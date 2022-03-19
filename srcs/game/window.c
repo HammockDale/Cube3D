@@ -10,21 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "cub.h"
+#include "cub.h"
 
-// int	ft_win_init(t_map *map)
-// {
-// 	map->mlx_ptr = mlx_init();
-// 	map->win_ptr = mlx_new_window(map->mlx_ptr, map->weight * 50, map->height
-// 			* 50, "So long");
-// 	ft_img_init(map);
-// 	ft_put_img_to_win(map);
-// 	mlx_loop_hook(map->mlx_ptr, render_next_frame, map);
-// 	mlx_hook(map->win_ptr, 2, 0, key_hook, map);
-// 	mlx_hook(map->win_ptr, 17, 0L, ft_exit, map);
-// 	mlx_loop(map->mlx_ptr);
-// 	return (0);
-// }
+int	ft_win_init(t_data *data)
+{
+	ft_coords(data);
+	data->window->mlx_ptr = mlx_init();
+	data->window->win_ptr = mlx_new_window(data->window->mlx_ptr, data->window->weight, data->window->height, "cub3D");
+	// ft_img_init(map);
+	// ft_put_img_to_win(data);
+	// mlx_loop_hook(data->window->mlx_ptr, render_next_frame, data->window);
+	// mlx_hook(data->window->win_ptr, 2, 0, key_hook, data->window);
+	mlx_hook(data->window->win_ptr, 17, 0L, ft_exit, data);
+	mlx_loop(data->window->mlx_ptr);
+	return (0);
+}
 
 // void	ft_img_init(t_map *map)
 // {
@@ -54,6 +54,7 @@
 // 	map->gate.addr = mlx_get_data_addr(map->gate.image, &map->gate.bitpp,
 // 			&map->gate.line, &map->gate.endian);
 // }
+
 
 // void	ft_put_img_to_win(t_map *map)
 // {
@@ -92,3 +93,24 @@
 // 		map->p_y = map->y;
 // 	}
 // }
+
+void ft_coords(t_data *data)
+{
+	int i;
+
+	i = 0;
+	data->window->coords = calloc(sizeof(int*) , 8);
+	while (i < 8)
+	{
+		data->window->coords[i] = (int *)calloc(sizeof(int), 10);
+	}
+	data->window->coords[0] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};   
+	data->window->coords[1] = {1, 0, 0, 0, 0, 0, 0, 0, 0, 1};
+	data->window->coords[2] = {1, 0, 0, 0, 0, 0, 0, 0, 0, 1};   
+	data->window->coords[3] = {1, 0, 1, 0, 0, 0, 1, 0, 0, 1};   
+	data->window->coords[4] = {1, 0, 1, 0, 0, 0, 0, 0, 0, 1};   
+	data->window->coords[5] = {1, 0, 0, 0, 1, 0, 0, 0, 0, 1};  
+	data->window->coords[6] = {1, 0, 1, 0, 0, 0, 0, N, 0, 1};   
+	data->window->coords[7] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};   
+
+}

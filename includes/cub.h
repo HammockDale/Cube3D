@@ -111,6 +111,7 @@ int			ft_parse_map(t_list *tmp, t_data *data);
 
 /* parcer_utils.c */
 int			ft_separate_textures(char *str, t_data *data);
+int			ft_separate_textures_1(char *str, t_data *data);
 t_image		*ft_save_texture(char *str, t_image *wall);
 t_image		*ft_save_texture_c(char *str, t_image *wall, t_data *data);
 int			ft_parsing_trgb(char *str, int *trgb);
@@ -119,6 +120,10 @@ int			ft_tind_map_begin(char *str);
 /* parcer_utils2.c */
 int			ft_empty_line(char *str);
 
+
+/*  window.c	*/
+int	ft_win_init(t_data *data);
+void ft_coords(t_data *data);
 
 /*other*/
 // int		key_hook(int keycode, t_map *map);

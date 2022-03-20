@@ -124,7 +124,50 @@ t_player *ft_init_player(t_player *player)
 	if (!player)
 		return (NULL);
 	player->look = 0;
-	player->p_x = 3;
-	player->p_y = 10;
+	player->posX = 3;
+	player->posY = 10;		// начальная позиция x и y
+	player->dirX = -1;
+	player->dirY = 0;		//начальный вектор направления
+	player->planeX = 0;
+	player->planeY = 0.66;	 //версия плоскости камеры для 2d raycaster
+
+	player->time = 0; //время текущего кадра
+	player->oldTime = 0; //время предыдущего кадра
+	
+	player->cameraX = 0;
+	player->cameraY = 0;
+	player->rayDirX = 0;
+	player->rayDirY = 0;
+
+
+
+
+
+player->nScreenWidth = 120; // Ширина консольного окна
+
+player->nScreenHeight = 40; // Высота консольного окна
+
+player->fPlayerX = 1.0f; // Координата игрока по оси X
+
+player->fPlayerY = 1.0f; // Координата игрока по оси Y
+
+player->fPlayerA = 0.0f; // Направление игрока
+
+player->nMapHeight = 16; // Высота игрового поля
+
+player->nMapWidth = 16;	 // Ширина игрового поля
+
+
+
+player->fFOV = 3.14159 / 3; // Угол обзора (поле видимости)
+
+player->fDepth = 30.0f;	  // Максимальная дистанция обзора
+
 	return (player);
 }
+
+// for(int x = 0; x < w; x++) 
+//     { // вычисляем положение и направление луча
+//         double cameraX = 2 * x / double(w) - 1; //координата x в пространстве камеры
+//        double rayDirX = dirX + planeX * cameraX; 
+//       double rayDirY = dirY + planeY * cameraX;

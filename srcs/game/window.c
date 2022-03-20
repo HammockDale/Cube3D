@@ -12,11 +12,89 @@
 
 #include "cub.h"
 
+
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->window->addr + (y * data->window->line_length + x * (data->window->bits_per_pixel / 8));
+	*(unsigned int*)dst = color;
+}
+
+// my_mlx_pixel_put(data, 5, 5, 0x00FF0000);
+
+void	ft_back(t_data *data)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	data->window->addr = mlx_get_data_addr(data->window->img, &data->window->bits_per_pixel, &data->window->line_length, &data->window->endian);
+	while (i < data->window->weight)
+	{
+		while (j < data->window->height / 2)
+		{
+			my_mlx_pixel_put(data, i, j, 0x000FFFF);
+			j++;
+		}
+		while (j < data->window->height)
+		{
+			my_mlx_pixel_put(data, i, j, 0x0555F00);
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->window->img, 0, 0);
+}
+
+void	ft_paint(t_data *data)
+{
+	mlx_clear_window(data->window->mlx_ptr, data->window->win_ptr);
+	
+
+	ft_back(data);
+	// ft_background(var);
+	// ft_beahive(var);
+	// ft_woll(var);
+	// ft_chamomile(var, 0, 0);
+	// if (var->max_score == 0)
+	// 	ft_close();
+	// ft_bee_l1(var);
+	// ft_hornet_L(var, 0, 0);
+	// ft_paint_text(var);
+}
+
+int	key_kb_hook(int keycode, t_data *data)
+{
+	// if (keycode == 13)
+	// 	ft_Pup(var);
+	// else if (keycode == 0)
+	// 	ft_Pleft(var);
+	// else if (keycode == 1)
+	// 	ft_Pdown(var);
+	// else if (keycode == 2)
+	// 	ft_Pright(var);
+
+	// printf("keycode = %d\n", keycode);
+	if (keycode == 53)
+	{
+		mlx_destroy_window(data->window->mlx_ptr, data->window->win_ptr);
+		ft_exit(keycode);
+	}
+	return (keycode);
+}
+
+
 int	ft_win_init(t_data *data)
 {
 	// ft_coords(data);
 	data->window->mlx_ptr = mlx_init();
 	data->window->win_ptr = mlx_new_window(data->window->mlx_ptr, data->window->weight, data->window->height, "cub3D");
+	mlx_key_hook(data->window->win_ptr, key_kb_hook, data);
+	data->window->img = mlx_new_image(data->window->mlx_ptr, 1920, 1080);
+	ft_paint(data);
 	// ft_img_init(map);
 	// ft_put_img_to_win(data);
 	// mlx_loop_hook(data->window->mlx_ptr, render_next_frame, data->window);

@@ -99,7 +99,6 @@ int		ft_parse_map(t_list *map, t_data *data)
 // {
 // 	int		error;
 // 	int		y;
-
 // 	map->coords = (int **)malloc(sizeof(int *) * map->height);
 // 	error = errno;
 // 	if (!map->coords)
@@ -125,7 +124,6 @@ int		ft_parse_map(t_list *map, t_data *data)
 // {
 // 	int		x;
 // 	int		y;
-
 // 	x = 0;
 // 	y = 0;
 // 	while (y < map->height)

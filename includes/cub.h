@@ -42,10 +42,43 @@ typedef struct s_image
 
 typedef struct s_player
 {
-	int		p_x;
-	int		p_y;
-	int		look;
+	int			posX;
+	int			posY;
+	double		dirX;
+	double		dirY;
+	double		planeX;
+	double		planeY;
+	int			look;
+	double		time;
+	double		oldTime;
+
+	double		cameraX;
+	double		cameraY;
+	double		rayDirX;
+	double		rayDirY;
+
+	int nScreenWidth;
+	int nScreenHeight;
+
+
+	float fPlayerX;
+	float fPlayerY;
+	float fPlayerA ;
+
+
+	int nMapHeight ;
+	int nMapWidth ;
+
+	float fFOV;
+	float fDepth;
 }				t_player;
+
+// typedef struct s_camera
+// {
+
+
+
+// }				t_camera;
 
 typedef struct s_window
 {
@@ -55,6 +88,10 @@ typedef struct s_window
 	int		weight;
 	int		height;
 	int		**coords;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 }				t_window;
 
 typedef struct s_map
@@ -75,8 +112,10 @@ typedef struct s_strite
 	int			status;
 }				t_sprite;
 
+
 typedef struct s_data
 {
+	// t_camera		*camera;
 	t_window		*window;
 	t_map			*map;
 	t_player		*player;	

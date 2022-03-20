@@ -12,7 +12,7 @@ PARS_F = parser.c parser_utils.c checker.c parser_utils2.c
 PARSER =  $(addprefix $(PARS_DIR), $(PARS_F))
 
 GAME_DIR = game/
-GAME_F = window.c action.c
+GAME_F = window.c action.c ft_wasd.c
 GAME = $(addprefix $(GAME_DIR), $(GAME_F))
 
 SRC_F =  $(addprefix $(SRC_DIR), $(SRCS_F) $(PARSER) $(GAME))

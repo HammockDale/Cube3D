@@ -180,7 +180,8 @@ int i;
 		return (INIT_ERROR);
 	if (ft_parce_data(data, fd))
 		ft_exit (MAP_ERROR);
-
+	data->player->posX = 80;					//vremenno
+	data->player->posY = 100;					//vremenno
 		
 // printf("%s\n", data->north->loc);
 // printf("%s\n", data->east->loc);

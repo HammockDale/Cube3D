@@ -23,6 +23,38 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 // my_mlx_pixel_put(data, 5, 5, 0x00FF0000);
 
+// void	ft_button(t_data *data)
+// {
+
+// }
+
+void ft_draw_player(t_data *data)
+{
+	int i;
+	int j;
+
+	i = data->player->posX;
+	j = data->player->posY;
+	// data->window->addr = mlx_get_data_addr(data->window->img, &data->window->bits_per_pixel, &data->window->line_length, &data->window->endian);
+	while (i < data->player->posX + 10)
+	{
+		while (j < data->player->posY + 10)
+		{
+			my_mlx_pixel_put(data, i, j, 0x0F0FFFF);
+			j++;
+		}
+		// while (j < 50)
+		// {
+		// 	my_mlx_pixel_put(data, i, j, 0x0F55F00);
+		// 	j++;
+		// }
+		j =  data->player->posY;
+		i++;
+	}
+	// mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->window->img, 0, 0);
+
+}
+
 void	ft_back(t_data *data)
 {
 	int i;
@@ -30,7 +62,7 @@ void	ft_back(t_data *data)
 
 	i = 0;
 	j = 0;
-	data->window->addr = mlx_get_data_addr(data->window->img, &data->window->bits_per_pixel, &data->window->line_length, &data->window->endian);
+	// data->window->addr = mlx_get_data_addr(data->window->img, &data->window->bits_per_pixel, &data->window->line_length, &data->window->endian);
 	while (i < data->window->weight)
 	{
 		while (j < data->window->height / 2)
@@ -46,15 +78,19 @@ void	ft_back(t_data *data)
 		j = 0;
 		i++;
 	}
-	mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->window->img, 0, 0);
+	// mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->window->img, 0, 0);
 }
 
 void	ft_paint(t_data *data)
 {
 	mlx_clear_window(data->window->mlx_ptr, data->window->win_ptr);
 	
+	data->window->addr = mlx_get_data_addr(data->window->img, &data->window->bits_per_pixel, &data->window->line_length, &data->window->endian);
 
 	ft_back(data);
+	ft_draw_player(data);
+		mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->window->img, 0, 0);
+
 	// ft_background(var);
 	// ft_beahive(var);
 	// ft_woll(var);
@@ -68,16 +104,19 @@ void	ft_paint(t_data *data)
 
 int	key_kb_hook(int keycode, t_data *data)
 {
-	// if (keycode == 13)
-	// 	ft_Pup(var);
-	// else if (keycode == 0)
-	// 	ft_Pleft(var);
-	// else if (keycode == 1)
-	// 	ft_Pdown(var);
-	// else if (keycode == 2)
-	// 	ft_Pright(var);
-
-	// printf("keycode = %d\n", keycode);
+	if (keycode == 13)
+		ft_Pup(data);
+	else if (keycode == 0)
+		ft_Pleft(data);
+	else if (keycode == 1)
+		ft_Pdown(data);
+	else if (keycode == 2)
+		ft_Pright(data);
+	else if (keycode == 124)
+		ft_Pclock(data);
+	else if (keycode == 123)
+		ft_Pconterclock(data);
+	printf("keycode = %d\n", keycode);
 	if (keycode == 53)
 	{
 		mlx_destroy_window(data->window->mlx_ptr, data->window->win_ptr);
@@ -95,6 +134,8 @@ int	ft_win_init(t_data *data)
 	mlx_key_hook(data->window->win_ptr, key_kb_hook, data);
 	data->window->img = mlx_new_image(data->window->mlx_ptr, 1920, 1080);
 	ft_paint(data);
+	// ft_button(data);
+
 	// ft_img_init(map);
 	// ft_put_img_to_win(data);
 	// mlx_loop_hook(data->window->mlx_ptr, render_next_frame, data->window);

@@ -13,7 +13,7 @@
 #ifndef CUB_H
 # define CUB_H
 
-# include <mlx.h>
+// # include <mlx.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
@@ -149,7 +149,7 @@ t_window	*ft_init_window(t_window *window);
 t_player	*ft_init_player(t_player *player);
 
 t_image		*ft_init_image(t_image *wall);
-int			ft_init_map(t_data *data, int hight);
+int			ft_init_map(t_data *data, int hight, int weght);
 
 
 /* parcer.c */

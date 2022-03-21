@@ -86,7 +86,7 @@ int		ft_parse_map(t_list *map, t_data *data)
 		hight++;
 		tmp = tmp->next;
 	}
-	if (ft_init_map(data, map, weght, hight))
+	if (ft_check_map(data, map, weght, hight))
 		return(MAP_ERROR);
 	return (0);
 }

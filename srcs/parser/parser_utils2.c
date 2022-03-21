@@ -56,3 +56,29 @@ int	ft_tind_map_begin(char *str)
 	}
 	return (i);
 }
+
+int	ft_init_coords(t_data *data, t_list *map, int weght, int hight)
+{
+	int 	i;
+	t_list	*tmp;
+
+	i = 0;
+	tmp = map;
+	while(i < hight)
+	{
+		data->map->coords[i] = (char *)malloc(sizeof(char) * (weght + 1));
+		if (!data->map->coords[i])
+		{
+			data->map->coords = free_2d_arr(data->map->coords);
+			return(MAP_ERROR);
+		}
+		i++;
+	}
+	i = -1;
+	while (++i < hight)
+	{
+		ft_copy_str(data->map->coords[i], tmp->content, weght);
+		tmp = tmp->next;
+	}
+	return (0);
+}

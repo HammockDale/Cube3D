@@ -34,3 +34,14 @@ int	ft_name_check(char *carta)
 	}
 	return (fd);
 }
+
+int		ft_check_map(t_data *data, t_list *map, int weght, int hight)
+{
+
+	if (ft_init_map(data, hight))
+		return(MAP_ERROR);
+	if (ft_init_coords(data, map, weght, hight))
+		return(MAP_ERROR);
+
+	return (0);
+}

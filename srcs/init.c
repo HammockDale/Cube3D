@@ -63,13 +63,8 @@ t_image	*ft_init_image(t_image *wall)
 	return (wall);
 }
 
-int		ft_init_map(t_data *data, t_list *map, int weght, int hight)
+int	ft_init_map(t_data *data, t_list *map, int weght, int hight)
 {
-	int 	i;
-	t_list	*tmp;
-
-	i = 0;
-	tmp = map;
 	data->map = (t_map *)malloc(sizeof(t_map));
 	if (!data->map)
 		return(MAP_ERROR);
@@ -80,27 +75,14 @@ int		ft_init_map(t_data *data, t_list *map, int weght, int hight)
 	data->map->y = 0;
 	data->map->size_x = weght;
 	data->map->size_y = hight;
-
 	data->map->coords = (char **)malloc(sizeof(char *) * (hight + 1));
 	if (!data->map->coords)
+	{
+		free(data->map);
+		data->map = NULL;
 		return(MAP_ERROR);
+	}
 	data->map->coords[hight] = NULL;
-	while(i < hight)
-	{
-		data->map->coords[i] = (char *)malloc(sizeof(char) * (weght + 1));
-		if (!data->map->coords[i])
-		{
-			// data->map->coords = free_2d_arr(data->map->coords);
-			return(MAP_ERROR);
-		}
-		i++;
-	}
-	i = -1;
-	while (++i < hight)
-	{
-		ft_copy_str(data->map->coords[i], tmp->content, weght);
-		tmp = tmp->next;
-	}
 	return (0);
 }
 

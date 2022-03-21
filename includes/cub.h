@@ -140,15 +140,17 @@ int			ft_exit(int keycode);
 
 /* checker.c */
 int			ft_name_check(char *carta);
+int			ft_check_map(t_data *data, t_list *map, int weght, int hight);
 
 /* init.c */
 t_data		*ft_data_init(t_data *data);
 int			ft_init_main_struct(t_data *data);
-t_image		*ft_init_image(t_image *wall);
-int			ft_init_map(t_data *data, t_list *map, int weght, int hight);
 t_window	*ft_init_window(t_window *window);
+t_player	*ft_init_player(t_player *player);
 
-t_player *ft_init_player(t_player *player);
+t_image		*ft_init_image(t_image *wall);
+int			ft_init_map(t_data *data, int hight);
+
 
 /* parcer.c */
 t_list		*ft_lstnew_m(char *content);
@@ -168,6 +170,7 @@ int			ft_parsing_trgb(char *str, int *trgb);
 int			ft_empty_line(char *str);
 void		ft_copy_str(char *dest, char *src, int lim);
 int			ft_tind_map_begin(char *str);
+int			ft_init_coords(t_data *data, t_list *map, int weght, int hight);
 
 
 /*  window.c	*/

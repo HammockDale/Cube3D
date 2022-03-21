@@ -230,7 +230,7 @@ printf("0%s0\n", data->map->coords[i]);
 
 int	ft_exit(int keycode)
 {
-
+// функция очистки структуры
 printf("CUB3D!!!\n keycode = %d\n", keycode);
 	exit (keycode);
 }

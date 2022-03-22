@@ -42,7 +42,7 @@ void	ft_copy_str(char *dest, char *src, int lim)
 	*(dest + i) = 0;
 }
 
-int	ft_tind_map_begin(char *str)
+int	ft_check_rect_str(char *str)
 {
 	int	i;
 

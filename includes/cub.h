@@ -141,6 +141,8 @@ int			ft_exit(int keycode);
 /* checker.c */
 int			ft_name_check(char *carta);
 int			ft_check_map(t_data *data, t_list *map, int weght, int hight);
+int			ft_check_rect(t_data *data, int weght, int hight);
+int			ft_check_inside(t_data *data, int weght, int hight);
 
 /* init.c */
 t_data		*ft_data_init(t_data *data);
@@ -169,8 +171,9 @@ int			ft_parsing_trgb(char *str, int *trgb);
 /* parcer_utils2.c */
 int			ft_empty_line(char *str);
 void		ft_copy_str(char *dest, char *src, int lim);
-int			ft_tind_map_begin(char *str);
 int			ft_init_coords(t_data *data, t_list *map, int weght, int hight);
+int			ft_check_rect_str(char *str);
+int			ft_check_rect_col(char **str);
 
 
 /*  window.c	*/

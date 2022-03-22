@@ -63,7 +63,7 @@ t_image	*ft_init_image(t_image *wall)
 	return (wall);
 }
 
-int	ft_init_map(t_data *data, t_list *map, int weght, int hight)
+int	ft_init_map(t_data *data, int weght, int hight)
 {
 	data->map = (t_map *)malloc(sizeof(t_map));
 	if (!data->map)

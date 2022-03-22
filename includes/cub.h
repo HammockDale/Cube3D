@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/19 18:35:03 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/22 11:01:41 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB_H
 # define CUB_H
 
-// # include <mlx.h>
+# include <mlx.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
@@ -173,7 +173,7 @@ int			ft_empty_line(char *str);
 void		ft_copy_str(char *dest, char *src, int lim);
 int			ft_init_coords(t_data *data, t_list *map, int weght, int hight);
 int			ft_check_rect_str(char *str);
-int			ft_check_rect_col(char **str);
+int			ft_check_rect_col(char **str, int w, int h);
 
 
 /*  window.c	*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  esylva < esylva@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:42:12 by  esylva           #+#    #+#             */
-/*   Updated: 2022/03/14 14:42:12 by  esylva          ###   ########.fr       */
+/*   Updated: 2022/03/22 09:54:43 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,20 @@ int	ft_check_map(t_data *data, t_list *map, int weght, int hight)
 
 int	ft_check_rect(t_data *data, int weght, int hight)
 {
-	if (ft_check_rect_str(data->map->coords[0]));
+	if (ft_check_rect_str(data->map->coords[0]))
 		return(MAP_ERROR);
-	if (ft_check_rect_str(data->map->coords[hight - 1]));
+	if (ft_check_rect_str(data->map->coords[hight - 1]))
 		return(MAP_ERROR);
-	if (ft_check_rect_col(data->map->coords));
+	if (ft_check_rect_col(data->map->coords, weght - 1, hight - 1))
 		return(MAP_ERROR);
 	return (0);
 	}
 
-int	ft_check_rect_col(char **str)
-{
-	return (0);
-}
 
 int	ft_check_inside(t_data *data, int weght, int hight)
 {
+	(void)data;
+	(void)weght;
+	(void)hight;
 	return (0);
 }

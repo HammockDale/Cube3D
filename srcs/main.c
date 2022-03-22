@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:05 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/19 19:08:14 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/22 15:01:42 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,15 +190,15 @@ int i;
 // printf("%d\n", data->cloud->trgb);
 // printf("%d\n", data->ground->trgb);
 i = -1;
-while (data->map->coords[++i])
-printf("0%s0\n", data->map->coords[i]);
+while (data->map->coord[++i])
+printf("2%s2\n", data->map->coord[i]);
 
-	// ft_make_coords(data);
+	// ft_make_coord(data);
 	// ft_make_map(data, fd);
 	// ft_check_lines(data);
-	ft_win_init(data);
-	ft_game(data->player, data);
-	// ft_free_all(data);
+	// ft_win_init(data);
+	// ft_game(data->player, data);
+	// // ft_free_all(data);
 	close (fd);
 	return (0);
 }
@@ -209,17 +209,17 @@ printf("0%s0\n", data->map->coords[i]);
 // 	i = 0;
 // 	while (i < map->height)
 // 	{
-// 		if (map->coords[i])
+// 		if (map->coord[i])
 // 		{
-// 			free(map->coords[i]);
-// 			map->coords[i] = NULL;
+// 			free(map->coord[i]);
+// 			map->coord[i] = NULL;
 // 		}
 // 		i++;
 // 	}
-// 	if (map->coords)
+// 	if (map->coord)
 // 	{
-// 		free(map->coords);
-// 		map->coords = NULL;
+// 		free(map->coord);
+// 		map->coord = NULL;
 // 	}
 // 	if (map)
 // 	{

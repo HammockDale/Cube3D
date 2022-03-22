@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:42:12 by  esylva           #+#    #+#             */
-/*   Updated: 2022/03/22 13:49:58 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/22 16:56:33 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,31 +40,74 @@ int	ft_check_map(t_data *data, t_list *map, int weght, int hight)
 
 	if (ft_init_map(data, weght, hight))
 		return(MAP_ERROR);
-	if (ft_init_coords(data, map, weght, hight))
+	if (ft_init_coord(data, map, weght, hight))
 		return(MAP_ERROR);
-	if (ft_check_rect(data, weght, hight))
+	if (!ft_check_rect_str(data->map->coord[0]))
 		return(MAP_ERROR);
-	if (ft_check_inside(data, weght, hight))
+	if (!ft_check_rect_str(data->map->coord[hight - 1]))
 		return(MAP_ERROR);
+	if (!ft_check_rect_col(data->map->coord, weght - 1, hight - 1))
+		return(MAP_ERROR);
+	if (!data->bonus)
+	{
+		if (ft_check_inside(data, weght, hight, NO_BONUS_STR))
+			return(MAP_ERROR);
+	}
+	else
+	{		
+		if (ft_check_inside(data, weght, hight, BONUS_STR))
+			return(MAP_ERROR);
+	}
 	return (0);
 }
 
-int	ft_check_rect(t_data *data, int weght, int hight)
+int	ft_check_inside(t_data *data, int weght, int hight, char *str)
 {
-	if (!ft_check_rect_str(data->map->coords[0]))
-		return(MAP_ERROR);
-	if (!ft_check_rect_str(data->map->coords[hight - 1]))
-		return(MAP_ERROR);
-	if (!ft_check_rect_col(data->map->coords, weght - 1, hight - 1))
-		return(MAP_ERROR);
-	return (0);
+	int		i;
+	int		j;
+	
+	i = 1;
+	while (i < hight)
+	{
+		j = 1;
+		while (j < weght)
+		{
+			if (data->map->coord[i][j] != ' ' && data->map->coord[i][j] != '1')
+			{
+				if (!ft_strchr(str, data->map->coord[i][j]))
+					return (MAP_ERROR);
+				if (!ft_check_sym(i, j, data))
+					return (MAP_ERROR);
+			}
+			j++;
+		}
+		i++;
 	}
-
-
-int	ft_check_inside(t_data *data, int weght, int hight)
-{
-	(void)data;
-	(void)weght;
-	(void)hight;
 	return (0);
+}
+
+int	ft_check_sym(int i, int j, t_data *data)
+{
+	if(data->map->coord[i - 1][j - 1] == ' '
+		|| data->map->coord[i - 1][j] == ' '
+		|| data->map->coord[i - 1][j + 1] == ' '
+		|| data->map->coord[i][j - 1] == ' '
+		|| data->map->coord[i][j + 1] == ' '
+		|| data->map->coord[i + 1][j - 1] == ' '
+		|| data->map->coord[i + 1][j] == ' '
+		|| data->map->coord[i + 1][j + 1] == ' ')
+		return (0);
+	if ((data->map->coord[i][j] == 'N' || data->map->coord[i][j] == 'E'
+		|| data->map->coord[i][j] == 'W' || data->map->coord[i][j] == 'S')
+		&& data->player->look != -1)
+		return (0);
+	else if (data->map->coord[i][j] == 'N')
+		data->player->look = 0;
+	else if (data->map->coord[i][j] == 'W')
+		data->player->look = 270;
+	else if (data->map->coord[i][j] == 'S')
+		data->player->look = 180;
+	else if (data->map->coord[i][j] == 'E')
+		data->player->look = 90;
+	return (1);
 }

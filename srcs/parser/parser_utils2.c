@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 12:40:15 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/22 14:02:02 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/22 15:01:42 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	ft_check_rect_col(char **str, int w, int h)
 	return (i);
 }
 
-int	ft_init_coords(t_data *data, t_list *map, int weght, int hight)
+int	ft_init_coord(t_data *data, t_list *map, int weght, int hight)
 {
 	int 	i;
 	t_list	*tmp;
@@ -82,10 +82,10 @@ int	ft_init_coords(t_data *data, t_list *map, int weght, int hight)
 	tmp = map;
 	while(i < hight)
 	{
-		data->map->coords[i] = (char *)malloc(sizeof(char) * (weght + 1));
-		if (!data->map->coords[i])
+		data->map->coord[i] = (char *)malloc(sizeof(char) * (weght + 1));
+		if (!data->map->coord[i])
 		{
-			data->map->coords = free_2d_arr(data->map->coords);
+			data->map->coord = free_2d_arr(data->map->coord);
 			return(MAP_ERROR);
 		}
 		i++;
@@ -93,7 +93,7 @@ int	ft_init_coords(t_data *data, t_list *map, int weght, int hight)
 	i = -1;
 	while (++i < hight)
 	{
-		ft_copy_str(data->map->coords[i], tmp->content, weght);
+		ft_copy_str(data->map->coord[i], tmp->content, weght);
 		tmp = tmp->next;
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 20:39:52 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/22 12:53:40 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/22 15:01:42 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,13 +97,13 @@ int		ft_parse_map(t_list *map, t_data *data)
 
 
 
-// void	ft_make_coords(t_map *map)
+// void	ft_make_coord(t_map *map)
 // {
 // 	int		error;
 // 	int		y;
-// 	map->coords = (int **)malloc(sizeof(int *) * map->height);
+// 	map->coord = (int **)malloc(sizeof(int *) * map->height);
 // 	error = errno;
-// 	if (!map->coords)
+// 	if (!map->coord)
 // 	{
 // 		printf("%s\n", strerror(error));
 // 		exit(error);
@@ -111,8 +111,8 @@ int		ft_parse_map(t_list *map, t_data *data)
 // 	y = 0;
 // 	while (y < map->height)
 // 	{
-// 		map->coords[y] = (int *)malloc(sizeof(int) * map->weight);
-// 		if (!map->coords[y])
+// 		map->coord[y] = (int *)malloc(sizeof(int) * map->weight);
+// 		if (!map->coord[y])
 // 		{
 // 			printf("%s\n", strerror(error));
 // 			exit(error);
@@ -145,19 +145,19 @@ int		ft_parse_map(t_list *map, t_data *data)
 // {
 // 	if (y == 0 || y == map->height - 1 || x == 0 || x == map->weight - 1)
 // 	{
-// 		if (map->coords[y][x] != (int) '1')
+// 		if (map->coord[y][x] != (int) '1')
 // 		{
 // 			printf("Map error: walls are not around the field\n");
 // 			exit (22);
 // 		}
 // 	}	
-// 	else if (map->coords[y][x] == (int) 'C')
+// 	else if (map->coord[y][x] == (int) 'C')
 // 		map->loot++;
-// 	else if (map->coords[y][x] == (int) 'E')
+// 	else if (map->coord[y][x] == (int) 'E')
 // 		map->exit++;
-// 	else if (map->coords[y][x] == (int) 'P')
+// 	else if (map->coord[y][x] == (int) 'P')
 // 		map->player++;
-// 	else if (map->coords[y][x] == (int) '0' || map->coords[y][x] == (int) '1')
+// 	else if (map->coord[y][x] == (int) '0' || map->coord[y][x] == (int) '1')
 // 		return ;
 // 	else
 // 	{

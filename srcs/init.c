@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:19 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/19 19:17:43 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/22 15:01:42 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,21 +68,21 @@ int	ft_init_map(t_data *data, int weght, int hight)
 	data->map = (t_map *)malloc(sizeof(t_map));
 	if (!data->map)
 		return(MAP_ERROR);
-	data->map->coords = NULL;
+	data->map->coord = NULL;
 	data->map->exit = 0;
 	data->map->loot = 0;
 	data->map->x = 0;
 	data->map->y = 0;
 	data->map->size_x = weght;
 	data->map->size_y = hight;
-	data->map->coords = (char **)malloc(sizeof(char *) * (hight + 1));
-	if (!data->map->coords)
+	data->map->coord = (char **)malloc(sizeof(char *) * (hight + 1));
+	if (!data->map->coord)
 	{
 		free(data->map);
 		data->map = NULL;
 		return(MAP_ERROR);
 	}
-	data->map->coords[hight] = NULL;
+	data->map->coord[hight] = NULL;
 	return (0);
 }
 
@@ -96,7 +96,7 @@ t_window	*ft_init_window(t_window *window)
 	window->img = NULL;
 	window->weight = 640;
 	window->height = 480;
-	window->coords = NULL;
+	window->coord = NULL;
 	return (window);
 }
 
@@ -105,8 +105,8 @@ t_player *ft_init_player(t_player *player)
 	player = (t_player*)malloc(sizeof(t_player));
 	if (!player)
 		return (NULL);
-	player->look = 0;
-	player->posX = 3;
+	player->look = 0; //initializaion -1
+	player->posX = 3; //initializaion  0
 	player->posY = 10;		// начальная позиция x и y
 	player->dirX = -1;
 	player->dirY = 0;		//начальный вектор направления

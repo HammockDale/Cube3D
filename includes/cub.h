@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/22 11:01:41 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/22 16:56:59 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@
 # include <math.h>
 
 # define BONUS 0
-
+# define NO_BONUS_STR "0NSWE"
+# define BONUS_STR "0NSWEDL"
 # define ARGUMENT_OPEN_ERROR 1
 # define INIT_ERROR 2
 # define MAP_ERROR 3
@@ -91,7 +92,7 @@ typedef struct s_window
 	void	*img;
 	int		weight;
 	int		height;
-	int		**coords;
+	int		**coord;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
@@ -106,7 +107,7 @@ typedef struct s_map
 	int		y;
 	int		size_x;
 	int		size_y;
-	char	**coords;
+	char	**coord;
 }				t_map;
 
 typedef struct s_strite
@@ -141,8 +142,8 @@ int			ft_exit(int keycode);
 /* checker.c */
 int			ft_name_check(char *carta);
 int			ft_check_map(t_data *data, t_list *map, int weght, int hight);
-int			ft_check_rect(t_data *data, int weght, int hight);
-int			ft_check_inside(t_data *data, int weght, int hight);
+int			ft_check_inside(t_data *data, int weght, int hight, char *str);
+int			ft_check_sym(int i, int j, t_data *data);
 
 /* init.c */
 t_data		*ft_data_init(t_data *data);
@@ -171,29 +172,29 @@ int			ft_parsing_trgb(char *str, int *trgb);
 /* parcer_utils2.c */
 int			ft_empty_line(char *str);
 void		ft_copy_str(char *dest, char *src, int lim);
-int			ft_init_coords(t_data *data, t_list *map, int weght, int hight);
+int			ft_init_coord(t_data *data, t_list *map, int weght, int hight);
 int			ft_check_rect_str(char *str);
 int			ft_check_rect_col(char **str, int w, int h);
 
 
 /*  window.c	*/
-int	ft_win_init(t_data *data);
-void ft_coords(t_data *data);
+int			ft_win_init(t_data *data);
+void 		ft_coord(t_data *data);
 
 /*other*/
 
-void	ft_Pup(t_data *data);
-void	ft_Pright(t_data *data);
-void	ft_Pdown(t_data *data);
-void	ft_Pleft(t_data *data);
-void	ft_Pclock(t_data *data);
-void	ft_Pconterclock(t_data *data);
+void		ft_Pup(t_data *data);
+void		ft_Pright(t_data *data);
+void		ft_Pdown(t_data *data);
+void		ft_Pleft(t_data *data);
+void		ft_Pclock(t_data *data);
+void		ft_Pconterclock(t_data *data);
 
-void ft_draw_player(t_data *data);
-void	ft_back(t_data *data);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	ft_paint(t_data *data);
-int	key_kb_hook(int keycode, t_data *data);
+void		ft_draw_player(t_data *data);
+void		ft_back(t_data *data);
+void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void		ft_paint(t_data *data);
+int			key_kb_hook(int keycode, t_data *data);
 
 
 // int		key_hook(int keycode, t_map *map);
@@ -211,7 +212,7 @@ int	key_kb_hook(int keycode, t_data *data);
 // void	ft_check_sym(int x, int y, t_map *map);
 // void	ft_check_lines(t_map *map);
 // void	ft_make_map(t_map *map, int fd);
-// void	ft_make_coords(t_map *map);
+// void	ft_make_coord(t_map *map);
 
 // void	ft_check_rect(int sh, int ne, char *line);
 

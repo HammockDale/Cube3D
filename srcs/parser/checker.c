@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:42:12 by  esylva           #+#    #+#             */
-/*   Updated: 2022/03/22 12:10:44 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/22 13:49:58 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	ft_check_rect(t_data *data, int weght, int hight)
 		return(MAP_ERROR);
 	if (!ft_check_rect_str(data->map->coords[hight - 1]))
 		return(MAP_ERROR);
-	if (ft_check_rect_col(data->map->coords, weght - 1, hight - 1))
+	if (!ft_check_rect_col(data->map->coords, weght - 1, hight - 1))
 		return(MAP_ERROR);
 	return (0);
 	}

@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 12:40:15 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/22 09:53:11 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/22 14:02:02 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,18 @@ int	ft_check_rect_str(char *str)
 
 int	ft_check_rect_col(char **str, int w, int h)
 {
-	(void)str;
-	(void)w;
-	(void)h;
-	return (0);
+	int	i;
+
+	i = 0;
+	while (i <= h)
+	{
+		if ((str[i][0] == ' ' || str[i][0] == '1' )
+			&& (str[i][w] == ' ' || str[i][w] == '1' ))
+			i++;
+		else
+			return (0);
+	}
+	return (i);
 }
 
 int	ft_init_coords(t_data *data, t_list *map, int weght, int hight)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 20:39:52 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/19 15:17:02 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/22 12:53:40 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,9 @@ int		ft_parse_map(t_list *map, t_data *data)
 		a = ft_strlen(tmp->content);
 		if (weght < a)
 			weght = a;
-		hight++;
+		if (!a)
+			break ;
+		hight++;	
 		tmp = tmp->next;
 	}
 	if (ft_check_map(data, map, weght, hight))

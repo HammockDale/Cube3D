@@ -37,6 +37,9 @@
 # define TURN_RIGHT
 # define GO_FORWARD
 # define GO_BACKWARD
+# define STR_LEFT
+# define STR_RIGHT
+# define EXIT
 
 
 

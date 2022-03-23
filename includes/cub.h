@@ -32,6 +32,14 @@
 # define INIT_ERROR 2
 # define MAP_ERROR 3
 
+/* keycodes */
+# define TURN_LEFT
+# define TURN_RIGHT
+# define GO_FORWARD
+# define GO_BACKWARD
+
+
+
 # define PI 3.14159265358979323846
 
 typedef struct s_image

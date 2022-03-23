@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:42:12 by  esylva           #+#    #+#             */
-/*   Updated: 2022/03/22 16:56:33 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/23 11:01:15 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,16 +98,26 @@ int	ft_check_sym(int i, int j, t_data *data)
 		|| data->map->coord[i + 1][j + 1] == ' ')
 		return (0);
 	if ((data->map->coord[i][j] == 'N' || data->map->coord[i][j] == 'E'
-		|| data->map->coord[i][j] == 'W' || data->map->coord[i][j] == 'S')
-		&& data->player->look != -1)
+		|| data->map->coord[i][j] == 'W' || data->map->coord[i][j] == 'S'))
+	{
+		if (data->player->look != -1)
+			return (0);
+		data->player->posX = j;
+		data->player->posY = i;
+		if (data->map->coord[i][j] == 'N')
+			data->player->look = 0;
+		else if (data->map->coord[i][j] == 'W')
+			data->player->look = 270;
+		else if (data->map->coord[i][j] == 'S')
+			data->player->look = 180;
+		else if (data->map->coord[i][j] == 'E')
+			data->player->look = 90;
+	}
+	if (data->map->coord[i][j] == 'D' && 
+		((data->map->coord[i - 1][j] != '1'
+			&& data->map->coord[i + 1][j] != '1')
+			&& (data->map->coord[i][j - 1] != '1' 
+				&& data->map->coord[i][j + 1] != '1')))
 		return (0);
-	else if (data->map->coord[i][j] == 'N')
-		data->player->look = 0;
-	else if (data->map->coord[i][j] == 'W')
-		data->player->look = 270;
-	else if (data->map->coord[i][j] == 'S')
-		data->player->look = 180;
-	else if (data->map->coord[i][j] == 'E')
-		data->player->look = 90;
 	return (1);
 }

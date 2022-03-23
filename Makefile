@@ -1,8 +1,8 @@
 NAME = cub3D
 
 HEADER = includes/cub.h
-INCLUDES = -I includes -I libft -I mlx
-# INCLUDES = -I includes -I libft
+# INCLUDES = -I includes -I libft -I mlx
+INCLUDES = -I includes -I libft -I/usr/include -Imlx_linux -O3
 
 SRC_DIR = srcs/
 SRCS_F = main.c init.c
@@ -29,11 +29,12 @@ FLAGS = -Wall -Werror -Wextra
 
 RM = rm -rf
 
-MAKE_MLX = make -sC mlx
-LINK_MLX = -lmlx -framework OpenGL -framework AppKit
+# MAKE_MLX = make -sC mlx
+MAKE_MLX = make -sC mlx_linux
+# LINK_MLX = -lmlx -framework OpenGL -framework AppKit
+LINK_MLX = -Lmlx_linux -lmlx_linux -L/usr/lib -lXext -lX11 -lm -lz
 
 MAKE_LIBFT = make -sC libft
-
 LINK_LIBFT = -Llibft -lft
 
 all: init $(NAME)
@@ -45,12 +46,12 @@ init:
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
-%.o : %.c
+%.o : %.c $(HEADER)
 	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
 
 $(NAME): $(OBJ) $(HEADER)
-	@$(CC) $(FLAGS) $(INCLUDES) $(LINK_MLX) $(LINK_LIBFT) $(OBJ) -o $@
-# @$(CC) $(FLAGS) $(INCLUDES) $(LINK_LIBFT) $(OBJ) -o $@
+#	@$(CC) $(FLAGS) $(INCLUDES) $(OBJ) $(LINK_MLX) $(LINK_LIBFT) -o $@
+	@$(CC) $(INCLUDES) $(OBJ) $(LINK_LIBFT) $(LINK_MLX) -o $@
 	@echo Done!
 
 clean:

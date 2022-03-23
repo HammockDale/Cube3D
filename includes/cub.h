@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/22 16:56:59 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/23 11:12:26 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 
 # define BONUS 0
 # define NO_BONUS_STR "0NSWE"
-# define BONUS_STR "0NSWEDL"
+# define BONUS_STR "0NSWEDLX"
 # define ARGUMENT_OPEN_ERROR 1
 # define INIT_ERROR 2
 # define MAP_ERROR 3

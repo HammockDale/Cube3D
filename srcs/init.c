@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:19 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/22 15:01:42 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/23 11:28:20 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,9 +105,9 @@ t_player *ft_init_player(t_player *player)
 	player = (t_player*)malloc(sizeof(t_player));
 	if (!player)
 		return (NULL);
-	player->look = 0; //initializaion -1
-	player->posX = 3; //initializaion  0
-	player->posY = 10;		// начальная позиция x и y
+	player->look = -1; //initializaion -1
+	player->posX = 0; //initializaion  0
+	player->posY = 0;		// начальная позиция x и y
 	player->dirX = -1;
 	player->dirY = 0;		//начальный вектор направления
 	player->planeX = 0;

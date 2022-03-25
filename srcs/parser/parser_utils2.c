@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 12:40:15 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/22 15:01:42 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/25 18:31:46 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_empty_line(char *str)
 {
 	if (!str)
 		return (0);
-	str+=ft_numspases(str);
+	str += ft_numspases(str);
 	if (*str)
 		return (1);
 	return (0);
@@ -25,7 +25,7 @@ int	ft_empty_line(char *str)
 void	ft_copy_str(char *dest, char *src, int lim)
 {
 	int	i;
-	int len;
+	int	len;
 
 	len = ft_strlen(src);
 	i = 0;
@@ -47,7 +47,7 @@ int	ft_check_rect_str(char *str)
 	int	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
 		if (str[i] == ' ' || str[i] == '1')
 			i++;
@@ -75,18 +75,18 @@ int	ft_check_rect_col(char **str, int w, int h)
 
 int	ft_init_coord(t_data *data, t_list *map, int weght, int hight)
 {
-	int 	i;
+	int		i;
 	t_list	*tmp;
 
 	i = 0;
 	tmp = map;
-	while(i < hight)
+	while (i < hight)
 	{
 		data->map->coord[i] = (char *)malloc(sizeof(char) * (weght + 1));
 		if (!data->map->coord[i])
 		{
 			data->map->coord = free_2d_arr(data->map->coord);
-			return(MAP_ERROR);
+			return (MAP_ERROR);
 		}
 		i++;
 	}

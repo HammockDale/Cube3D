@@ -21,12 +21,24 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-// my_mlx_pixel_put(data, 5, 5, 0x00FF0000);
+void	ft_cast_rays(t_data *data, int color)
+{
+	float start = (data->player->cameraX  - UGOL / 2) ;// - [половина угла обзора]; // начало веера лучей
+  float end = data->player->cameraX + UGOL / 2;//ray.dir + [половина угла обзора]; // край веера лучей
 
-// void	ft_button(t_data *data)
-// {
-
-// }
+  while (start <= end)
+	{
+		data->player->ray_x  = data->player->pos_x; // каждый раз возвращаемся в точку начала
+		data->player->ray_y = data->player->pos_y;
+		while (data->map->coord[(int)(data->player->ray_y)][(int)(data->player->ray_x)] != '1')
+		{
+			data->player->ray_x += cos(start)  / ONE_SIZE;
+			data->player->ray_y += sin(start)  / ONE_SIZE;
+			my_mlx_pixel_put(data, data->player->ray_x * ONE_SIZE, data->player->ray_y * ONE_SIZE, color);
+		}
+		start += UGOL / 30 ;//[угол обзора] / [количество лучей];
+	}
+}
 
 void ft_draw_(t_data *data, double x, double y, int color)
 {
@@ -60,23 +72,24 @@ void ft_draw_player(t_data *data, int color)
 	
 
 	// data->player->pos_x, data->player->pos_y
-	double	i;
-	double	j;
+// 	double	i;
+// 	double	j;
+	
 
-	i = data->player->pos_x;
-	j = data->player->pos_y;
-	double d, a, b;
-	d = data->player->cameraX + PI;
-	a = i + 20 * cos(d);
-	b = j + 20  * sin(d);
-// printf("i = %f && j = %f\n", i, j);
-	// data->window->addr = mlx_get_data_addr(data->window->img, &data->window->bits_per_pixel, &data->window->line_length, &data->window->endian);
-			my_mlx_pixel_put(data, (int)(floor)(data->player->pos_x  * ONE_SIZE), (int)(floor)(data->player->pos_y  * ONE_SIZE), color);
+// 	i = data->player->pos_x;
+// 	j = data->player->pos_y;
+// 	double d, a, b;
+// 	d = data->player->cameraX + PI;
+// 	a = i + 20 * cos(d);
+// 	b = j + 20  * sin(d);
+// // printf("i = %f && j = %f\n", i, j);
+// 	// data->window->addr = mlx_get_data_addr(data->window->img, &data->window->bits_per_pixel, &data->window->line_length, &data->window->endian);
+// 			my_mlx_pixel_put(data, (int)(floor)(data->player->pos_x  * ONE_SIZE), (int)(floor)(data->player->pos_y  * ONE_SIZE), color);
 	// while (i < a)
 	// {
 	// 	if (j < b)
 	// 	{
-			// my_mlx_pixel_put(data, (int)(a  * ONE_SIZE), (int)(b * ONE_SIZE), 0x0FF0000);
+			my_mlx_pixel_put(data, (int)(data->player->pos_x  * ONE_SIZE), (int)(data->player->pos_y * ONE_SIZE), color);
 	// 		j += 1;
 	// 	}
 	// 	i += 1;
@@ -88,7 +101,8 @@ void ft_draw_player(t_data *data, int color)
 	// 	// j =  data->player->pos_y;
 	// }
 	// mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->window->img, 0, 0);
-
+// ft_cast_ray(data, color);
+ft_cast_rays(data, color);
 }
 
 void	ft_back(t_data *data)

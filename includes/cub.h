@@ -55,6 +55,7 @@
 # define PI 3.14159265358979323846
 # define  ONE_SIZE 40
 # define WOLL 0x0553300
+# define UGOL  PI/6
 
 
 typedef struct s_image
@@ -72,6 +73,8 @@ typedef struct s_player
 {
 	double		pos_x;
 	double		pos_y;
+	double		ray_x;
+	double		ray_y;
 	double		dirX;
 	double		dirY;
 	double		planeX;
@@ -204,6 +207,7 @@ int			ft_check_rect_col(char **str, int w, int h);
 /* window.c */
 int			ft_win_init(t_data *data);
 void 		ft_coord(t_data *data);
+void		ft_cast_rays(t_data *data, int color);
 
 /* free.c */
 t_window	*ft_free_window(t_window *window);

@@ -66,6 +66,8 @@ void ft_draw_player(t_data *data, double x, double y, int color)
 
 	i = data->player->pos_x;
 	j = data->player->pos_y;
+	double d;
+	d = 
 	// data->player->pos_y += 0.2 * cos(d);
 	// data->player->pos_x -= 0.2  * sin(d);
 printf("i = %f && j = %f\n", i, j);

@@ -55,10 +55,9 @@ void ft_draw_(t_data *data, double x, double y, int color)
 	// mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->window->img, 0, 0);
 
 }
-void ft_draw_player(t_data *data, double x, double y, int color)
+void ft_draw_player(t_data *data, int color)
 {
-	(void)x;
-	(void)y;
+	
 
 	// data->player->pos_x, data->player->pos_y
 	double	i;
@@ -66,27 +65,28 @@ void ft_draw_player(t_data *data, double x, double y, int color)
 
 	i = data->player->pos_x;
 	j = data->player->pos_y;
-	double d;
-	d = 
-	// data->player->pos_y += 0.2 * cos(d);
-	// data->player->pos_x -= 0.2  * sin(d);
-printf("i = %f && j = %f\n", i, j);
+	double d, a, b;
+	d = data->player->cameraX + PI;
+	a = i + 20 * cos(d);
+	b = j + 20  * sin(d);
+// printf("i = %f && j = %f\n", i, j);
 	// data->window->addr = mlx_get_data_addr(data->window->img, &data->window->bits_per_pixel, &data->window->line_length, &data->window->endian);
-	// while (i < data->player->pos_x + ONE_SIZE)
-	{
-		// while (j < data->player->pos_y + ONE_SIZE)
-		{
-			my_mlx_pixel_put(data, (int)(i + data->player->pos_x  * ONE_SIZE), (int)(j + data->player->pos_y  * ONE_SIZE), color);
-			j++;
-		}
-		// while (j < 50)
-		// {
-		// 	my_mlx_pixel_put(data, i, j, 0x0F55F00);
-		// 	j++;
-		// }
-		j =  data->player->pos_y;
-		i++;
-	}
+			my_mlx_pixel_put(data, (int)(floor)(data->player->pos_x  * ONE_SIZE), (int)(floor)(data->player->pos_y  * ONE_SIZE), color);
+	// while (i < a)
+	// {
+	// 	if (j < b)
+	// 	{
+			// my_mlx_pixel_put(data, (int)(a  * ONE_SIZE), (int)(b * ONE_SIZE), 0x0FF0000);
+	// 		j += 1;
+	// 	}
+	// 	i += 1;
+		
+	// 	// {
+	// 	// 	my_mlx_pixel_put(data, i, j, 0x0F55F00);
+	// 	// 	j++;
+	// 	// }
+	// 	// j =  data->player->pos_y;
+	// }
 	// mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->window->img, 0, 0);
 
 }
@@ -148,7 +148,7 @@ void	ft_paint(t_data *data)
 	ft_draw_2D_woll(data);
 	
 	// ft_draw_(data, data->player->pos_x, data->player->pos_y, 0x0F0FFFF);
-	ft_draw_player(data, data->player->pos_x, data->player->pos_y, 0x0F0FFFF);
+	ft_draw_player(data, 0x0F0FFFF);
 		mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->window->img, 0, 0);
 
 	// ft_background(var);

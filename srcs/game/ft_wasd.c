@@ -129,8 +129,6 @@ double a, b;
 	ft_paint(data);
 
 
-
-
 // 	if (var->per_y + 1 < var->size_y
 // 		&& var->map[var->per_y + 1][var->per_x] == '0')
 // 	{

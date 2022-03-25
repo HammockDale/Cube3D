@@ -58,8 +58,8 @@ printf("CUB3D!!!\n ret = %d\n", ret);
 // 			data->player->rayDirX = data->player->dirX + data->player->planeX*data->player->cameraX;
 // 			data->player->rayDirY = data->player->dirY + data->player->planeY*data->player->cameraX;
 // 	// 		// в какой ячейке карты мы находимся
-// 			int mapX = (int)(data->player->posX);
-// 			int mapY = (int)(data->player->posY);
+// 			int mapX = (int)(data->player->pos_x);
+// 			int mapY = (int)(data->player->pos_y);
 // 	// 		//length of ray from current position to next x or y-side
 // 	// 		double sideDistX;
 // 	// 		double sideDistY;
@@ -76,22 +76,22 @@ printf("CUB3D!!!\n ret = %d\n", ret);
 // 	// 		if (rayDirX < 0)
 // 	// 		{
 // 	// 			stepX = -1;
-// 	// 			sideDistX = (posX - mapX) * deltaDistX;
+// 	// 			sideDistX = (pos_x - mapX) * deltaDistX;
 // 	// 		}
 // 	// 		else
 // 	// 		{
 // 	// 			stepX = 1;
-// 	// 			sideDistX = (mapX + 1.0 - posX) * deltaDistX;
+// 	// 			sideDistX = (mapX + 1.0 - pos_x) * deltaDistX;
 // 	// 		}
 // 	// 		if (rayDirY < 0)
 // 	// 		{
 // 	// 			stepY = -1;
-// 	// 			sideDistY = (posY - mapY) * deltaDistY;
+// 	// 			sideDistY = (pos_y - mapY) * deltaDistY;
 // 	// 		}
 // 	// 		else
 // 		// 	{
 // 		// 		stepY = 1;
-// 		// 		sideDistY = (mapY + 1.0 - posY) * deltaDistY;
+// 		// 		sideDistY = (mapY + 1.0 - pos_y) * deltaDistY;
 // 		// 	}
 // 	// 	//perform DDA
 // 	// 		while (hit == 0)
@@ -126,8 +126,8 @@ printf("CUB3D!!!\n ret = %d\n", ret);
 // 	// 		int texNum = worldMap[mapX][mapY] - 1; //1 subtracted from it so that texture 0 can be used!
 // 	// 		//calculate value of wallX
 // 	// 		double wallX; //where exactly the wall was hit
-// 	// 		if (side == 0) wallX = posY + perpWallDist * rayDirY;
-// 	// 		else           wallX = posX + perpWallDist * rayDirX;
+// 	// 		if (side == 0) wallX = pos_y + perpWallDist * rayDirY;
+// 	// 		else           wallX = pos_x + perpWallDist * rayDirX;
 // 	// 		wallX -= floor((wallX));
 // 	// 		//x coordinate on the texture
 // 	// 		int texX = int(wallX * double(texWidth));
@@ -149,7 +149,7 @@ printf("CUB3D!!!\n ret = %d\n", ret);
 // 	// 	}
 // 		}
 // 	}
-// 	// printf("posX = %f\n", data->player->posX);
+// 	// printf("pos_x = %f\n", data->player->pos_x);
 // }
 
  void	ft_game(t_player *player, t_data *data)
@@ -180,8 +180,8 @@ int i;
 		return (INIT_ERROR);
 	if (ft_parce_data(data, fd))
 		ft_exit (MAP_ERROR);
-	// data->player->posX = 80;					//vremenno
-	// data->player->posY = 100;					//vremenno
+	// data->player->pos_x = 80;					//vremenno
+	// data->player->pos_y = 100;					//vremenno
 		
 // printf("%s\n", data->north->loc);
 // printf("%s\n", data->east->loc);

@@ -60,8 +60,8 @@ typedef struct s_image
 
 typedef struct s_player
 {
-	double		posX;
-	double		posY;
+	double		pos_x;
+	double		pos_y;
 	double		dirX;
 	double		dirY;
 	double		planeX;

@@ -106,8 +106,8 @@ t_player *ft_init_player(t_player *player)
 	if (!player)
 		return (NULL);
 	player->look = -1; //initializaion -1
-	player->posX = 0; //initializaion  0
-	player->posY = 0;		// начальная позиция x и y
+	player->pos_x = 0; //initializaion  0
+	player->pos_y = 0;		// начальная позиция x и y
 	player->dirX = -1;
 	player->dirY = 0;		//начальный вектор направления
 	player->planeX = 0;

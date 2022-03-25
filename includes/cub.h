@@ -33,17 +33,29 @@
 # define MAP_ERROR 3
 
 /* keycodes for ubuntu */
-# define TURN_LEFT 65361
-# define TURN_RIGHT 65363
-# define GO_FORWARD 119
-# define GO_BACKWARD 115
-# define STR_LEFT 97
-# define STR_RIGHT 100
-# define EXIT 65307
+// # define TURN_LEFT 65361
+// # define TURN_RIGHT 65363
+// # define GO_FORWARD 119
+// # define GO_BACKWARD 115
+// # define STR_LEFT 97
+// # define STR_RIGHT 100
+// # define EXIT 65307
+
+/* keycodes for Mac */
+# define TURN_LEFT 123
+# define TURN_RIGHT 124
+# define GO_FORWARD 13
+# define GO_BACKWARD 1
+# define STR_LEFT 0
+# define STR_RIGHT 2
+# define EXIT 53
 
 
 
 # define PI 3.14159265358979323846
+# define  ONE_SIZE 40
+# define WOLL 0x0553300
+
 
 typedef struct s_image
 {
@@ -58,8 +70,8 @@ typedef struct s_image
 
 typedef struct s_player
 {
-	int			posX;
-	int			posY;
+	double		pos_x;
+	double		pos_y;
 	double		dirX;
 	double		dirY;
 	double		planeX;
@@ -86,7 +98,7 @@ typedef struct s_player
 	int nMapWidth ;
 
 	float fFOV;
-	float fDepth;
+	float	fDepth;
 }				t_player;
 
 // typedef struct s_camera
@@ -194,9 +206,9 @@ void 		ft_coord(t_data *data);
 
 /* free.c */
 t_window	*ft_free_window(t_window *window);
-t_map	*ft_free_map(t_map *map);
+t_map		*ft_free_map(t_map *map);
 t_player	*ft_free_player(t_player *player);
-t_image	*ft_free_image(t_image *image);
+t_image		*ft_free_image(t_image *image);
 t_sprite	*ft_free_sprite(t_sprite *sprite);
 
 /*other*/
@@ -208,7 +220,9 @@ void		ft_Pleft(t_data *data);
 void		ft_Pclock(t_data *data);
 void		ft_Pconterclock(t_data *data);
 
-void		ft_draw_player(t_data *data);
+void		ft_draw_(t_data *data, double x, double y, int color);
+
+void		ft_draw_player(t_data *data, double x, double y, int color);
 void		ft_back(t_data *data);
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void		ft_paint(t_data *data);

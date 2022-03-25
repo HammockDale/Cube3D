@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 20:39:52 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/22 15:01:42 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/25 18:30:02 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,20 @@ int	ft_config(t_list **cub, t_data *data)
 		tmp = tmp->next;
 	}
 	if (i != 6)
-		return (MAP_ERROR);	
+		return (MAP_ERROR);
 	while (!ft_empty_line(tmp->content) && tmp)
 		tmp = tmp->next;
 	if (ft_parse_map(tmp, data))
 		return (MAP_ERROR);
-	return(0);
+	return (0);
 }
 
-int		ft_parse_map(t_list *map, t_data *data)
+int	ft_parse_map(t_list *map, t_data *data)
 {
 	t_list	*tmp;
-	int weght;
-	int	hight;
-	int a;
+	int		weght;
+	int		hight;
+	int		a;
 
 	hight = 0;
 	weght = 0;
@@ -85,102 +85,10 @@ int		ft_parse_map(t_list *map, t_data *data)
 			weght = a;
 		if (!a)
 			break ;
-		hight++;	
+		hight++;
 		tmp = tmp->next;
 	}
 	if (ft_check_map(data, map, weght, hight))
-		return(MAP_ERROR);
+		return (MAP_ERROR);
 	return (0);
 }
-
-
-
-
-
-// void	ft_make_coord(t_map *map)
-// {
-// 	int		error;
-// 	int		y;
-// 	map->coord = (int **)malloc(sizeof(int *) * map->height);
-// 	error = errno;
-// 	if (!map->coord)
-// 	{
-// 		printf("%s\n", strerror(error));
-// 		exit(error);
-// 	}
-// 	y = 0;
-// 	while (y < map->height)
-// 	{
-// 		map->coord[y] = (int *)malloc(sizeof(int) * map->weight);
-// 		if (!map->coord[y])
-// 		{
-// 			printf("%s\n", strerror(error));
-// 			exit(error);
-// 		}
-// 		y++;
-// 	}
-// }
-
-
-// void	ft_check_lines(t_map *map)
-// {
-// 	int		x;
-// 	int		y;
-// 	x = 0;
-// 	y = 0;
-// 	while (y < map->height)
-// 	{
-// 		x = 0;
-// 		while (x < map->weight)
-// 		{
-// 			ft_check_sym(x, y, map);
-// 			x++;
-// 		}
-// 		y++;
-// 	}
-// 	ft_check_player_position(map);
-// }
-
-// void	ft_check_sym(int x, int y, t_map *map)
-// {
-// 	if (y == 0 || y == map->height - 1 || x == 0 || x == map->weight - 1)
-// 	{
-// 		if (map->coord[y][x] != (int) '1')
-// 		{
-// 			printf("Map error: walls are not around the field\n");
-// 			exit (22);
-// 		}
-// 	}	
-// 	else if (map->coord[y][x] == (int) 'C')
-// 		map->loot++;
-// 	else if (map->coord[y][x] == (int) 'E')
-// 		map->exit++;
-// 	else if (map->coord[y][x] == (int) 'P')
-// 		map->player++;
-// 	else if (map->coord[y][x] == (int) '0' || map->coord[y][x] == (int) '1')
-// 		return ;
-// 	else
-// 	{
-// 		printf("Map error: wrong symbol\n");
-// 		exit (22);
-// 	}
-// }
-
-// void	ft_check_player_position(t_map *map)
-// {
-// 	if (map->player != 1)
-// 	{
-// 		printf("Map error: have to be one player position\n");
-// 		exit (22);
-// 	}
-// 	if (!map->exit)
-// 	{
-// 		printf("Map error: no exit\n");
-// 		exit (22);
-// 	}
-// 	if (!map->loot)
-// 	{
-// 		printf("Map error: no loot\n");
-// 		exit (22);
-// 	}
-// }

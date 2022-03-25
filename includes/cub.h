@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/25 15:35:19 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/25 18:15:49 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,7 @@ int			ft_name_check(char *carta);
 int			ft_check_map(t_data *data, t_list *map, int weght, int hight);
 int			ft_check_inside(t_data *data, int weght, int hight, char *str);
 int			ft_check_sym(int i, int j, t_data *data);
+void		ft_set_look(t_data *data, int i, int j);
 
 /* init.c */
 t_data		*ft_data_init(t_data *data);
@@ -222,7 +223,7 @@ void		ft_Pconterclock(t_data *data);
 
 void		ft_draw_(t_data *data, double x, double y, int color);
 
-void		ft_draw_player(t_data *data, double x, double y, int color);
+void		ft_draw_player(t_data *data, int color);
 void		ft_back(t_data *data);
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void		ft_paint(t_data *data);

@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 13:49:56 by  esylva           #+#    #+#             */
-/*   Updated: 2022/03/19 17:48:58 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/25 18:35:34 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,52 +20,52 @@ int	ft_separate_textures(char *str, t_data *data)
 	{
 		data->north = ft_save_texture(str + 2, data->north);
 		if (!data->north)
-			return(0);
+			return (0);
 	}
 	else if (*str == 'S' && (*(str + 1) == 'O'))
 	{
 		data->south = ft_save_texture(str + 2, data->south);
 		if (!data->south)
-			return(0);
+			return (0);
 	}
 	else if (*str == 'W' && (*(str + 1) == 'E'))
 	{
 		data->west = ft_save_texture(str + 2, data->west);
 		if (!data->west)
-			return(0);
+			return (0);
 	}
 	else if (!ft_separate_textures_1(str, data))
-		return(0);
+		return (0);
 	return (1);
 }
-	
-	int	ft_separate_textures_1(char *str, t_data *data)
+
+int	ft_separate_textures_1(char *str, t_data *data)
 	{
 	if (*str == 'E' && *(str + 1) == 'A')
 	{
 		data->east = ft_save_texture(str + 2, data->east);
 		if (!data->east)
-			return(0);
+			return (0);
 	}
 	else if (*str == 'C' && *(str + 1) == ' ')
 	{
 		data->cloud = ft_save_texture_c(str + 2, data->cloud, data);
 		if (!data->cloud)
-			return(0);
+			return (0);
 	}
 	else if (*str == 'F' && *(str + 1) == ' ')
 	{
 		data->ground = ft_save_texture_c(str + 2, data->ground, data);
 		if (!data->ground)
-			return(0);
+			return (0);
 	}
-	return (1); //при успехе
+	return (1);
 }
 
 t_image	*ft_save_texture(char *str, t_image *wall)
 {
-	char *tmp;
-	int	fd;
+	char	*tmp;
+	int		fd;
 
 	tmp = ft_strtrim(str, "\t\v\n\f\r ");
 	wall = ft_init_image(wall);
@@ -91,8 +91,8 @@ t_image	*ft_save_texture_c(char *str, t_image *wall, t_data *data)
 {
 	if (data->bonus)
 	{
-		if(!ft_save_texture(str, wall))
-			return(NULL);
+		if (!ft_save_texture(str, wall))
+			return (NULL);
 	}
 	else
 	{
@@ -104,7 +104,7 @@ t_image	*ft_save_texture_c(char *str, t_image *wall, t_data *data)
 		{
 			free(wall);
 			wall = NULL;
-			return(NULL);
+			return (NULL);
 		}
 	}
 	return (wall);
@@ -126,14 +126,14 @@ int	ft_parsing_trgb(char *str, int *trgb)
 			str++;
 		}
 		if (n > 255)
-			return(MAP_ERROR);
+			return (MAP_ERROR);
 		else
 			*trgb = (*trgb << 8) + n;
 		str += ft_numspases(str);
 		if (i++ < 3 && *str == ',')
 			str++;
 		else if (*str)
-			return(MAP_ERROR);
+			return (MAP_ERROR);
 	}
 	return (0);
 }

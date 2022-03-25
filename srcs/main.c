@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:05 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/22 15:01:42 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/25 15:20:51 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,8 +180,8 @@ int i;
 		return (INIT_ERROR);
 	if (ft_parce_data(data, fd))
 		ft_exit (MAP_ERROR);
-	data->player->posX = 80;					//vremenno
-	data->player->posY = 100;					//vremenno
+	// data->player->posX = 80;					//vremenno
+	// data->player->posY = 100;					//vremenno
 		
 // printf("%s\n", data->north->loc);
 // printf("%s\n", data->east->loc);
@@ -193,44 +193,45 @@ i = -1;
 while (data->map->coord[++i])
 printf("2%s2\n", data->map->coord[i]);
 
-	// ft_make_coord(data);
-	// ft_make_map(data, fd);
-	// ft_check_lines(data);
-	// ft_win_init(data);
-	// ft_game(data->player, data);
-	// // ft_free_all(data);
+
+	ft_win_init(data);
+	ft_game(data->player, data);
+	// ft_free_all(data);
 	close (fd);
 	return (0);
 }
 
-// void	ft_free_all(t_data *data)
-// {
-// 	int	i;
-// 	i = 0;
-// 	while (i < map->height)
-// 	{
-// 		if (map->coord[i])
-// 		{
-// 			free(map->coord[i]);
-// 			map->coord[i] = NULL;
-// 		}
-// 		i++;
-// 	}
-// 	if (map->coord)
-// 	{
-// 		free(map->coord);
-// 		map->coord = NULL;
-// 	}
-// 	if (map)
-// 	{
-// 		free(map);
-// 		map = NULL;
-// 	}
-// }
+void	ft_free_all(t_data *data)
+{
+	if (data->window)
+		data->window = ft_free_window(data->window);
+	if (data->map)
+		data->map = ft_free_map(data->map);
+	if (data->player)
+		data->player = ft_free_player(data->player);
+	if (data->ground)
+		data->ground = ft_free_image(data->ground);
+	if (data->cloud) 
+		data->cloud = ft_free_image(data->cloud);
+	if (data->north)
+		data->north = ft_free_image(data->north);
+	if (data->east)
+		data->east = ft_free_image(data->east);
+	if (data->south)
+		data->south = ft_free_image(data->south);
+	if (data->west)
+		data->west = ft_free_image(data->west);
+	if (data->door)
+		data->door = ft_free_sprite(data->door);
+	if (data->loot)
+		data->loot = ft_free_sprite(data->loot);
+	free (data);
+	data = NULL;
+}
 
 int	ft_exit(int keycode)
 {
-// функция очистки структуры
+// ft_free_all(data);
 printf("CUB3D!!!\n keycode = %d\n", keycode);
 	exit (keycode);
 }

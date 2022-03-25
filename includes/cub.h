@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/23 11:12:26 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/25 15:18:50 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,9 +177,11 @@ int			ft_check_rect_str(char *str);
 int			ft_check_rect_col(char **str, int w, int h);
 
 
-/*  window.c	*/
+/* window.c */
 int			ft_win_init(t_data *data);
 void 		ft_coord(t_data *data);
+
+/* free.c */
 
 /*other*/
 

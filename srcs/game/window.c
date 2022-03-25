@@ -17,7 +17,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = data->window->addr + (y * data->window->line_length + x * (data->window->bits_per_pixel / 8));
+	dst = data->window->addr + (int)(y * data->window->line_length + x * (data->window->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
 }
 
@@ -28,19 +28,51 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 // }
 
-void ft_draw_player(t_data *data)
+void ft_draw_(t_data *data, double x, double y, int color)
 {
-	int i;
-	int j;
+	double	i;
+	double	j;
+
+	i = x;
+	j = y;
+printf("i = %f && j = %f\n", i, j);
+	// data->window->addr = mlx_get_data_addr(data->window->img, &data->window->bits_per_pixel, &data->window->line_length, &data->window->endian);
+	while (i < x + ONE_SIZE)
+	{
+		while (j < y + ONE_SIZE)
+		{
+			my_mlx_pixel_put(data, (int)i + (x  * ONE_SIZE), (int)(j + y  * ONE_SIZE), color);
+			j++;
+		}
+		// while (j < 50)
+		// {
+		// 	my_mlx_pixel_put(data, i, j, 0x0F55F00);
+		// 	j++;
+		// }
+		j =  y;
+		i++;
+	}
+	// mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->window->img, 0, 0);
+
+}
+void ft_draw_player(t_data *data, double x, double y, int color)
+{
+	(void)x;
+	(void)y;
+
+	// data->player->posX, data->player->posY
+	double	i;
+	double	j;
 
 	i = data->player->posX;
 	j = data->player->posY;
+printf("i = %f && j = %f\n", i, j);
 	// data->window->addr = mlx_get_data_addr(data->window->img, &data->window->bits_per_pixel, &data->window->line_length, &data->window->endian);
-	while (i < data->player->posX + 10)
+	while (i < data->player->posX + ONE_SIZE)
 	{
-		while (j < data->player->posY + 10)
+		while (j < data->player->posY + ONE_SIZE)
 		{
-			my_mlx_pixel_put(data, i, j, 0x0F0FFFF);
+			my_mlx_pixel_put(data, (int)i + (data->player->posX  * ONE_SIZE), (int)(j + data->player->posY  * ONE_SIZE), color);
 			j++;
 		}
 		// while (j < 50)
@@ -81,6 +113,27 @@ void	ft_back(t_data *data)
 	// mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->window->img, 0, 0);
 }
 
+void	ft_draw_2D_woll(t_data *data)
+{
+	int i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	printf("x = %d %d, y = %d %d\n", data->map->x, data->map->size_x, data->map->y, data->map->size_y);
+	while(j < data->map->size_y)
+	{
+		while (i < data->map->size_x)
+		{
+			if (data->map->coord[j][i] == '1')
+			ft_draw_(data, i, j, WOLL);
+			i++;
+		}
+		j++;
+		i = 0;
+	}
+}
+
 void	ft_paint(t_data *data)
 {
 	mlx_clear_window(data->window->mlx_ptr, data->window->win_ptr);
@@ -88,7 +141,10 @@ void	ft_paint(t_data *data)
 	data->window->addr = mlx_get_data_addr(data->window->img, &data->window->bits_per_pixel, &data->window->line_length, &data->window->endian);
 
 	ft_back(data);
-	ft_draw_player(data);
+	ft_draw_2D_woll(data);
+	
+	// ft_draw_(data, data->player->posX, data->player->posY, 0x0F0FFFF);
+	ft_draw_player(data, data->player->posX, data->player->posY, 0x0F0FFFF);
 		mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->window->img, 0, 0);
 
 	// ft_background(var);
@@ -104,20 +160,20 @@ void	ft_paint(t_data *data)
 
 int	key_kb_hook(int keycode, t_data *data)
 {
-	if (keycode == 13)
+	if (keycode == GO_FORWARD)
 		ft_Pup(data);
-	else if (keycode == 0)
+	else if (keycode == STR_LEFT)
 		ft_Pleft(data);
-	else if (keycode == 1)
+	else if (keycode == GO_BACKWARD)
 		ft_Pdown(data);
-	else if (keycode == 2)
+	else if (keycode == STR_RIGHT)
 		ft_Pright(data);
-	else if (keycode == 124)
+	else if (keycode == TURN_RIGHT)
 		ft_Pclock(data);
-	else if (keycode == 123)
+	else if (keycode == TURN_LEFT)
 		ft_Pconterclock(data);
 	printf("keycode = %d\n", keycode);
-	if (keycode == 53)
+	if (keycode == EXIT)
 	{
 		mlx_destroy_window(data->window->mlx_ptr, data->window->win_ptr);
 		ft_exit(keycode);
@@ -131,7 +187,9 @@ int	ft_win_init(t_data *data)
 	// ft_coords(data);
 	data->window->mlx_ptr = mlx_init();
 	data->window->win_ptr = mlx_new_window(data->window->mlx_ptr, data->window->weight, data->window->height, "cub3D");
-	mlx_key_hook(data->window->win_ptr, key_kb_hook, data);
+	// mlx_key_hook(data->window->win_ptr, key_kb_hook, data);
+	mlx_hook(data->window->win_ptr, 2, 0, key_kb_hook, data);
+	mlx_hook(data->window->win_ptr, 3, 0, key_kb_hook, data);		// проверить
 	data->window->img = mlx_new_image(data->window->mlx_ptr, 1920, 1080);
 	ft_paint(data);
 	// ft_button(data);

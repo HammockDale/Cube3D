@@ -15,8 +15,23 @@
 void	ft_Pup(t_data *data)
 {
 	// (void)data;
-	data->player->posY -= 20 * cos(data->player->cameraX);
-	data->player->posX += 20  * sin(data->player->cameraX);;
+	double a, b;
+	double d;
+	d = data->player->cameraX;
+	// printf ("a = %f\n", data->player->cameraX);
+	// 	printf ("a = %f\n", a);
+	// if (d > 2 * PI)
+	// 	d = d - 2 * PI;
+	// if (d < 0)
+	// 	d = d + 2 * PI;
+	b = (data->player->posX);
+	a = (data->player->posY);
+	// b = (ceil)(data->player->posX);
+	// printf("a = %f, b = %f\n, data->map->coord[a][b] = %c\n", a, b, data->map->coord[(int)a][(int)b]);
+	if (data->map->coord[(int)(floor)(a - 0.2 * cos(d))][(int)(floor)(b)] != '1')
+		data->player->posY -= 0.2 * cos(d);
+	if (data->map->coord[(int)(floor)(a)][(int)(floor)(b + 0.2  * sin(d))] != '1')
+		data->player->posX += 0.2  * sin(d);;
 	ft_paint(data);
 // 	if (var->per_y - 1 > 0 && var->map[var->per_y - 1][var->per_x] == '0')
 // 	{
@@ -45,14 +60,14 @@ void	ft_Pup(t_data *data)
 
 void	ft_Pleft(t_data *data)
 {
-	double a;
-	a = data->player->cameraX + (double)(PI / 2);
+	double d;
+	d = data->player->cameraX + (double)(PI / 2);
 	// printf ("a = %f\n", data->player->cameraX);
 	// 	printf ("a = %f\n", a);
-	if (a > 2 * PI)
-		a = a - 2 * PI;
-	data->player->posY += 20 * cos(a);
-	data->player->posX -= 20  * sin(a);
+	if (d > 2 * PI)
+		d = d - 2 * PI;
+	data->player->posY += 0.2 * cos(d);
+	data->player->posX -= 0.2  * sin(d);
 	ft_paint(data);
 // 	if (var->per_x - 1 > 0 && var->map[var->per_y][var->per_x - 1] == '0')
 // 	{
@@ -81,8 +96,8 @@ void	ft_Pleft(t_data *data)
 
 void	ft_Pdown(t_data *data)
 {
-	data->player->posY += 20 * cos(data->player->cameraX);
-	data->player->posX -= 20  * sin(data->player->cameraX);;
+	data->player->posY += 0.2 * cos(data->player->cameraX);
+	data->player->posX -= 0.2  * sin(data->player->cameraX);;
 	ft_paint(data);
 // 	if (var->per_y + 1 < var->size_y
 // 		&& var->map[var->per_y + 1][var->per_x] == '0')
@@ -112,14 +127,14 @@ void	ft_Pdown(t_data *data)
 
 void	ft_Pright(t_data *data)
 {
-	double a;
-	a = data->player->cameraX + (double)(PI / 2);
+	double d;
+	d = data->player->cameraX + (double)(PI / 2);
 	// printf ("a = %f\n", data->player->cameraX);
 	// 	printf ("a = %f\n", a);
-	if (a > 2 * PI)
-		a = a - 2 * PI;
-	data->player->posY -= 20 * cos(a);
-	data->player->posX += 20  * sin(a);
+	if (d > 2 * PI)
+		d = d - 2 * PI;
+	data->player->posY -= 0.2 * cos(d);
+	data->player->posX += 0.2  * sin(d);
 	ft_paint(data);
 // 	if (var->per_x + 1 < var->size_x
 // 		&& var->map[var->per_y][var->per_x + 1] == '0')
@@ -149,7 +164,7 @@ void	ft_Pright(t_data *data)
 
 void	ft_Pclock(t_data *data)
 {
-	data->player->cameraX += PI / 12;
+	data->player->cameraX += PI / 60;
 	if (data->player->cameraX > 2 * PI)
 	{
 		data->player->cameraX -= 2 * PI;
@@ -160,7 +175,7 @@ void	ft_Pclock(t_data *data)
 
 void	ft_Pconterclock(t_data *data)
 {
-	data->player->cameraX -= PI / 12;
+	data->player->cameraX -= PI / 60;
 	if (data->player->cameraX < 0)
 	{
 		data->player->cameraX += 2 * PI;

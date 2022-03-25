@@ -5,7 +5,7 @@ HEADER = includes/cub.h
 INCLUDES = -I includes -I libft -I/usr/include -Imlx_linux -O3
 
 SRC_DIR = srcs/
-SRCS_F = main.c init.c
+SRCS_F = main.c init.c free.c
 
 PARS_DIR = parser/
 PARS_F = parser.c parser_utils.c checker.c parser_utils2.c 
@@ -51,7 +51,7 @@ $(OBJ_DIR):
 
 $(NAME): $(OBJ) $(HEADER)
 #	@$(CC) $(FLAGS) $(INCLUDES) $(OBJ) $(LINK_MLX) $(LINK_LIBFT) -o $@
-	@$(CC) $(INCLUDES) $(OBJ) $(LINK_LIBFT) $(LINK_MLX) -o $@
+	$(CC) $(INCLUDES) $(OBJ) $(LINK_LIBFT) $(LINK_MLX) -o $@
 	@echo Done!
 
 clean:

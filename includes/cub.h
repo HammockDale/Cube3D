@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/23 11:12:26 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/25 15:35:19 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@
 # define INIT_ERROR 2
 # define MAP_ERROR 3
 
-/* keycodes */
-# define TURN_LEFT
-# define TURN_RIGHT
-# define GO_FORWARD
-# define GO_BACKWARD
-# define STR_LEFT
-# define STR_RIGHT
-# define EXIT
+/* keycodes for ubuntu */
+# define TURN_LEFT 65361
+# define TURN_RIGHT 65363
+# define GO_FORWARD 119
+# define GO_BACKWARD 115
+# define STR_LEFT 97
+# define STR_RIGHT 100
+# define EXIT 65307
 
 
 
@@ -188,9 +188,16 @@ int			ft_check_rect_str(char *str);
 int			ft_check_rect_col(char **str, int w, int h);
 
 
-/*  window.c	*/
+/* window.c */
 int			ft_win_init(t_data *data);
 void 		ft_coord(t_data *data);
+
+/* free.c */
+t_window	*ft_free_window(t_window *window);
+t_map	*ft_free_map(t_map *map);
+t_player	*ft_free_player(t_player *player);
+t_image	*ft_free_image(t_image *image);
+t_sprite	*ft_free_sprite(t_sprite *sprite);
 
 /*other*/
 

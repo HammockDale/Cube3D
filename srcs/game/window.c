@@ -66,8 +66,8 @@ void ft_draw_player(t_data *data, double x, double y, int color)
 
 	i = data->player->pos_x;
 	j = data->player->pos_y;
-	data->player->pos_y += 0.2 * cos(d);
-	data->player->pos_x -= 0.2  * sin(d);
+	// data->player->pos_y += 0.2 * cos(d);
+	// data->player->pos_x -= 0.2  * sin(d);
 printf("i = %f && j = %f\n", i, j);
 	// data->window->addr = mlx_get_data_addr(data->window->img, &data->window->bits_per_pixel, &data->window->line_length, &data->window->endian);
 	// while (i < data->player->pos_x + ONE_SIZE)

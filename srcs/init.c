@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:19 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/23 11:28:20 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/25 18:04:02 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_data	*ft_data_init(t_data *data)
 	if (!data)
 	{
 		printf("%s\n", strerror(error));
-		return(NULL);
+		return (NULL);
 	}
 	data->window = NULL;
 	data->map = NULL;
@@ -34,9 +34,9 @@ t_data	*ft_data_init(t_data *data)
 	data->west = NULL;
 	data->door = NULL;
 	data->loot = NULL;
-	data->bonus = BONUS; 
+	data->bonus = BONUS;
 	if (ft_init_main_struct(data))
-		return(NULL);
+		return (NULL);
 	return (data);
 }
 
@@ -67,7 +67,7 @@ int	ft_init_map(t_data *data, int weght, int hight)
 {
 	data->map = (t_map *)malloc(sizeof(t_map));
 	if (!data->map)
-		return(MAP_ERROR);
+		return (MAP_ERROR);
 	data->map->coord = NULL;
 	data->map->exit = 0;
 	data->map->loot = 0;
@@ -80,7 +80,7 @@ int	ft_init_map(t_data *data, int weght, int hight)
 	{
 		free(data->map);
 		data->map = NULL;
-		return(MAP_ERROR);
+		return (MAP_ERROR);
 	}
 	data->map->coord[hight] = NULL;
 	return (0);
@@ -100,9 +100,9 @@ t_window	*ft_init_window(t_window *window)
 	return (window);
 }
 
-t_player *ft_init_player(t_player *player)
+t_player	*ft_init_player(t_player *player)
 {
-	player = (t_player*)malloc(sizeof(t_player));
+	player = (t_player *)malloc(sizeof(t_player));
 	if (!player)
 		return (NULL);
 	player->look = -1; //initializaion -1

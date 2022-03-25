@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:05 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/25 15:20:51 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/25 18:04:37 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	{
 		printf("%s\n",
 			"Please, use cub3D with arguments 'map' in format *.cub");
-		return(1);
+		return (1);
 	}
 	else
 	{
@@ -39,7 +39,7 @@ printf("CUB3D!!!\n ret = %d\n", ret);
 			i++;
 		}
 	}
-	return(0);
+	return (0);
 }
 
 // void	ft_game(t_data *data)

@@ -56,7 +56,7 @@ printf("\n\n ugol = %f\n\n", d);
 
 	double j;
 		double gip;
-	j = 200;
+	j = H_PANEL / 2;
 	gip = 0;
 		wall = 0;
 		a = data->player->ray_x - data->player->pos_x;
@@ -64,7 +64,7 @@ printf("\n\n ugol = %f\n\n", d);
 		gip = sqrt((a*a) + (b*b));
 	
 		if (gip > 0)
-			wall =  200 + (1 / gip)  * 300;
+			wall =  H_PANEL / 2 + (1 / gip)  * 300;
 		// if ((int)(tan(start)*1000) && (fabs)(tan(start)) < 0.99)
 		{
 			
@@ -77,19 +77,18 @@ printf("\n\n ugol = %f\n\n", d);
 			j += 1;
 		}
 
-		wall -= 200;
+		wall -= H_PANEL / 2;
 		while (wall  > 0)
 		{
-			if (wall >= 200)
-			wall = 200;
-			my_mlx_pixel_put(data, i, 200 - wall, 0x0FF00FF);
+			if (wall >= H_PANEL / 2)
+			wall = H_PANEL / 2;
+			my_mlx_pixel_put(data, i, H_PANEL / 2 - wall, 0x0FF00FF);
 			wall--;
 		}
 		i++;
-		j = 200;
-		start += UGOL / 640 ;//[угол обзора] / [количество лучей];
+		j = H_PANEL / 2;
+		start += UGOL / (W_PANEL);//[угол обзора] / [количество лучей];
 	}
-	// draw_walls(data);
 }
 
 void ft_draw_(t_data *data, double x, double y, int color)
@@ -130,14 +129,14 @@ void	ft_back(t_data *data)
 	i = 0;
 	j = 0;
 	// data->window->addr = mlx_get_data_addr(data->window->img, &data->window->bits_per_pixel, &data->window->line_length, &data->window->endian);
-	while (i < data->window->weight)
+	while (i < W_PANEL)
 	{
-		while (j < data->window->height / 2)
+		while (j < H_PANEL / 2)
 		{
 			my_mlx_pixel_put(data, i, j, 0x000FFFF);
 			j++;
 		}
-		while (j < data->window->height)
+		while (j < H_PANEL)
 		{
 			my_mlx_pixel_put(data, i, j, 0x0555F00);
 			j++;
@@ -247,11 +246,11 @@ int	ft_win_init(t_data *data)
 {
 	// ft_coords(data);
 	data->window->mlx_ptr = mlx_init();
-	data->window->win_ptr = mlx_new_window(data->window->mlx_ptr, data->window->weight, data->window->height, "cub2D");
+	data->window->win_ptr = mlx_new_window(data->window->mlx_ptr, W_PANEL, H_PANEL, "cub2D");
 	// mlx_key_hook(data->window->win_ptr, key_kb_hook, data);
 	mlx_hook(data->window->win_ptr, 2, 0, key_kb_hook, data);
 	mlx_hook(data->window->win_ptr, 3, 0, key_kb_hook, data);		// проверить
-	data->window->img = mlx_new_image(data->window->mlx_ptr, 1920, 1080);
+	data->window->img = mlx_new_image(data->window->mlx_ptr, W_PANEL, H_PANEL);
 	ft_paint(data);
 	// ft_button(data);
 

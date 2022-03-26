@@ -55,8 +55,9 @@
 # define PI 3.14159265358979323846
 # define  ONE_SIZE 40
 # define WOLL 0x0553300
-# define UGOL  PI/6
-
+# define UGOL  PI/2
+# define W_PANEL 1280
+# define H_PANEL 720
 
 typedef struct s_image
 {

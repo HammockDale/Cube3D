@@ -21,11 +21,27 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
+
 void	ft_cast_rays(t_data *data, int color)
 {
-	float start = (data->player->cameraX  - UGOL / 2) ;// - [половина угла обзора]; // начало веера лучей
-  float end = data->player->cameraX + UGOL / 2;//ray.dir + [половина угла обзора]; // край веера лучей
+	(void)color;
+	int i;
+	double d;
 
+	i = 0;
+	d = data->player->cameraX - (double)(PI / 2);
+	// printf ("a = %f\n", data->player->cameraX);
+	// 	printf ("a = %f\n", a);
+	// if (d > 2 * PI)
+	// 	d = d - 2 * PI;
+	if (d < 0)
+		d = d + 2 * PI;
+
+printf("\n\n ugol = %f\n\n", d);
+
+	float start = (d  - UGOL / 2) ;// - [половина угла обзора]; // начало веера лучей
+  float end = d + UGOL / 2;//ray.dir + [половина угла обзора]; // край веера лучей
+	double wall, a, b;
   while (start <= end)
 	{
 		data->player->ray_x  = data->player->pos_x; // каждый раз возвращаемся в точку начала
@@ -36,8 +52,44 @@ void	ft_cast_rays(t_data *data, int color)
 			data->player->ray_y += sin(start)  / ONE_SIZE;
 			my_mlx_pixel_put(data, data->player->ray_x * ONE_SIZE, data->player->ray_y * ONE_SIZE, color);
 		}
-		start += UGOL / 30 ;//[угол обзора] / [количество лучей];
+
+
+	double j;
+		double gip;
+	j = 200;
+	gip = 0;
+		wall = 0;
+		a = data->player->ray_x - data->player->pos_x;
+		b = data->player->ray_y - data->player->pos_y;
+		gip = sqrt((a*a) + (b*b));
+	
+		if (gip > 0)
+			wall =  200 + (1 / gip)  * 300;
+		// if ((int)(tan(start)*1000) && (fabs)(tan(start)) < 0.99)
+		{
+			
+				// wall = (double)(((sqrt(a*a + b*b) * ONE_SIZE )* (fabs)(tan(start))));//   * ONE_SIZE * ONE_SIZE;
+		printf("gip = %f wall = %f gip = %f statrt = %f tan = %f\n", gip, wall, sqrt(a*a + b*b), start, tan( start));
+		}
+		while (j < wall && j < 1000)
+		{
+			my_mlx_pixel_put(data, i, j, 0x0FF00FF);
+			j += 1;
+		}
+
+		wall -= 200;
+		while (wall  > 0)
+		{
+			if (wall >= 200)
+			wall = 200;
+			my_mlx_pixel_put(data, i, 200 - wall, 0x0FF00FF);
+			wall--;
+		}
+		i++;
+		j = 200;
+		start += UGOL / 640 ;//[угол обзора] / [количество лучей];
 	}
+	// draw_walls(data);
 }
 
 void ft_draw_(t_data *data, double x, double y, int color)
@@ -49,18 +101,13 @@ void ft_draw_(t_data *data, double x, double y, int color)
 	j = y;
 // printf("i = %f && j = %f\n", i, j);
 	// data->window->addr = mlx_get_data_addr(data->window->img, &data->window->bits_per_pixel, &data->window->line_length, &data->window->endian);
-	while (i < x + ONE_SIZE)
+	while (i <= x + ONE_SIZE)
 	{
-		while (j < y + ONE_SIZE)
+		while (j <= y + ONE_SIZE)
 		{
 			my_mlx_pixel_put(data, (int)i + (x  * ONE_SIZE), (int)(j + y  * ONE_SIZE), color);
 			j++;
 		}
-		// while (j < 50)
-		// {
-		// 	my_mlx_pixel_put(data, i, j, 0x0F55F00);
-		// 	j++;
-		// }
 		j =  y;
 		i++;
 	}
@@ -70,39 +117,9 @@ void ft_draw_(t_data *data, double x, double y, int color)
 void ft_draw_player(t_data *data, int color)
 {
 	
-
-	// data->player->pos_x, data->player->pos_y
-// 	double	i;
-// 	double	j;
-	
-
-// 	i = data->player->pos_x;
-// 	j = data->player->pos_y;
-// 	double d, a, b;
-// 	d = data->player->cameraX + PI;
-// 	a = i + 20 * cos(d);
-// 	b = j + 20  * sin(d);
-// // printf("i = %f && j = %f\n", i, j);
-// 	// data->window->addr = mlx_get_data_addr(data->window->img, &data->window->bits_per_pixel, &data->window->line_length, &data->window->endian);
-// 			my_mlx_pixel_put(data, (int)(floor)(data->player->pos_x  * ONE_SIZE), (int)(floor)(data->player->pos_y  * ONE_SIZE), color);
-	// while (i < a)
-	// {
-	// 	if (j < b)
-	// 	{
 			my_mlx_pixel_put(data, (int)(data->player->pos_x  * ONE_SIZE), (int)(data->player->pos_y * ONE_SIZE), color);
-	// 		j += 1;
-	// 	}
-	// 	i += 1;
-		
-	// 	// {
-	// 	// 	my_mlx_pixel_put(data, i, j, 0x0F55F00);
-	// 	// 	j++;
-	// 	// }
-	// 	// j =  data->player->pos_y;
-	// }
-	// mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->window->img, 0, 0);
-// ft_cast_ray(data, color);
-ft_cast_rays(data, color);
+
+		ft_cast_rays(data, color);
 }
 
 void	ft_back(t_data *data)
@@ -159,11 +176,11 @@ void	ft_paint(t_data *data)
 	data->window->addr = mlx_get_data_addr(data->window->img, &data->window->bits_per_pixel, &data->window->line_length, &data->window->endian);
 
 	ft_back(data);
-	ft_draw_2D_woll(data);
+	// ft_draw_2D_woll(data);
 	
 	// ft_draw_(data, data->player->pos_x, data->player->pos_y, 0x0F0FFFF);
 	ft_draw_player(data, 0x0F0FFFF);
-		mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->window->img, 0, 0);
+	mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->window->img, 0, 0);
 
 	// ft_background(var);
 	// ft_beahive(var);
@@ -199,12 +216,38 @@ int	key_kb_hook(int keycode, t_data *data)
 	return (keycode);
 }
 
+// int	ft_win_d3_init(t_data *data)
+// {
+// 	// ft_coords(data);
+	
+// 	data->d3->mlx_ptr = mlx_init();
+// 	data->d3->win_ptr = mlx_new_window(data->d3->mlx_ptr,  1920, 1080, "cub3D");
+// 	// mlx_key_hook(data->window->win_ptr, key_kb_hook, data);
+// 	// mlx_hook(data->window->win_ptr, 2, 0, key_kb_hook, data);
+// 	// mlx_hook(data->window->win_ptr, 3, 0, key_kb_hook, data);		// проверить
+// 	data->d3->img = mlx_new_image(data->d3->mlx_ptr, 1920, 1080);
+// 	// ft_paint(data);
+// 	// mlx_clear_window(data->d3->mlx_ptr, data->d3->win_ptr);
+	
+// 	// mlx_put_image_to_window(data->d3->mlx_ptr, data->d3->win_ptr, data->window->img, 0, 0);
+
+// 	// ft_button(data);
+
+// 	// ft_img_init(map);
+// 	// ft_put_img_to_win(data);
+// 	// mlx_loop_hook(data->window->mlx_ptr, render_next_frame, data->window);
+// 	// mlx_hook(data->window->win_ptr, 2, 0, key_hook, data->window);
+// 	mlx_hook(data->d3->win_ptr, 17, 0L, ft_exit, data);
+// 	mlx_loop(data->d3->mlx_ptr);
+// 	return (0);
+// }
+
 
 int	ft_win_init(t_data *data)
 {
 	// ft_coords(data);
 	data->window->mlx_ptr = mlx_init();
-	data->window->win_ptr = mlx_new_window(data->window->mlx_ptr, data->window->weight, data->window->height, "cub3D");
+	data->window->win_ptr = mlx_new_window(data->window->mlx_ptr, data->window->weight, data->window->height, "cub2D");
 	// mlx_key_hook(data->window->win_ptr, key_kb_hook, data);
 	mlx_hook(data->window->win_ptr, 2, 0, key_kb_hook, data);
 	mlx_hook(data->window->win_ptr, 3, 0, key_kb_hook, data);		// проверить

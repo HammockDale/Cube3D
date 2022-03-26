@@ -94,8 +94,6 @@ t_window	*ft_init_window(t_window *window)
 	window->mlx_ptr = NULL;
 	window->win_ptr = NULL;
 	window->img = NULL;
-	window->weight = W_PANEL;
-	window->height = H_PANEL;
 	window->coord = NULL;
 	return (window);
 }

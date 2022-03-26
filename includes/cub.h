@@ -117,8 +117,6 @@ typedef struct s_window
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	*img;
-	int		weight;
-	int		height;
 	int		**coord;
 	char	*addr;
 	int		bits_per_pixel;

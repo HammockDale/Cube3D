@@ -2,8 +2,8 @@ NO img/walls/blue.xpm
 SO img/walls/brick.xpm
 WE img/walls/grey.xpm
 EA img/walls/wood.xpm
-F 220,100,0
-C 225,30,0
+F 80,100,0
+C 0,255,255
 
         1111111111111111111111111
         1000000000110000000000001

@@ -133,12 +133,12 @@ void	ft_back(t_data *data)
 	{
 		while (j < H_PANEL / 2)
 		{
-			my_mlx_pixel_put(data, i, j, 0x000FFFF);
+			my_mlx_pixel_put(data, i, j, data->cloud->trgb);
 			j++;
 		}
 		while (j < H_PANEL)
 		{
-			my_mlx_pixel_put(data, i, j, 0x0555F00);
+			my_mlx_pixel_put(data, i, j, data->ground->trgb);
 			j++;
 		}
 		j = 0;

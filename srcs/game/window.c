@@ -53,7 +53,6 @@ printf("\n\n ugol = %f\n\n", d);
 			my_mlx_pixel_put(data, data->player->ray_x * ONE_SIZE, data->player->ray_y * ONE_SIZE, color);
 		}
 
-
 	double j;
 		double gip;
 	j = H_PANEL / 2;
@@ -121,31 +120,6 @@ void ft_draw_player(t_data *data, int color)
 		ft_cast_rays(data, color);
 }
 
-void	ft_back(t_data *data)
-{
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	// data->window->addr = mlx_get_data_addr(data->window->img, &data->window->bits_per_pixel, &data->window->line_length, &data->window->endian);
-	while (i < W_PANEL)
-	{
-		while (j < H_PANEL / 2)
-		{
-			my_mlx_pixel_put(data, i, j, data->cloud->trgb);
-			j++;
-		}
-		while (j < H_PANEL)
-		{
-			my_mlx_pixel_put(data, i, j, data->ground->trgb);
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-	// mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->window->img, 0, 0);
-}
 
 void	ft_draw_2D_woll(t_data *data)
 {
@@ -173,8 +147,10 @@ void	ft_paint(t_data *data)
 	mlx_clear_window(data->window->mlx_ptr, data->window->win_ptr);
 	
 	data->window->addr = mlx_get_data_addr(data->window->img, &data->window->bits_per_pixel, &data->window->line_length, &data->window->endian);
-
-	ft_back(data);
+	if (!data->bonus)
+		ft_back(data);
+	else
+		ft_back_bonus(data);
 	// ft_draw_2D_woll(data);
 	
 	// ft_draw_(data, data->player->pos_x, data->player->pos_y, 0x0F0FFFF);
@@ -206,6 +182,8 @@ int	key_kb_hook(int keycode, t_data *data)
 		ft_Pclock(data);
 	else if (keycode == TURN_LEFT)
 		ft_Pconterclock(data);
+	else if (keycode == USE)
+		ft_open_door(data);
 	printf("keycode = %d\n", keycode);
 	if (keycode == EXIT)
 	{

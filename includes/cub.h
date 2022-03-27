@@ -40,8 +40,10 @@
 // # define STR_LEFT 97
 // # define STR_RIGHT 100
 // # define EXIT 65307
+// # define USE 
 
 /* keycodes for Mac */
+
 # define TURN_LEFT 123
 # define TURN_RIGHT 124
 # define GO_FORWARD 13
@@ -49,11 +51,10 @@
 # define STR_LEFT 0
 # define STR_RIGHT 2
 # define EXIT 53
-
-
+# define USE 14
 
 # define PI 3.14159265358979323846
-# define  ONE_SIZE 40
+# define ONE_SIZE 40
 # define WOLL 0x0553300
 # define UGOL  PI/2
 # define W_PANEL 1280
@@ -209,6 +210,13 @@ int			ft_win_init(t_data *data);
 void 		ft_coord(t_data *data);
 void		ft_cast_rays(t_data *data, int color);
 
+
+
+/* paint_back.c */
+void		ft_back_bonus(t_data *data);
+void		ft_back(t_data *data);
+
+
 /* free.c */
 t_window	*ft_free_window(t_window *window);
 t_map		*ft_free_map(t_map *map);
@@ -224,11 +232,11 @@ void		ft_Pdown(t_data *data);
 void		ft_Pleft(t_data *data);
 void		ft_Pclock(t_data *data);
 void		ft_Pconterclock(t_data *data);
+void		ft_open_door(t_data *data);
 
 void		ft_draw_(t_data *data, double x, double y, int color);
 
 void		ft_draw_player(t_data *data, int color);
-void		ft_back(t_data *data);
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void		ft_paint(t_data *data);
 int			key_kb_hook(int keycode, t_data *data);

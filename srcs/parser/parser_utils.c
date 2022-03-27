@@ -80,6 +80,7 @@ t_image	*ft_save_texture(char *str, t_image *wall)
 		{
 			close(fd);
 			wall->loc = ft_strdup(tmp);
+			free(tmp);
 			return (wall);
 		}
 		close(fd);

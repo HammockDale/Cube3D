@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:05 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/27 17:45:09 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/27 18:54:46 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,7 @@ int	main(int argc, char **argv)
  {
 	 	//  data->window->win_ptr = mlx_new_window(data->window->mlx_ptr,player->nScreenWidth, player->nScreenHeight, "THE GAME!");
 
-	 (void)data;
+	(void)data;
 	(void)player;
 	 while (1) // Игровой цикл
 	{
@@ -199,8 +199,8 @@ int	ft_cube(char *carta, t_data *data)
 
 
 	ft_win_init(data);
-	ft_game(data->player, data);
-	// ft_free_all(data);
+	// ft_game(data->player, data);
+	ft_free_all(data);
 	close (fd);
 	return (0);
 }

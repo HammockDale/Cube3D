@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/27 14:30:06 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/27 18:52:36 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,6 +163,7 @@ typedef struct s_data
 /* main.c */
 int			ft_cube(char *carta, t_data *data);
 int			ft_exit(t_data *data, int keycode);
+void		ft_free_all(t_data *data);
 
 /* checker.c */
 int			ft_name_check(char *carta);

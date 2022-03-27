@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:13:14 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/25 15:32:35 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/27 19:43:25 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ t_window	*ft_free_window(t_window *window)
 
 t_map	*ft_free_map(t_map *map)
 {
+	
+	if (map->coord)
+	{
+		free_2d_arr(map->coord);
+		map->coord = NULL;		
+	}
 	free(map);
 	return (NULL);
 }
@@ -32,6 +38,11 @@ t_player	*ft_free_player(t_player *player)
 
 t_image	*ft_free_image(t_image *image)
 {
+	if (image->loc)
+	{
+		free(image->loc);
+		image->loc = NULL;
+	}
 	free(image);
 	return (NULL);
 }

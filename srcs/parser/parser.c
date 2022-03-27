@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 20:39:52 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/25 18:30:02 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/27 14:16:28 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int	ft_config(t_list **cub, t_data *data)
 	while (i < 6 && tmp)
 	{
 		i += ft_separate_textures(tmp->content, data);
+		if (i < 0)
+			return (MAP_ERROR);
 		tmp = tmp->next;
 	}
 	if (i != 6)

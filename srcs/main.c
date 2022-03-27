@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:05 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/27 12:50:38 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/27 14:21:48 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int argc, char **argv)
 			ret = ft_cube(argv[i], data);
 				//  data->window->win_ptr = mlx_new_window(data->window->mlx_ptr, data->player->nScreenWidth, data->player->nScreenHeight, "THE GAME!");
 
-printf("CUB3D!!!\n ret = %d\n", ret);
+// printf("CUB3D!!!\n ret = %d\n", ret);
 			if(ret)
 				return (ret);
 			i++;
@@ -232,11 +232,15 @@ void	ft_free_all(t_data *data)
 int	ft_exit(t_data *data, int keycode)
 {
 	ft_free_all(data);
-	if (keycode == 1)
+	if (keycode == ARGUMENT_OPEN_ERROR)
 		printf("Can't open the map file\n");
-	if (keycode == 2)
+	if (keycode == INIT_ERROR)
 		printf("Initialisation error. Not enough memory\n");
-	if (keycode == 3)
-		printf("Map is invalid\n");	
+	if (keycode == MAP_ERROR)
+	{
+		printf("Map is invalid\n");
+		keycode = 3;
+	}
+	// return (keycode);
 	exit (keycode);
 }

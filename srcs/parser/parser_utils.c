@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 13:49:56 by  esylva           #+#    #+#             */
-/*   Updated: 2022/03/25 18:35:34 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/27 14:20:11 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,22 @@ int	ft_separate_textures(char *str, t_data *data)
 	{
 		data->north = ft_save_texture(str + 2, data->north);
 		if (!data->north)
-			return (0);
+			return (MAP_ERROR);
 	}
 	else if (*str == 'S' && (*(str + 1) == 'O'))
 	{
 		data->south = ft_save_texture(str + 2, data->south);
 		if (!data->south)
-			return (0);
+			return (MAP_ERROR);
 	}
 	else if (*str == 'W' && (*(str + 1) == 'E'))
 	{
 		data->west = ft_save_texture(str + 2, data->west);
 		if (!data->west)
-			return (0);
+			return (MAP_ERROR);
 	}
 	else if (!ft_separate_textures_1(str, data))
-		return (0);
+		return (MAP_ERROR);
 	return (1);
 }
 
@@ -45,20 +45,22 @@ int	ft_separate_textures_1(char *str, t_data *data)
 	{
 		data->east = ft_save_texture(str + 2, data->east);
 		if (!data->east)
-			return (0);
+			return (MAP_ERROR);
 	}
 	else if (*str == 'C' && *(str + 1) == ' ')
 	{
 		data->cloud = ft_save_texture_c(str + 2, data->cloud, data);
 		if (!data->cloud)
-			return (0);
+			return (MAP_ERROR);
 	}
 	else if (*str == 'F' && *(str + 1) == ' ')
 	{
 		data->ground = ft_save_texture_c(str + 2, data->ground, data);
 		if (!data->ground)
-			return (0);
+			return (MAP_ERROR);
 	}
+	else
+		return (MAP_ERROR);
 	return (1);
 }
 

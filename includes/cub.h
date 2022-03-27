@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/27 12:49:42 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/27 14:30:06 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # define BONUS_STR "0NSWEDLX"
 # define ARGUMENT_OPEN_ERROR 1
 # define INIT_ERROR 2
-# define MAP_ERROR 3
+# define MAP_ERROR -10
 
 /* keycodes for ubuntu */
 // # define TURN_LEFT 65361

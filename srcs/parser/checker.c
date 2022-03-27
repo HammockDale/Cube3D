@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:42:12 by  esylva           #+#    #+#             */
-/*   Updated: 2022/03/25 18:28:25 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/27 15:14:16 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int	ft_check_map(t_data *data, t_list *map, int weght, int hight)
 		if (ft_check_inside(data, weght, hight, BONUS_STR))
 			return (MAP_ERROR);
 	}
+	if (data->player->look == -1)
+		return (MAP_ERROR);
 	return (0);
 }
 

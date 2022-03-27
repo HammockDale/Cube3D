@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:05 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/27 14:21:48 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/27 15:09:53 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int	main(int argc, char **argv)
 			ret = ft_cube(argv[i], data);
 				//  data->window->win_ptr = mlx_new_window(data->window->mlx_ptr, data->player->nScreenWidth, data->player->nScreenHeight, "THE GAME!");
 
-// printf("CUB3D!!!\n ret = %d\n", ret);
-			if(ret)
-				return (ret);
+printf("%s\n ret = %d\n", argv[i], ret);
+			// if(ret)
+			// 	return (ret);
 			i++;
 		}
 	}
@@ -171,7 +171,7 @@ int	main(int argc, char **argv)
 int	ft_cube(char *carta, t_data *data)
 {
 	int	fd;
-int i;
+// int i;
 	fd = ft_name_check(carta);
 	if (!fd)
 		return (ARGUMENT_OPEN_ERROR);
@@ -179,7 +179,11 @@ int i;
 	if (!data)
 		return (INIT_ERROR);
 	if (ft_parce_data(data, fd))
-		ft_exit (data, MAP_ERROR);
+		// ft_exit (data, MAP_ERROR);
+	{
+		if (ft_exit (data, MAP_ERROR))
+			return (3);
+	}
 	// data->player->pos_x = 80;					//vremenno
 	// data->player->pos_y = 100;					//vremenno
 		
@@ -189,9 +193,9 @@ int i;
 // printf("%s\n", data->west->loc);
 // printf("%d\n", data->cloud->trgb);
 // printf("%d\n", data->ground->trgb);
-i = -1;
-while (data->map->coord[++i])
-printf("2%s2\n", data->map->coord[i]);
+// i = -1;
+// while (data->map->coord[++i])
+// printf("2%s2\n", data->map->coord[i]);
 
 
 	ft_win_init(data);
@@ -241,6 +245,6 @@ int	ft_exit(t_data *data, int keycode)
 		printf("Map is invalid\n");
 		keycode = 3;
 	}
-	// return (keycode);
-	exit (keycode);
+	return (keycode);
+	// exit (keycode);
 }

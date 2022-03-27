@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:05 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/25 18:04:37 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/27 12:50:38 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,7 +179,7 @@ int i;
 	if (!data)
 		return (INIT_ERROR);
 	if (ft_parce_data(data, fd))
-		ft_exit (MAP_ERROR);
+		ft_exit (data, MAP_ERROR);
 	// data->player->pos_x = 80;					//vremenno
 	// data->player->pos_y = 100;					//vremenno
 		
@@ -229,9 +229,14 @@ void	ft_free_all(t_data *data)
 	data = NULL;
 }
 
-int	ft_exit(int keycode)
+int	ft_exit(t_data *data, int keycode)
 {
-// ft_free_all(data);
-printf("CUB3D!!!\n keycode = %d\n", keycode);
+	ft_free_all(data);
+	if (keycode == 1)
+		printf("Can't open the map file\n");
+	if (keycode == 2)
+		printf("Initialisation error. Not enough memory\n");
+	if (keycode == 3)
+		printf("Map is invalid\n");	
 	exit (keycode);
 }

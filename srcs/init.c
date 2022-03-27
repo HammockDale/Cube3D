@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:19 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/25 18:04:02 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/27 12:45:39 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ t_data	*ft_data_init(t_data *data)
 	data = (t_data *)malloc(sizeof(t_data));
 	error = errno;
 	if (!data)
-	{
-		printf("%s\n", strerror(error));
 		return (NULL);
-	}
 	data->window = NULL;
 	data->map = NULL;
 	data->player = NULL;
@@ -41,10 +38,13 @@ t_data	*ft_data_init(t_data *data)
 }
 
 int	ft_init_main_struct(t_data *data)
-// функция инициализации (и удаления при неудаче) переменных основной структуры
 {
 	data->window = ft_init_window(data->window);
+	if (!data->window)
+		return (INIT_ERROR);
 	data->player = ft_init_player(data->player);
+		if (!data->player)
+		return (INIT_ERROR);
 	return (0);
 }
 
@@ -103,25 +103,19 @@ t_player	*ft_init_player(t_player *player)
 	player = (t_player *)malloc(sizeof(t_player));
 	if (!player)
 		return (NULL);
-	player->look = -1; //initializaion -1
-	player->pos_x = 0; //initializaion  0
-	player->pos_y = 0;		// начальная позиция x и y
+	player->look = -1;
+	player->pos_x = 0;
+	player->pos_y = 0;
 	player->dirX = -1;
-	player->dirY = 0;		//начальный вектор направления
+	player->dirY = 0;
 	player->planeX = 0;
-	player->planeY = 0.66;	 //версия плоскости камеры для 2d raycaster
-
-	player->time = 0; //время текущего кадра
-	player->oldTime = 0; //время предыдущего кадра
-	
+	player->planeY = 0.66;
+	player->time = 0;
+	player->oldTime = 0;
 	player->cameraX = 0;
 	player->cameraY = 0;
 	player->rayDirX = 0;
 	player->rayDirY = 0;
-
-
-
-
 
 player->nScreenWidth = 120; // Ширина консольного окна
 
@@ -137,9 +131,7 @@ player->nMapHeight = 16; // Высота игрового поля
 
 player->nMapWidth = 16;	 // Ширина игрового поля
 
-
-
-player->fFOV = 3.14159 / 3; // Угол обзора (поле видимости)
+player->fFOV = PI / 3; // Угол обзора (поле видимости)
 
 player->fDepth = 30.0f;	  // Максимальная дистанция обзора
 

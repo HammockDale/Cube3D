@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:05 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/27 15:09:53 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/27 17:45:09 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int	main(int argc, char **argv)
 			ret = ft_cube(argv[i], data);
 				//  data->window->win_ptr = mlx_new_window(data->window->mlx_ptr, data->player->nScreenWidth, data->player->nScreenHeight, "THE GAME!");
 
-printf("%s\n ret = %d\n", argv[i], ret);
-			// if(ret)
-			// 	return (ret);
+// printf("%s\n ret = %d\n", argv[i], ret);
+			if(ret)
+				return (ret);
 			i++;
 		}
 	}
@@ -179,11 +179,11 @@ int	ft_cube(char *carta, t_data *data)
 	if (!data)
 		return (INIT_ERROR);
 	if (ft_parce_data(data, fd))
-		// ft_exit (data, MAP_ERROR);
-	{
-		if (ft_exit (data, MAP_ERROR))
-			return (3);
-	}
+		ft_exit (data, MAP_ERROR);
+	// {
+	// 	if (ft_exit (data, MAP_ERROR))
+	// 		return (3);
+	// }
 	// data->player->pos_x = 80;					//vremenno
 	// data->player->pos_y = 100;					//vremenno
 		
@@ -245,6 +245,6 @@ int	ft_exit(t_data *data, int keycode)
 		printf("Map is invalid\n");
 		keycode = 3;
 	}
-	return (keycode);
-	// exit (keycode);
+	// return (keycode);
+	exit (keycode);
 }

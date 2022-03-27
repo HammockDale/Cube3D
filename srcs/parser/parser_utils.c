@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 13:49:56 by  esylva           #+#    #+#             */
-/*   Updated: 2022/03/27 14:20:11 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/27 18:32:30 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_separate_textures(char *str, t_data *data)
 		if (!data->west)
 			return (MAP_ERROR);
 	}
-	else if (!ft_separate_textures_1(str, data))
+	else if (ft_separate_textures_1(str, data))
 		return (MAP_ERROR);
 	return (1);
 }
@@ -61,7 +61,7 @@ int	ft_separate_textures_1(char *str, t_data *data)
 	}
 	else
 		return (MAP_ERROR);
-	return (1);
+	return (0);
 }
 
 t_image	*ft_save_texture(char *str, t_image *wall)

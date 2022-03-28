@@ -3,29 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   action.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 17:42:45 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/18 18:10:51 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/28 09:42:08 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-// void	ft_change_ground(t_map *map)
-// {
-// 	if (map->coords[map->p_y][map->p_x] == (int) 'C')
-// 	{	
-// 		(map->coords[map->p_y][map->p_x] = (int) '0');
-// 		map->loot--;
-// 	}
-// 	if (!map->loot && map->coords[map->p_y][map->p_x] == (int) 'E')
-// 	{
-// 		printf("YOU WIN!");
-// 		ft_free_all(map);
-// 		exit(0);
-// 	}
-// }
+void	ft_change_ground(t_data *data)
+{
+	if (data->map->coord[data->map->y][data->map->x] == (int) 'L')
+	{	
+		(data->map->coord[data->map->y][data->map->x] = '0');
+		data->map->loot--;
+	}
+	if (!data->map->loot && data->map->coord[data->map->y][data->map->x] == 'X')
+	{
+		printf("YOU WIN!");
+		ft_exit(data, 0);
+	}
+}
 
 // int	key_hook(int keycode, t_map *map)
 // {
@@ -83,10 +82,11 @@
 // 			* map->size_y);
 // 	ft_player_action(map);
 // }
-
-// int	ft_player_action(t_map *map)
-// {	
-// 	mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->cat.image, \
-// 		map->p_x * map->size_x, map->p_y * map->size_y);
-// 	return (0);
-// }
+/*
+int	ft_player_action(t_map *map)
+{	
+	mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->cat.image, \
+		map->p_x * map->size_x, map->p_y * map->size_y);
+	return (0);
+}
+*/

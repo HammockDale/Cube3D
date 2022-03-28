@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:42:12 by  esylva           #+#    #+#             */
-/*   Updated: 2022/03/27 15:14:16 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/28 09:55:10 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ int	ft_check_inside(t_data *data, int weght, int hight, char *str)
 				if (!ft_check_sym(i, j, data))
 					return (MAP_ERROR);
 			}
+			if (data->map->coord[i][j] != 'L')
+				data->map->loot++;
 			j++;
 		}
 		i++;

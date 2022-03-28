@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/27 18:52:36 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/28 09:56:57 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@
 # define PI 3.14159265358979323846
 # define ONE_SIZE 40
 # define WOLL 0x0553300
-# define UGOL  PI/2
+# define UGOL PI/2
 # define W_PANEL 1280
 # define H_PANEL 720
 
@@ -224,6 +224,9 @@ t_player	*ft_free_player(t_player *player);
 t_image		*ft_free_image(t_image *image);
 t_sprite	*ft_free_sprite(t_sprite *sprite);
 
+/* action.c */
+void		ft_change_ground(t_data *data);
+
 /*other*/
 
 void		ft_Pup(t_data *data);
@@ -246,7 +249,6 @@ int			key_kb_hook(int keycode, t_data *data);
 // int		ft_player_action(t_map *map);
 // void	ft_render_1(t_map *map);
 // int		render_next_frame(t_map *map);
-// void	ft_change_ground(t_map *map);
 
 // void	ft_put_img_to_win(t_map *map);
 // void	ft_img_init(t_map *map);

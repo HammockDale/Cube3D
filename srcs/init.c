@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:19 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/27 12:45:39 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/28 09:01:34 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 t_data	*ft_data_init(t_data *data)
 {
-	int	error;
-
 	data = (t_data *)malloc(sizeof(t_data));
-	error = errno;
 	if (!data)
 		return (NULL);
 	data->window = NULL;
@@ -43,7 +40,7 @@ int	ft_init_main_struct(t_data *data)
 	if (!data->window)
 		return (INIT_ERROR);
 	data->player = ft_init_player(data->player);
-		if (!data->player)
+	if (!data->player)
 		return (INIT_ERROR);
 	return (0);
 }

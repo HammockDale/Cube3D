@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 14:42:12 by  esylva           #+#    #+#             */
-/*   Updated: 2022/03/28 09:55:10 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/29 10:38:52 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,10 +124,10 @@ void	ft_set_look(t_data *data, int i, int j)
 	if (data->map->coord[i][j] == 'N')
 		data->player->look = 0;
 	else if (data->map->coord[i][j] == 'W')
-		data->player->look = 270;
+		data->player->look = 3 * PI / 2;
 	else if (data->map->coord[i][j] == 'S')
-		data->player->look = 180;
+		data->player->look = PI;
 	else if (data->map->coord[i][j] == 'E')
-		data->player->look = 90;
+		data->player->look = PI / 2;
 	return ;
 }

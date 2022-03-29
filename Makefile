@@ -5,14 +5,14 @@ HEADER = includes/cub.h
 INCLUDES = -I includes -I libft -I/usr/include -Imlx_linux -O3
 
 SRC_DIR = srcs/
-SRCS_F = main.c init.c free.c
+SRCS_F = main1.c init.c free.c
 
 PARS_DIR = parser/
 PARS_F = parser.c parser_utils.c checker.c parser_utils2.c 
 PARSER =  $(addprefix $(PARS_DIR), $(PARS_F))
 
 GAME_DIR = game/
-GAME_F = window.c action.c ft_wasd.c paint_back.c ft_button.c
+GAME_F = window1.c action.c ft_wasd.c paint_back.c ft_button.c
 GAME = $(addprefix $(GAME_DIR), $(GAME_F))
 
 SRC_F =  $(addprefix $(SRC_DIR), $(SRCS_F) $(PARSER) $(GAME))

@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:19 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/29 14:28:41 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/29 15:52:29 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,9 @@ t_window	*ft_init_window(t_window *window)
 	window->win_ptr = NULL;
 	window->img = NULL;
 	window->coord = NULL;
+	window->bits_per_pixel = 32;
+	window->line_length = 0;
+	window->endian = 0;
 	return (window);
 }
 

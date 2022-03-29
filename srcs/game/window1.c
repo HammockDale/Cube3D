@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:46:37 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/29 14:26:20 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/29 16:06:45 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,17 @@ int	ft_win_init(t_data *data)
 		data->window->win_ptr = mlx_new_window(data->window->mlx_ptr,
 			W_PANEL, H_PANEL, "CUB3D with BONUSES!");
 	data->window->img = mlx_new_image(data->window->mlx_ptr, W_PANEL, H_PANEL);
+	data->window->addr = mlx_get_data_addr(data->window->img,
+		&data->window->bits_per_pixel, &data->window->line_length,
+		&data->window->endian);
 	ft_img_init(data);
 	return (0);
 }
 
 void	ft_paint(t_data *data)
 {
-	mlx_clear_window(data->window->mlx_ptr, data->window->win_ptr);
-	
+
+	// mlx_clear_window(data->window->mlx_ptr, data->window->win_ptr);
 	if (!data->bonus)
 		ft_back(data);
 	else
@@ -37,29 +40,14 @@ void	ft_paint(t_data *data)
 	// ft_draw_2D_woll(data);
 	
 	// ft_draw_(data, data->player->pos_x, data->player->pos_y, 0x0F0FFFF);
-	ft_draw_player(data, 0x0F0FFFF);
-	mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->window->img, 0, 0);
-
-	// ft_background(var);
-	// ft_beahive(var);
-	// ft_woll(var);
-	// ft_chamomile(var, 0, 0);
-	// if (var->max_score == 0)
-	// 	ft_close();
-	// ft_bee_l1(var);
-	// ft_hornet_L(var, 0, 0);
-	// ft_paint_text(var);
+	// ft_draw_player(data, 0x0F0FFFF);
+	mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr,
+		data->window->img, 0, 0);
 }
 
 
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
 
-	dst = data->window->addr + (int)(y * data->window->line_length + x * (data->window->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
 
 
 void	ft_cast_rays(t_data *data, int color)
@@ -182,23 +170,28 @@ void	ft_draw_2D_woll(t_data *data)
 	}
 }
 
+int	mouse_move(int keycode, t_data *data)
+{
+	(void)data;
+	return(keycode);
+}
 
 int	key_kb_hook(int keycode, t_data *data)
 {
-	// if (keycode == GO_FORWARD)
-	// 	ft_Pup(data);
-	// else if (keycode == STR_LEFT)
-	// 	ft_Pleft(data);
-	// else if (keycode == GO_BACKWARD)
-	// 	ft_Pdown(data);
-	// else if (keycode == STR_RIGHT)
-	// 	ft_Pright(data);
-	// else if (keycode == TURN_RIGHT)
-	// 	ft_Pclock(data);
-	// else if (keycode == TURN_LEFT)
-	// 	ft_Pconterclock(data);
-	// else if (keycode == USE)
-	// 	ft_open_door(data);
+	if (keycode == GO_FORWARD)
+		ft_Pup(data);
+	else if (keycode == STR_LEFT)
+		ft_Pleft(data);
+	else if (keycode == GO_BACKWARD)
+		ft_Pdown(data);
+	else if (keycode == STR_RIGHT)
+		ft_Pright(data);
+	else if (keycode == TURN_RIGHT)
+		ft_Pclock(data);
+	else if (keycode == TURN_LEFT)
+		ft_Pconterclock(data);
+	else if (keycode == USE)
+		ft_open_door(data);
 	printf("keycode = %d\n", keycode);
 	if (keycode == EXIT)
 	{
@@ -207,33 +200,6 @@ int	key_kb_hook(int keycode, t_data *data)
 	}
 	return (keycode);
 }
-
-// int	ft_win_d3_init(t_data *data)
-// {
-// 	// ft_coords(data);
-	
-// 	data->d3->mlx_ptr = mlx_init();
-// 	data->d3->win_ptr = mlx_new_window(data->d3->mlx_ptr,  1920, 1080, "cub3D");
-// 	// mlx_key_hook(data->window->win_ptr, key_kb_hook, data);
-// 	// mlx_hook(data->window->win_ptr, 2, 0, key_kb_hook, data);
-// 	// mlx_hook(data->window->win_ptr, 3, 0, key_kb_hook, data);		// проверить
-// 	data->d3->img = mlx_new_image(data->d3->mlx_ptr, 1920, 1080);
-// 	// ft_paint(data);
-// 	// mlx_clear_window(data->d3->mlx_ptr, data->d3->win_ptr);
-	
-// 	// mlx_put_image_to_window(data->d3->mlx_ptr, data->d3->win_ptr, data->window->img, 0, 0);
-
-// 	// ft_button(data);
-
-// 	// ft_img_init(map);
-// 	// ft_put_img_to_win(data);
-// 	// mlx_loop_hook(data->window->mlx_ptr, render_next_frame, data->window);
-// 	// mlx_hook(data->window->win_ptr, 2, 0, key_hook, data->window);
-// 	mlx_hook(data->d3->win_ptr, 17, 0L, ft_exit, data);
-// 	mlx_loop(data->d3->mlx_ptr);
-// 	return (0);
-// }
-
 
 
 void	ft_img_init(t_data *data)
@@ -309,3 +275,10 @@ void	ft_img_bonus_init(t_data *data)
 // 	}
 // }
 
+// void	process_input(t_all *all)
+// {
+// 	mlx_hook(all->mlx.window, 2, 1L << 0, key_press, all);
+// 	mlx_hook(all->mlx.window, 3, 1L << 1, key_release, all);
+// 	mlx_hook(all->mlx.window, 9, 1L << 21, refresh, all);
+// 	mlx_hook(all->mlx.window, 17, 1L << 17, destroy_window, all);
+// }

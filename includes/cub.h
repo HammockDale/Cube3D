@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/28 09:56:57 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/29 15:17:13 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,27 @@
 # define MAP_ERROR -10
 
 /* keycodes for ubuntu */
-// # define TURN_LEFT 65361
-// # define TURN_RIGHT 65363
-// # define GO_FORWARD 119
-// # define GO_BACKWARD 115
-// # define STR_LEFT 97
-// # define STR_RIGHT 100
-// # define EXIT 65307
-// # define USE 
+# define TURN_LEFT 65361
+# define TURN_RIGHT 65363
+# define GO_FORWARD 119
+# define GO_BACKWARD 115
+# define STR_LEFT 97
+# define STR_RIGHT 100
+# define EXIT 65307
+# define USE 101
 
 /* keycodes for Mac */
 
-# define TURN_LEFT 123
-# define TURN_RIGHT 124
-# define GO_FORWARD 13
-# define GO_BACKWARD 1
-# define STR_LEFT 0
-# define STR_RIGHT 2
-# define EXIT 53
-# define USE 14
+// # define TURN_LEFT 123
+// # define TURN_RIGHT 124
+// # define GO_FORWARD 13
+// # define GO_BACKWARD 1
+// # define STR_LEFT 0
+// # define STR_RIGHT 2
+// # define EXIT 53
+// # define USE 14
 
-# define PI 3.14159265358979323846
+# define PI 3.14159265
 # define ONE_SIZE 40
 # define WOLL 0x0553300
 # define UGOL PI/2
@@ -69,6 +69,8 @@ typedef struct s_image
 	int		endian;
 	char	*loc;
 	int		trgb;
+	int		size_x;
+	int		size_y;
 }				t_image;
 
 typedef struct s_player
@@ -118,11 +120,11 @@ typedef struct s_window
 	void	*mlx_ptr;
 	void	*win_ptr;
 	void	*img;
-	int		**coord;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		**coord;
 }				t_window;
 
 typedef struct s_map
@@ -165,6 +167,8 @@ typedef struct s_data
 int			ft_cube(char *carta, t_data *data);
 int			ft_exit(t_data *data, int keycode);
 void		ft_free_all(t_data *data);
+
+void		ft_game(t_data *data);
 
 /* checker.c */
 int			ft_name_check(char *carta);
@@ -209,12 +213,16 @@ int			ft_check_rect_col(char **str, int w, int h);
 int			ft_win_init(t_data *data);
 void 		ft_coord(t_data *data);
 void		ft_cast_rays(t_data *data, int color);
+int			key_kb_hook(int keycode, t_data *data);
 
-
+void		ft_img_init(t_data *data);
+void		ft_img_bonus_init(t_data *data);
+int			mouse_move(int keycode, t_data *data);
 
 /* paint_back.c */
 void		ft_back_bonus(t_data *data);
 void		ft_back(t_data *data);
+void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 
 /* free.c */
@@ -240,9 +248,7 @@ void		ft_open_door(t_data *data);
 void		ft_draw_(t_data *data, double x, double y, int color);
 
 void		ft_draw_player(t_data *data, int color);
-void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void		ft_paint(t_data *data);
-int			key_kb_hook(int keycode, t_data *data);
 
 
 // int		key_hook(int keycode, t_map *map);

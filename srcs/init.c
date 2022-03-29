@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:19 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/28 09:01:34 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/29 14:28:41 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ t_image	*ft_init_image(t_image *wall)
 	wall->bitpp = 0;
 	wall->endian = 0;
 	wall->trgb = 0;
+	wall->size_x = 0;
+	wall->size_y = 0;
 	return (wall);
 }
 

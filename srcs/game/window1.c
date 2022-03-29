@@ -37,13 +37,17 @@ void	ft_paint(t_data *data)
 		ft_back(data);
 	else
 		ft_back_bonus(data);
-	// ft_draw_2D_woll(data);
+
+	// ft_draw_2D_wall(data);
 	
 	// ft_draw_(data, data->player->pos_x, data->player->pos_y, 0x0F0FFFF);
 	// ft_draw_player(data, 0x0F0FFFF);
+	if (data->bonus)
+		ft_put_minimap(data);	
 	mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr,
 		data->window->img, 0, 0);
 }
+
 
 
 

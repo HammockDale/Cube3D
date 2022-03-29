@@ -59,6 +59,9 @@
 # define UGOL PI/2
 # define W_PANEL 1280
 # define H_PANEL 720
+# define W_MAP 200
+# define M_GROUND 65355
+# define SCALE 2
 
 typedef struct s_image
 {
@@ -151,7 +154,8 @@ typedef struct s_data
 	// t_camera		*camera;
 	t_window		*window;
 	t_map			*map;
-	t_player		*player;	
+	t_player		*player;
+	t_image			*mmap;
 	t_image			*ground;
 	t_image			*cloud;
 	t_image			*north;
@@ -215,15 +219,18 @@ void 		ft_coord(t_data *data);
 void		ft_cast_rays(t_data *data, int color);
 int			key_kb_hook(int keycode, t_data *data);
 
+
 void		ft_img_init(t_data *data);
 void		ft_img_bonus_init(t_data *data);
 int			mouse_move(int keycode, t_data *data);
+void		ft_draw_2D_wall(t_data *data);
 
 /* paint_back.c */
 void		ft_back_bonus(t_data *data);
 void		ft_back(t_data *data);
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
-
+void		ft_put_minimap(t_data *data);
+void		ft_draw_2D_obj(t_data *data, int x, int y, int size, int color);
 
 /* free.c */
 t_window	*ft_free_window(t_window *window);

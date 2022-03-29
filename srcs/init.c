@@ -28,6 +28,7 @@ t_data	*ft_data_init(t_data *data)
 	data->west = NULL;
 	data->door = NULL;
 	data->loot = NULL;
+	data->mmap = NULL;
 	data->bonus = BONUS;
 	if (ft_init_main_struct(data))
 		return (NULL);

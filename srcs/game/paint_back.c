@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 08:54:05 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/29 16:07:13 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/29 16:48:02 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,11 @@ void	ft_back(t_data *data)
 	j = 0;
 	while (i < W_PANEL)
 	{
-printf("11\n");
 		while (j < H_PANEL / 2)
 		{
 			my_mlx_pixel_put(data, i, j, data->cloud->trgb);
 			j++;
 		}
-printf("12\n");
 		while (j < H_PANEL)
 		{
 			my_mlx_pixel_put(data, i, j, data->ground->trgb);

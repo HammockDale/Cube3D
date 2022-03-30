@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 13:49:56 by  esylva           #+#    #+#             */
-/*   Updated: 2022/03/27 18:32:30 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/30 10:15:18 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,8 @@ t_image	*ft_save_texture_c(char *str, t_image *wall, t_data *data)
 {
 	if (data->bonus)
 	{
-		if (!ft_save_texture(str, wall))
+		wall = ft_save_texture(str, wall);
+		if (!wall)
 			return (NULL);
 	}
 	else

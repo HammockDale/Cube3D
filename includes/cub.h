@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/29 15:17:13 by esylva           ###   ########.fr       */
+/*   Updated: 2022/03/30 10:17:26 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 # include <math.h>
 
-# define BONUS 0
+# define BONUS 1
 # define NO_BONUS_STR "0NSWE"
 # define BONUS_STR "0NSWEDLX"
 # define ARGUMENT_OPEN_ERROR 1
@@ -61,7 +61,7 @@
 # define H_PANEL 720
 # define W_MAP 200
 # define M_GROUND 65355
-# define SCALE 2
+# define SCALE 4
 
 typedef struct s_image
 {
@@ -258,7 +258,7 @@ void		ft_turn_left(t_data *sdata);
 // void		ft_Pleft(t_data *data);
 // void		ft_Pclock(t_data *data);
 // void		ft_Pconterclock(t_data *data);
-// void		ft_open_door(t_data *data);
+void		ft_open_door(t_data *data);
 
 void		ft_draw_(t_data *data, double x, double y, int color);
 

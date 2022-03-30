@@ -121,9 +121,4 @@ void	ft_put_minimap(t_data *data)
 		}
 		y++
 	}
-
-	
-	if ()
-
-
 }

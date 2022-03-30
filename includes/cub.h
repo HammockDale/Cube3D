@@ -242,15 +242,23 @@ t_sprite	*ft_free_sprite(t_sprite *sprite);
 /* action.c */
 void		ft_change_ground(t_data *data);
 
+/* ft_wasd1.c */
+void		ft_go_forward(t_data *data);
+void		ft_str_left(t_data *data);
+void		ft_go_backward(t_data *data);
+void		ft_str_right(t_data *data);
+void		ft_turn_right(t_data *data);
+void		ft_turn_left(t_data *sdata);
+
 /*other*/
 
-void		ft_Pup(t_data *data);
-void		ft_Pright(t_data *data);
-void		ft_Pdown(t_data *data);
-void		ft_Pleft(t_data *data);
-void		ft_Pclock(t_data *data);
-void		ft_Pconterclock(t_data *data);
-void		ft_open_door(t_data *data);
+// void		ft_Pup(t_data *data);
+// void		ft_Pright(t_data *data);
+// void		ft_Pdown(t_data *data);
+// void		ft_Pleft(t_data *data);
+// void		ft_Pclock(t_data *data);
+// void		ft_Pconterclock(t_data *data);
+// void		ft_open_door(t_data *data);
 
 void		ft_draw_(t_data *data, double x, double y, int color);
 

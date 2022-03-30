@@ -129,5 +129,7 @@ void	ft_set_look(t_data *data, int i, int j)
 		data->player->look = PI;
 	else if (data->map->coord[i][j] == 'E')
 		data->player->look = PI / 2;
+	data->map->x = j;
+	data->map->y = i;
 	return ;
 }

@@ -49,7 +49,10 @@ void	ft_paint(t_data *data)
 }
 
 
+// void	ft_draw_2D_wall(t_data *data)
+// {
 
+// }
 
 
 
@@ -62,19 +65,16 @@ void	ft_cast_rays(t_data *data, int color)
 
 	i = 0;
 	d = data->player->cameraX - (double)(PI / 2);
-	// printf ("a = %f\n", data->player->cameraX);
-	// 	printf ("a = %f\n", a);
-	// if (d > 2 * PI)
-	// 	d = d - 2 * PI;
+
 	if (d < 0)
 		d = d + 2 * PI;
 
 // printf("\n\n ugol = %f\n\n", d);
 
 	float start = (d  - UGOL / 2) ;// - [половина угла обзора]; // начало веера лучей
-  float end = d + UGOL / 2;//ray.dir + [половина угла обзора]; // край веера лучей
+	float end = d + UGOL / 2;//ray.dir + [половина угла обзора]; // край веера лучей
 	double wall, a, b;
-  while (start <= end)
+	while (start <= end)
 	{
 		data->player->ray_x  = data->player->pos_x; // каждый раз возвращаемся в точку начала
 		data->player->ray_y = data->player->pos_y;
@@ -183,20 +183,20 @@ int	mouse_move(int keycode, t_data *data)
 int	key_kb_hook(int keycode, t_data *data)
 {
 	if (keycode == GO_FORWARD)
-		ft_Pup(data);
+		ft_go_forward(data);
 	else if (keycode == STR_LEFT)
-		ft_Pleft(data);
+		ft_str_left(data);
 	else if (keycode == GO_BACKWARD)
-		ft_Pdown(data);
+		ft_go_backward(data);
 	else if (keycode == STR_RIGHT)
-		ft_Pright(data);
+		ft_str_right(data);
 	else if (keycode == TURN_RIGHT)
-		ft_Pclock(data);
+		ft_turn_right(data);
 	else if (keycode == TURN_LEFT)
-		ft_Pconterclock(data);
+		ft_turn_left(data);
 	else if (keycode == USE)
 		ft_open_door(data);
-	printf("keycode = %d\n", keycode);
+printf("keycode = %d\n", keycode);
 	if (keycode == EXIT)
 	{
 		mlx_destroy_window(data->window->mlx_ptr, data->window->win_ptr);
@@ -241,43 +241,9 @@ void	ft_img_bonus_init(t_data *data)
 	}
 
 
-// void	ft_put_img_to_win(t_map *map)
-// {
-// 	map->y = 0;
-// 	while (map->y < map->height)
-// 	{
-// 		map->x = 0;
-// 		while (map->x < map->weight)
-// 		{
-// 			ft_put_by_sym(map);
-// 			map->x++;
-// 		}
-// 		map->y++;
-// 	}
-// }
 
-// void	ft_put_by_sym(t_map *map)
-// {
-// 	if (map->coords[map->y][map->x] == (int) '1')
-// 		mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->wall.image,
-// 			map->x * map->size_x, map->y * map->size_y);
-// 	else if (map->coords[map->y][map->x] == (int) '0')
-// 		mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->ground.image,
-// 			map->x * map->size_x, map->y * map->size_y);
-// 	else if (map->coords[map->y][map->x] == (int) 'C')
-// 		mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->fish.image,
-// 			map->x * map->size_x, map->y * map->size_y);
-// 	else if (map->coords[map->y][map->x] == (int) 'E')
-// 		mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->gate.image,
-// 			map->x * map->size_x, map->y * map->size_y);
-// 	else if (map->coords[map->y][map->x] == (int) 'P')
-// 	{
-// 		mlx_put_image_to_window(map->mlx_ptr, map->win_ptr, map->cat.image,
-// 			map->x * map->size_x, map->y * map->size_y);
-// 		map->p_x = map->x;
-// 		map->p_y = map->y;
-// 	}
-// }
+
+
 
 // void	process_input(t_all *all)
 // {

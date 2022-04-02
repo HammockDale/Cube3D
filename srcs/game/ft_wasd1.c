@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_wasd.c                                          :+:      :+:    :+:   */
+/*   ft_wasd1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdale <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 16:08:59 by hdale             #+#    #+#             */
-/*   Updated: 2021/11/11 16:09:01 by hdale            ###   ########.fr       */
+/*   Updated: 2022/04/02 21:16:01 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 void		ft_go_forward(t_data *data)
 {
+	int	x;
+	int	y;
+
+	y = data->map->y;
+	x = data->map->x;
 	if (data->map->coord[y - 1][x] == '0' || data->map->coord[y - 1][x] == 'L'
 		|| data->map->coord[y - 1][x] == 'X')
 	y--;
@@ -21,6 +26,11 @@ void		ft_go_forward(t_data *data)
 
 void		ft_str_left(t_data *data)
 {
+	int	x;
+	int	y;
+
+	y = data->map->y;
+	x = data->map->x;
 	if (data->map->coord[y][x - 1] == '0' || data->map->coord[y][x - 1] == 'L'
 		|| data->map->coord[y][x - 1] == 'X')
 	x--;
@@ -28,6 +38,11 @@ void		ft_str_left(t_data *data)
 
 void		ft_go_backward(t_data *data)
 {
+	int	x;
+	int	y;
+
+	y = data->map->y;
+	x = data->map->x;
 	if (data->map->coord[y + 1][x] == '0' || data->map->coord[y + 1][x] == 'L'
 		|| data->map->coord[y + 1][x] == 'X')
 	y++;
@@ -35,6 +50,11 @@ void		ft_go_backward(t_data *data)
 
 void		ft_str_right(t_data *data)
 {
+	int	x;
+	int	y;
+
+	y = data->map->y;
+	x = data->map->x;
 	if (data->map->coord[y][x + 1] == '0' || data->map->coord[y][x + 1] == 'L'
 		|| data->map->coord[y][x + 1] == 'X')
 	x++;
@@ -42,12 +62,12 @@ void		ft_str_right(t_data *data)
 
 void		ft_turn_right(t_data *data)
 {
-
+	(void)data;
 }
 
-void		ft_turn_left(t_data *sdata)
+void		ft_turn_left(t_data *data)
 {
-
+	(void) data;
 }
 
 

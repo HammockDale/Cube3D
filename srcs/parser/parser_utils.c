@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 13:49:56 by  esylva           #+#    #+#             */
-/*   Updated: 2022/03/27 18:32:30 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/02 21:29:19 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,8 @@ t_image	*ft_save_texture_c(char *str, t_image *wall, t_data *data)
 {
 	if (data->bonus)
 	{
-		if (!ft_save_texture(str, wall))
+		wall = ft_save_texture(str, wall);
+		if (!wall)
 			return (NULL);
 	}
 	else

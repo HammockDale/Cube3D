@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/29 15:17:13 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/02 21:37:30 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,25 @@
 # define MAP_ERROR -10
 
 /* keycodes for ubuntu */
-# define TURN_LEFT 65361
-# define TURN_RIGHT 65363
-# define GO_FORWARD 119
-# define GO_BACKWARD 115
-# define STR_LEFT 97
-# define STR_RIGHT 100
-# define EXIT 65307
-# define USE 101
+// # define TURN_LEFT 65361
+// # define TURN_RIGHT 65363
+// # define GO_FORWARD 119
+// # define GO_BACKWARD 115
+// # define STR_LEFT 97
+// # define STR_RIGHT 100
+// # define EXIT 65307
+// # define USE 101
 
 /* keycodes for Mac */
 
-// # define TURN_LEFT 123
-// # define TURN_RIGHT 124
-// # define GO_FORWARD 13
-// # define GO_BACKWARD 1
-// # define STR_LEFT 0
-// # define STR_RIGHT 2
-// # define EXIT 53
-// # define USE 14
+# define TURN_LEFT 123
+# define TURN_RIGHT 124
+# define GO_FORWARD 13
+# define GO_BACKWARD 1
+# define STR_LEFT 0
+# define STR_RIGHT 2
+# define EXIT 53
+# define USE 14
 
 # define PI 3.14159265
 # define ONE_SIZE 40
@@ -59,9 +59,9 @@
 # define UGOL PI/2
 # define W_PANEL 1280
 # define H_PANEL 720
-# define W_MAP 200
+# define W_MAP 210
 # define M_GROUND 65355
-# define SCALE 2
+# define SCALE 3
 
 typedef struct s_image
 {
@@ -86,7 +86,7 @@ typedef struct s_player
 	double		dirY;
 	double		planeX;
 	double		planeY;
-	int			look;
+	double		look;
 	double		time;
 	double		oldTime;
 
@@ -258,7 +258,7 @@ void		ft_turn_left(t_data *sdata);
 // void		ft_Pleft(t_data *data);
 // void		ft_Pclock(t_data *data);
 // void		ft_Pconterclock(t_data *data);
-// void		ft_open_door(t_data *data);
+void		ft_open_door(t_data *data);
 
 void		ft_draw_(t_data *data, double x, double y, int color);
 

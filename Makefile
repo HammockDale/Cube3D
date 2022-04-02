@@ -1,8 +1,8 @@
 NAME = cub3D
 
 HEADER = includes/cub.h
-# INCLUDES = -I includes -I libft -I mlx
-INCLUDES = -I includes -I libft -I/usr/include -Imlx_linux -O3
+INCLUDES = -I includes -I libft -I mlx
+# INCLUDES = -I includes -I libft -I/usr/include -Imlx_linux -O3
 
 SRC_DIR = srcs/
 SRCS_F = main1.c init.c free.c
@@ -29,10 +29,10 @@ FLAGS = -Wall -Werror -Wextra
 
 RM = rm -rf
 
-# MAKE_MLX = make -sC mlx
-MAKE_MLX = make -sC mlx_linux
-# LINK_MLX = -lmlx -framework OpenGL -framework AppKit
-LINK_MLX = -Lmlx_linux -lmlx_linux -L/usr/lib -lXext -lX11 -lm -lz
+MAKE_MLX = make -sC mlx
+# MAKE_MLX = make -sC mlx_linux
+LINK_MLX = -lmlx -framework OpenGL -framework AppKit
+# LINK_MLX = -Lmlx_linux -lmlx_linux -L/usr/lib -lXext -lX11 -lm -lz
 
 MAKE_LIBFT = make -sC libft
 LINK_LIBFT = -Llibft -lft

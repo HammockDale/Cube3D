@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   paint_back.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 08:54:05 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/29 16:48:02 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/02 21:16:44 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	ft_draw_2D_obj(t_data *data, int x, int y, int size, int color)
 		b = 0;
 		while (b < size)
 		{
-			my_mlx_pixel_put(data, x + a, x + b, color);
+			my_mlx_pixel_put(data, x + a, y + b, color);
 			b++;
 		}
 		a++;
@@ -119,6 +119,6 @@ void	ft_put_minimap(t_data *data)
 				ft_draw_2D_obj(data, beg_x + x * SCALE, beg_y + y * SCALE, SCALE, 0xff0000);
 			x++;
 		}
-		y++
+		y++;
 	}
 }

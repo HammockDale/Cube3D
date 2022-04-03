@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:46:37 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/29 16:06:45 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/03 19:30:54 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,7 @@ void	ft_paint(t_data *data)
 		ft_back(data);
 	else
 		ft_back_bonus(data);
-
-	// ft_draw_2D_wall(data);
-	
-	// ft_draw_(data, data->player->pos_x, data->player->pos_y, 0x0F0FFFF);
-	// ft_draw_player(data, 0x0F0FFFF);
+	ft_cast_rays(data, 65432);
 	if (data->bonus)
 		ft_put_minimap(data);	
 	mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr,
@@ -64,7 +60,7 @@ void	ft_cast_rays(t_data *data, int color)
 	double d;
 
 	i = 0;
-	d = data->player->cameraX - (double)(PI / 2);
+	d = data->player->look - (double)(PI / 2);
 
 	if (d < 0)
 		d = d + 2 * PI;

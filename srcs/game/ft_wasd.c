@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 16:08:59 by hdale             #+#    #+#             */
-/*   Updated: 2022/04/03 19:05:45 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/03 19:32:44 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	ft_Pup(t_data *data)
 	// 	d = d + 2 * PI;
 	b = data->player->pos_x;
 	a = data->player->pos_y;
-	if (data->map->coord[(int)(floor)(a - 0.2 * cos(d))][(int)(floor)(b)] != '1')
-		data->player->pos_y -= 0.2 * cos(d);
-	if (data->map->coord[(int)(floor)(a)][(int)(floor)(b + 0.2  * sin(d))] != '1')
-		data->player->pos_x += 0.2  * sin(d);;
+	if (data->map->coord[(int)(floor)(a - SPEED * cos(d))][(int)(floor)(b)] != '1')
+		data->player->pos_y -= SPEED * cos(d);
+	if (data->map->coord[(int)(floor)(a)][(int)(floor)(b + SPEED  * sin(d))] != '1')
+		data->player->pos_x += SPEED  * sin(d);;
 	ft_paint(data);
 // 	if (var->per_y - 1 > 0 && var->map[var->per_y - 1][var->per_x] == '0')
 // 	{
@@ -59,8 +59,8 @@ void	ft_Pup(t_data *data)
 void	ft_Pleft(t_data *data)
 {
 
-	// data->player->pos_y += 0.2 * cos(d);
-	// data->player->pos_x -= 0.2  * sin(d);
+	// data->player->pos_y += SPEED * cos(d);
+	// data->player->pos_x -= SPEED  * sin(d);
 	// ft_paint(data);
 
 	double a, b;
@@ -74,10 +74,10 @@ void	ft_Pleft(t_data *data)
 	// 	d = d + 2 * PI;
 	b = data->player->pos_x;
 	a = data->player->pos_y;
-	if (data->map->coord[(int)(floor)(a + 0.2 * cos(d))][(int)(floor)(b)] != '1')
-		data->player->pos_y += 0.2 * cos(d);
-	if (data->map->coord[(int)(floor)(a)][(int)(floor)(b - 0.2  * sin(d))] != '1')
-		data->player->pos_x -= 0.2  * sin(d);;
+	if (data->map->coord[(int)(floor)(a + SPEED * cos(d))][(int)(floor)(b)] != '1')
+		data->player->pos_y += SPEED * cos(d);
+	if (data->map->coord[(int)(floor)(a)][(int)(floor)(b - SPEED  * sin(d))] != '1')
+		data->player->pos_x -= SPEED  * sin(d);;
 	ft_paint(data);
 
 // 	if (var->per_x - 1 > 0 && var->map[var->per_y][var->per_x - 1] == '0')
@@ -107,8 +107,8 @@ void	ft_Pleft(t_data *data)
 
 void	ft_Pdown(t_data *data)
 {
-	// data->player->pos_y += 0.2 * cos(data->player->look);
-	// data->player->pos_x -= 0.2  * sin(data->player->look);;
+	// data->player->pos_y += SPEED * cos(data->player->look);
+	// data->player->pos_x -= SPEED  * sin(data->player->look);;
 	// ft_paint(data);
 
 double a, b;
@@ -122,10 +122,10 @@ double a, b;
 	// 	d = d + 2 * PI;
 	b = data->player->pos_x;
 	a = data->player->pos_y;
-	if (data->map->coord[(int)(floor)(a + 0.2 * cos(d))][(int)(floor)(b)] != '1')
-		data->player->pos_y += 0.2 * cos(d);
-	if (data->map->coord[(int)(floor)(a)][(int)(floor)(b - 0.2  * sin(d))] != '1')
-		data->player->pos_x -= 0.2  * sin(d);;
+	if (data->map->coord[(int)(floor)(a + SPEED * cos(d))][(int)(floor)(b)] != '1')
+		data->player->pos_y += SPEED * cos(d);
+	if (data->map->coord[(int)(floor)(a)][(int)(floor)(b - SPEED  * sin(d))] != '1')
+		data->player->pos_x -= SPEED  * sin(d);;
 	ft_paint(data);
 
 
@@ -158,8 +158,8 @@ double a, b;
 void	ft_Pright(t_data *data)
 {
 
-	// data->player->pos_y -= 0.2 * cos(d);
-	// data->player->pos_x += 0.2  * sin(d);
+	// data->player->pos_y -= SPEED * cos(d);
+	// data->player->pos_x += SPEED  * sin(d);
 	// ft_paint(data);
 
 	double a, b;
@@ -173,10 +173,10 @@ void	ft_Pright(t_data *data)
 		d = d + 2 * PI;
 	b = data->player->pos_x;
 	a = data->player->pos_y;
-	if (data->map->coord[(int)(floor)(a - 0.2 * cos(d))][(int)(floor)(b)] != '1')
-		data->player->pos_y -= 0.2 * cos(d);
-	if (data->map->coord[(int)(floor)(a)][(int)(floor)(b + 0.2  * sin(d))] != '1')
-		data->player->pos_x += 0.2  * sin(d);;
+	if (data->map->coord[(int)(floor)(a - SPEED * cos(d))][(int)(floor)(b)] != '1')
+		data->player->pos_y -= SPEED * cos(d);
+	if (data->map->coord[(int)(floor)(a)][(int)(floor)(b + SPEED  * sin(d))] != '1')
+		data->player->pos_x += SPEED  * sin(d);;
 	ft_paint(data);
 
 

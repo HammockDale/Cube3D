@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/03 19:17:59 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/03 19:41:51 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 # include <math.h>
 
-# define BONUS 0
+# define BONUS 1
 # define NO_BONUS_STR "0NSWE"
 # define BONUS_STR "0NSWEDLX"
 # define ARGUMENT_OPEN_ERROR 1
@@ -62,6 +62,7 @@
 # define W_MAP 210
 # define M_GROUND 65355
 # define SCALE 3
+# define SPEED 0.2
 
 typedef struct s_image
 {

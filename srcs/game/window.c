@@ -6,20 +6,11 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:46:37 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/27 18:49:32 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/03 19:19:54 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
-
-
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->window->addr + (int)(y * data->window->line_length + x * (data->window->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
-}
 
 
 void	ft_cast_rays(t_data *data, int color)
@@ -29,15 +20,12 @@ void	ft_cast_rays(t_data *data, int color)
 	double d;
 
 	i = 0;
-	d = data->player->cameraX - (double)(PI / 2);
-	// printf ("a = %f\n", data->player->cameraX);
-	// 	printf ("a = %f\n", a);
-	// if (d > 2 * PI)
-	// 	d = d - 2 * PI;
+	// d = data->player->cameraX - (double)(PI / 2);
+	d = data->player->look - PI / 2;
 	if (d < 0)
 		d = d + 2 * PI;
 
-printf("\n\n ugol = %f\n\n", d);
+// printf("\n\n ugol = %f\n\n", d);
 
 	float start = (d  - UGOL / 2) ;// - [половина угла обзора]; // начало веера лучей
   float end = d + UGOL / 2;//ray.dir + [половина угла обзора]; // край веера лучей
@@ -50,7 +38,7 @@ printf("\n\n ugol = %f\n\n", d);
 		{
 			data->player->ray_x += cos(start)  / ONE_SIZE;
 			data->player->ray_y += sin(start)  / ONE_SIZE;
-			my_mlx_pixel_put(data, data->player->ray_x * ONE_SIZE, data->player->ray_y * ONE_SIZE, color);
+			// my_mlx_pixel_put(data, data->player->ray_x * ONE_SIZE, data->player->ray_y * ONE_SIZE, color);
 		}
 
 	double j;
@@ -70,12 +58,12 @@ printf("\n\n ugol = %f\n\n", d);
 				// wall = (double)(((sqrt(a*a + b*b) * ONE_SIZE )* (fabs)(tan(start))));//   * ONE_SIZE * ONE_SIZE;
 		// printf("gip = %f wall = %f gip = %f statrt = %f tan = %f\n", gip, wall, sqrt(a*a + b*b), start, tan( start));
 		}
+// put walls
 		while (j < wall && j < 1000)
 		{
 			my_mlx_pixel_put(data, i, j, 0x0FF00FF);
 			j += 1;
 		}
-
 		wall -= H_PANEL / 2;
 		while (wall  > 0)
 		{
@@ -112,13 +100,6 @@ void ft_draw_(t_data *data, double x, double y, int color)
 	// mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->window->img, 0, 0);
 
 }
-void ft_draw_player(t_data *data, int color)
-{
-	
-			my_mlx_pixel_put(data, (int)(data->player->pos_x  * ONE_SIZE), (int)(data->player->pos_y * ONE_SIZE), color);
-
-		ft_cast_rays(data, color);
-}
 
 
 void	ft_draw_2D_woll(t_data *data)
@@ -144,6 +125,8 @@ void	ft_draw_2D_woll(t_data *data)
 
 void	ft_paint(t_data *data)
 {
+	int color = 65333;
+
 	mlx_clear_window(data->window->mlx_ptr, data->window->win_ptr);
 	
 	data->window->addr = mlx_get_data_addr(data->window->img, &data->window->bits_per_pixel, &data->window->line_length, &data->window->endian);
@@ -154,7 +137,7 @@ void	ft_paint(t_data *data)
 	// ft_draw_2D_woll(data);
 	
 	// ft_draw_(data, data->player->pos_x, data->player->pos_y, 0x0F0FFFF);
-	ft_draw_player(data, 0x0F0FFFF);
+	ft_cast_rays(data, color);
 	mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->window->img, 0, 0);
 
 	// ft_background(var);
@@ -167,6 +150,8 @@ void	ft_paint(t_data *data)
 	// ft_hornet_L(var, 0, 0);
 	// ft_paint_text(var);
 }
+
+
 
 int	key_kb_hook(int keycode, t_data *data)
 {

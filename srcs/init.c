@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:19 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/29 15:52:29 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/03 19:13:18 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,6 @@ t_player	*ft_init_player(t_player *player)
 	player->planeY = 0.66;
 	player->time = 0;
 	player->oldTime = 0;
-	player->cameraX = 0;
-	player->cameraY = 0;
 	player->rayDirX = 0;
 	player->rayDirY = 0;
 

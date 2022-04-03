@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/02 21:37:30 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/03 19:17:59 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,8 +90,6 @@ typedef struct s_player
 	double		time;
 	double		oldTime;
 
-	double		cameraX;
-	double		cameraY;
 	double		rayDirX;
 	double		rayDirY;
 
@@ -252,12 +250,12 @@ void		ft_turn_left(t_data *sdata);
 
 /*other*/
 
-// void		ft_Pup(t_data *data);
-// void		ft_Pright(t_data *data);
-// void		ft_Pdown(t_data *data);
-// void		ft_Pleft(t_data *data);
-// void		ft_Pclock(t_data *data);
-// void		ft_Pconterclock(t_data *data);
+void		ft_Pup(t_data *data);
+void		ft_Pright(t_data *data);
+void		ft_Pdown(t_data *data);
+void		ft_Pleft(t_data *data);
+void		ft_Pclock(t_data *data);
+void		ft_Pconterclock(t_data *data);
 void		ft_open_door(t_data *data);
 
 void		ft_draw_(t_data *data, double x, double y, int color);

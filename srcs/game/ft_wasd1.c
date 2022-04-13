@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 16:08:59 by hdale             #+#    #+#             */
-/*   Updated: 2022/03/30 09:40:19 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/13 16:27:35 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void		ft_go_forward(t_data *data)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
-	x = data->map->x;
 	y = data->map->y;
+	x = data->map->x;
 	if (data->map->coord[y - 1][x] == '0' || data->map->coord[y - 1][x] == 'L'
 		|| data->map->coord[y - 1][x] == 'X')
 	data->map->y--;
@@ -26,11 +26,11 @@ void		ft_go_forward(t_data *data)
 
 void		ft_str_left(t_data *data)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
-	x = data->map->x;
 	y = data->map->y;
+	x = data->map->x;
 	if (data->map->coord[y][x - 1] == '0' || data->map->coord[y][x - 1] == 'L'
 		|| data->map->coord[y][x - 1] == 'X')
 	data->map->x--;
@@ -38,11 +38,11 @@ void		ft_str_left(t_data *data)
 
 void		ft_go_backward(t_data *data)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
-	x = data->map->x;
 	y = data->map->y;
+	x = data->map->x;
 	if (data->map->coord[y + 1][x] == '0' || data->map->coord[y + 1][x] == 'L'
 		|| data->map->coord[y + 1][x] == 'X')
 	data->map->y++;
@@ -50,11 +50,11 @@ void		ft_go_backward(t_data *data)
 
 void		ft_str_right(t_data *data)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
-	x = data->map->x;
 	y = data->map->y;
+	x = data->map->x;
 	if (data->map->coord[y][x + 1] == '0' || data->map->coord[y][x + 1] == 'L'
 		|| data->map->coord[y][x + 1] == 'X')
 	data->map->x++;

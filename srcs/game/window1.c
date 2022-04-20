@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:46:37 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/03 20:09:54 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/20 18:14:44 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,7 +199,7 @@ int	key_kb_hook(int keycode, t_data *data)
 		ft_turn_left(data);
 	else if (keycode == USE)
 		ft_open_door(data);
-printf("keycode = %d\n", keycode);
+// printf("keycode = %d\n", keycode);
 	if (keycode == EXIT)
 	{
 		mlx_destroy_window(data->window->mlx_ptr, data->window->win_ptr);

@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 08:54:05 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/03 18:54:55 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/20 18:15:07 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ void	ft_back_bonus(t_data *data)
 	{
 		while (j < H_PANEL / 2)
 		{
-			my_mlx_pixel_put(data, i, j, data->cloud->trgb);                //TODO
+			my_mlx_pixel_put(data, i, j, 0x0000FF);                //TODO
 			j++;
 		}
 		while (j < H_PANEL)
 		{
-			my_mlx_pixel_put(data, i, j, data->ground->trgb);               //TODO
+			my_mlx_pixel_put(data, i, j, 0x777700);               //TODO
 			j++;
 		}
 		j = 0;
@@ -104,9 +104,8 @@ void	ft_put_minimap(t_data *data)
 		x = 0;
 		while (x < data->map->size_x)
 		{
-			if (data->map->coord[y][x] == ' ')
-				ft_draw_2D_obj(data, beg_x + x * SCALE, beg_y + y * SCALE, SCALE, 0);
-			else if (data->map->coord[y][x] == '1')
+
+			if (data->map->coord[y][x] == '1')
 				ft_draw_2D_obj(data, beg_x + x * SCALE, beg_y + y * SCALE, SCALE, 0xcacaca);
 			else if (data->map->coord[y][x] == 'N' || data->map->coord[y][x] == 'W'
 				|| data->map->coord[y][x] == 'S' || data->map->coord[y][x] == 'E')
@@ -117,6 +116,8 @@ void	ft_put_minimap(t_data *data)
 				ft_draw_2D_obj(data, beg_x + x * SCALE, beg_y + y * SCALE, SCALE, 0x06f666);
 			else if (data->map->coord[y][x] == 'X')
 				ft_draw_2D_obj(data, beg_x + x * SCALE, beg_y + y * SCALE, SCALE, 0xff0000);
+			// else if (data->map->coord[y][x] == ' ')
+			// 	ft_draw_2D_obj(data, beg_x + x * SCALE, beg_y + y * SCALE, SCALE, 0);
 			x++;
 		}
 		y++;

@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:46:37 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/03 19:30:54 by esylva           ###   ########.fr       */
+/*   Updated: 2022/04/03 20:09:54 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,11 +170,18 @@ void	ft_draw_2D_woll(t_data *data)
 	}
 }
 
-int	mouse_move(int keycode, t_data *data)
-{
-	(void)data;
-	return(keycode);
-}
+// int	mouse_move(int keycode, t_data *data)
+// {
+// 	static int old = 350;
+// 	(void)data;
+// 	printf("keycode = %d", keycode);
+// 	// if (old < keycode)
+// 	// 	ft_turn_left(data);
+// 	// if (old > keycode)
+// 	// 	ft_turn_right(data);
+// 	old = keycode;
+// 	return(keycode);
+// }
 
 int	key_kb_hook(int keycode, t_data *data)
 {

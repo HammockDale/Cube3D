@@ -80,7 +80,7 @@ void	ft_cast_rays(t_data *data, int color)
 			data->player->ray_y += sin(start)  / ONE_SIZE;
 			// my_mlx_pixel_put(data, data->player->ray_x * ONE_SIZE, data->player->ray_y * ONE_SIZE, color);
 		}
-
+/* здесь нужна функция вертикального кастинга*/
 	double j;
 		double gip;
 	j = H_PANEL / 2;

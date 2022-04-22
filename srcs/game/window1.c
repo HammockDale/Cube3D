@@ -78,7 +78,7 @@ void	ft_cast_rays(t_data *data, int color)
 		{
 			data->player->ray_x += cos(start)  / ONE_SIZE;
 			data->player->ray_y += sin(start)  / ONE_SIZE;
-			my_mlx_pixel_put(data, data->player->ray_x * ONE_SIZE, data->player->ray_y * ONE_SIZE, color);
+			// my_mlx_pixel_put(data, data->player->ray_x * ONE_SIZE, data->player->ray_y * ONE_SIZE, color);
 		}
 
 	double j;
@@ -140,6 +140,7 @@ void ft_draw_(t_data *data, double x, double y, int color)
 	// mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->window->img, 0, 0);
 
 }
+
 void ft_draw_player(t_data *data, int color)
 {
 	
@@ -229,7 +230,7 @@ void	ft_img_init(t_data *data)
 		data->east->loc, &data->east->size_x, &data->east->size_y);
 	data->east->addr = mlx_get_data_addr(data->east->image,
 		&data->east->bitpp, &data->east->line, &data->east->endian);
-	}
+}
 
 void	ft_img_bonus_init(t_data *data)
 	{

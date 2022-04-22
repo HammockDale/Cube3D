@@ -230,6 +230,7 @@ void		ft_back(t_data *data);
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void		ft_put_minimap(t_data *data);
 void		ft_draw_2D_obj(t_data *data, int x, int y, int size, int color);
+void		ft_cast_mini_rays(t_data *data, int color, double beg_x, double beg_y);
 
 /* free.c */
 t_window	*ft_free_window(t_window *window);

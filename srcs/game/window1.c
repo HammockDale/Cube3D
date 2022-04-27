@@ -140,108 +140,31 @@ void	ft_cast_rays(t_data *data, int color)
 			int *text4;
 			text4 = (int*)data->east->addr;
 		double tmp;
-			// tmp =1 +  ((1 / gip)  * 200) / ONE_SIZE;
 			tmp =  (1 / (gip)  * 200) + 1;
-			// tmp = 1 + (wall) / ONE_SIZE;
-		// 	printf("i = %d, tmp= %d ", i, tmp);
-		// 	j = 30;
-			// my_mlx_pixel_put(data, i, j, text[(int)i  % 50 * j ]  );
 		int n = 0;
 		int m = 0;
 		int k, k2;
 		int k3, k4;
-		// int l = 2;
-		// while(n < 100)
-		// {
-		// 	while (m < 100)
-		// 	{
-		// 		k = (int)m / tmp * 50  + n / tmp % 50;
-		// 		my_mlx_pixel_put(data, n+300, m+300, text2[k ]  );
-		// 		m++;
-		// 		// printf("int = %d",k);
-		// 	}
-		// 	m = 0;
-		// 	n++;
-		// }
-		// printf("wall= %f", wall);
-		// printf("data->player->ray_y = %f", data->player->ray_y);
+		
 		double da, db, dx, dy, c, d;
 			da = modf((a), &dx);
 			db = modf((b), &dy);
 			dx = modf(( data->player->ray_x ), &c);
 			dy = modf(( data->player->ray_y ), &c);
 			d = modf(fabs( gip ), &c);
-			// printf("%f ", dx);
-		// 	while (j < wall && j < 1000)
-		// {
-		// 	my_mlx_pixel_put(data, i, j, 0x0FF00FF);
-		// while (j < wall && j < 1000)
-		// {
-		// 	m = j;
-		// 	n = i ;
-			
-		// 	// printf(" j = %d, tmp = %f", j, tmp);
-		// 	// k = m / tmp * ONE_SIZE  + n / tmp % ONE_SIZE;
-		// 	// k =( m % (int)(da * 100) )+ n  % ONE_SIZE * ONE_SIZE;
-		// 	k =  m  / tmp + (int)(da * ONE_SIZE) * ONE_SIZE;
-		// 	k2 =  m  / tmp  + (int)(db * ONE_SIZE) * ONE_SIZE;
-		// 	k = (int)(dy * j) % ONE_SIZE + (int)(da * ONE_SIZE) * ONE_SIZE ;
-		// 	// k =m  / tmp  % ONE_SIZE + (int)(da * ONE_SIZE) * ONE_SIZE;
-		// 	// if( ( db < 0.05 || db > 0.95))
-		// 	// my_mlx_pixel_put(data, i, j, 0x0FF00FF);
-		// 	k2 = (int)(m / tmp)  + (int)(dy * ONE_SIZE) * ONE_SIZE;
-		// 	k =   (int)(( (j - H_PANEL / 2))  / (tmp ) * ONE_SIZE ) / 2 * ONE_SIZE + (int)(dx * ONE_SIZE) - 300;
-		// 	k2 =   (int)(((j - H_PANEL / 2) )  / (tmp ) * ONE_SIZE ) / 2 * ONE_SIZE + (int)(dy * ONE_SIZE);
-		// 	// printf("k = %d ", k);
-		// 	k3 = (int)( m / tmp) % ONE_SIZE + (int)(da * ONE_SIZE) * ONE_SIZE;
-		// 	// k4 =  m  / tmp % ONE_SIZE + (int)(db * ONE_SIZE) * ONE_SIZE;
-		// 	k4 = (int)data->player->pos_x & (ONE_SIZE - 1);
-		// 	// printf(" 1 %d 2 %d", k, m / tmp);
-		// 	if (k <= k2 )
-		// 		my_mlx_pixel_put(data, n, m, text[k]);
-		// 		// my_mlx_pixel_put(data, n, m, text[(int)(data->player->ray_x * data->player->ray_y * j /ONE_SIZE)]  );
-		// 	else 
-		// 	// if (data->player->ray_x > 0)
-		// 	// if (data->player->ray_x  < data->player->ray_y)
-		// 		my_mlx_pixel_put(data, n, m, text2[k2]);
-		// 		// my_mlx_pixel_put(data, n, m, text2[k4 * ONE_SIZE + k4 ]  );
-		// 	// else
-		// 	// 	my_mlx_pixel_put(data, n, m, text3[k3 ]  );
-		// 	// else 
-		// 	// else
-			
-		// 	j += 1;
-		// }
-
-			// mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->north->image, 0, 0);
-		wall -= H_PANEL / 2;
-		// double tmp;
-			// tmp =  ((1 / gip)  * 200) + 1;
-			// tmp = wall ;
+			wall -= H_PANEL / 2;
 			int l;
 			
 			if (wall >= H_PANEL / 2)
 			{
 				wall = H_PANEL / 2;
-			
 			}
 			l = wall;
-			// printf("wall = %f d = %f ",data->player->look, d);
-			k2 =  (int)((tmp - wall)/ tmp * ONE_SIZE) / 2* ONE_SIZE  + (int)(dy * ONE_SIZE) ;
-			k3 =  (int)((tmp - wall)/ tmp * ONE_SIZE) / 2* ONE_SIZE  - (int)(dy * ONE_SIZE) ;
-			k = (int)( (tmp - wall)/tmp * ONE_SIZE) / 2 * ONE_SIZE + (int)(dx * ONE_SIZE) ;
-			k4 = (int)( (tmp - wall)/tmp * ONE_SIZE) / 2 * ONE_SIZE - (int)(dx * ONE_SIZE) ;
-			// printf("k1 = %d, k2 = %d, k3 = %d, k4 = %d ", k, k2, k3, k4);
-			// printf("dx = %f, dy = %f\n", dx, dy);
+
 		while (wall  > -l)
 		{
 			n = i ;
-			// if (wall >= H_PANEL / 2)
-			// {
-			// 	wall = H_PANEL / 2;
-			// 	l = - wall;
-			// }
-			// my_mlx_pixel_put(data, i, H_PANEL / 2 - wall, 0x0FF00FF);
+
 			m =  H_PANEL / 2 - wall;
 			k2 =  (int)((tmp - wall)/ tmp * ONE_SIZE) / 2* ONE_SIZE  + (int)(dy * ONE_SIZE) ;
 			k3 =  (int)((tmp - wall)/ tmp * ONE_SIZE) / 2* ONE_SIZE  + (int)(da * ONE_SIZE) ;
@@ -266,7 +189,6 @@ void	ft_cast_rays(t_data *data, int color)
 		j = H_PANEL / 2;
 		start += UGOL / (W_PANEL);//[угол обзора] / [количество лучей];
 	}
-	// printf("\n");
 }
 
 void ft_draw_(t_data *data, double x, double y, int color)

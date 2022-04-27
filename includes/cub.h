@@ -54,9 +54,9 @@
 # define USE 14
 
 # define PI 3.14159265
-# define ONE_SIZE 40
+# define ONE_SIZE 64
 # define WOLL 0x0553300
-# define UGOL PI/2
+# define UGOL PI/3
 # define W_PANEL 1280
 # define H_PANEL 720
 # define W_MAP 210
@@ -75,6 +75,7 @@ typedef struct s_image
 	int		trgb;
 	int		size_x;
 	int		size_y;
+
 }				t_image;
 
 typedef struct s_player

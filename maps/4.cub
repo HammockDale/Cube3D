@@ -1,9 +1,9 @@
-NO img/walls/blue.xpm
- SO img/walls/grey.xpm 
- WE img/walls/brick.xpm     
- EA img/walls/wood.xpm
- F   	    img/ground.xpm
- C img/walls/brick.xpm
+NO          ../img/fish.xpm
+        SO ../img/gate.xpm     
+        WE              ../img/ground.xpm
+   EA  		   ../img/wall.xpm
+ F   	    ../img/ground.xpm
+ C  ../img/ground.xpm
 
 
 
@@ -18,7 +18,7 @@ NO img/walls/blue.xpm
 11110111111111011100000010001
 11110111111111011101010010001
 11000000110101011100000L10001
-10000E00000000001100000010001
+1000000N000000001100000010001
 11100000000000000011010100101
 1000001111101011111011111D111
 11110111 1110101 101111010X01

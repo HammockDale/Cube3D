@@ -98,6 +98,9 @@ void	ft_free_all(t_data *data)
 		data->door = ft_free_sprite(data->door);
 	if (data->loot)
 		data->loot = ft_free_sprite(data->loot);
+
+	if (data->collet)
+		data->collet = ft_free_image(data->collet);
 	free (data);
 	data = NULL;
 }

@@ -61,6 +61,7 @@ int	ft_cube(char *carta, t_data *data)
 
 void	ft_game(t_data *data)
 {
+	mlx_mouse_hide()
 	ft_paint(data);
 	// ft_button(data);
 

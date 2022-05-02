@@ -423,11 +423,6 @@ void	ft_img_bonus_init(t_data *data)
 			&data->collet->bitpp, &data->collet->line, &data->collet->endian);
 	}
 
-
-
-
-
-
 // void	process_input(t_all *all)
 // {
 // 	mlx_hook(all->mlx.window, 2, 1L << 0, key_press, all);

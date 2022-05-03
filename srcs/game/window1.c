@@ -329,18 +329,26 @@ void	ft_draw_2D_woll(t_data *data)
 	}
 }
 
-// int	mouse_move(int keycode, t_data *data)
-// {
-// 	static int old = 350;
-// 	(void)data;
-// 	printf("keycode = %d", keycode);
-// 	// if (old < keycode)
-// 	// 	ft_turn_left(data);
-// 	// if (old > keycode)
-// 	// 	ft_turn_right(data);
-// 	old = keycode;
-// 	return(keycode);
-// }
+int	mouse_move(int keycode, t_data *data)
+{
+	static int mouse_x = W_PANEL / 2;
+	static int mouse_y = H_PANEL / 2;
+	int x;
+	int y;
+
+	x = 0;
+	y = 0;
+	mlx_mouse_get_pos(data->window->win_ptr, &x, &y);
+	data->player->look += (double)(PI / 2) / (W_PANEL / 2) * (mouse_x - x);
+	ft_paint(data);
+	mlx_mouse_move(data->window->win_ptr, mouse_x, mouse_y)
+	return(keycode);
+}
+
+
+
+
+
 
 int	key_kb_hook(int keycode, t_data *data)
 {
@@ -417,7 +425,7 @@ void	ft_img_bonus_init(t_data *data)
 		if (!data->collet)
 			exit(6);
 		data->collet->image = mlx_xpm_file_to_image(data->window->mlx_ptr,
-			"/Users/hdale/Desktop/cubic/img/barrel.xpm", &data->collet->size_x, &data->collet->size_y);
+			"img/barrel.xpm", &data->collet->size_x, &data->collet->size_y);
 
 		data->collet->addr = mlx_get_data_addr(data->collet->image,
 			&data->collet->bitpp, &data->collet->line, &data->collet->endian);

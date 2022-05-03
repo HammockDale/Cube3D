@@ -14,23 +14,24 @@
 
 void	ft_sprite(t_data *data, double *k, int l)
 {
-	// double a, b;
+	double a, b;
 	double sprite;
 	int *text;
 	double	tmp;
-	// double	dx, dy, d;
+	double	dx, dy;
+	int dk;
 
 	text = (int*)data->collet->addr;
-	// a = data->player->ray_x - data->player->pos_x;
-	// b = data->player->ray_y - data->player->pos_y;
+	a = data->player->ray_x - data->player->pos_x;
+	b = data->player->ray_y - data->player->pos_y;
 	sprite = (1 / sqrt(powf(data->player->ray_x - data->player->pos_x, 2) + powf(data->player->ray_y - data->player->pos_y, 2)))  * 200;
-	// dx = modf(data->player->ray_x, &tmp);
-	// dy = modf(data->player->ray_y, &tmp);
+	dx = modf(data->player->ray_x, &tmp);
+	dy = modf(data->player->ray_y, &tmp);
 	// d = modf(sprite, &tmp);
 
 	(void)k;
 	(void)l;
-	int		kx;
+	// int		kx;
 	// int		ky;
 	// printf("k = % d ", k);
 // mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->collet->image , i, j);
@@ -55,26 +56,71 @@ void	ft_sprite(t_data *data, double *k, int l)
 
 	tmp = sprite;
 	double wid;
+	// wid = *k;
 	wid = tmp;
 	int n = l;
+	double k1;
+	k1 =*k;
+	*k  += 1 / (sprite * 4);
 	while (sprite  > -tmp)
 	{
-		while (wid > -tmp)
+		// while (wid > -tmp)
 		{
-		// ky = (int)((tmp - sprite) / tmp * ONE_SIZE) / 2 * ONE_SIZE + (int)(dy * ONE_SIZE);
-		// kx = (int)((tmp - sprite) / tmp * ONE_SIZE) / 2 * ONE_SIZE + (int)(dx * ONE_SIZE);
-		kx = (int)((tmp - sprite) / tmp * ONE_SIZE) / 2 * ONE_SIZE + (int)(*k * ONE_SIZE);
+			// ky = (int)((tmp - sprite) / tmp * ONE_SIZE) / 2 * ONE_SIZE + (int)(dy * ONE_SIZE);
+			// kx = (int)((tmp - sprite) / tmp * ONE_SIZE) / 2 * ONE_SIZE + (int)(dx * ONE_SIZE);
+			// kx = (int)((tmp - sprite) / tmp * ONE_SIZE) / 2 * ONE_SIZE + (int)(d * ONE_SIZE);
+			// if (dx > 0.2 && dx < 0.8)
+			// {
+			// 	if (wid < dx)
+			// 	{
+			// 		wid = dx;
+
+			// 	}
+			// 	// my_mlx_pixel_put(data, n, H_PANEL / 2 - sprite, ((int*)data->collet->addr)[kx]);
+			// }
+			// else
+			// if (dy > 0.2 && dy < 0.8)
+			// {
+			// 	if (wid < dy)
+			// 	{
+			// 		wid = dy;
+
+			// 	}
+			// }
+
+			// if (k1 <= 1)
+			// {
+					dk = (int)((tmp - sprite) / tmp * ONE_SIZE) / 2 * ONE_SIZE + (int)(*k * ONE_SIZE);
 		// kx = (int)((tmp - sprite) / tmp * ONE_SIZE) / 2 * ONE_SIZE + (int)(d * ONE_SIZE);
-		if (((int*)data->collet->addr)[kx] != 0)
-			my_mlx_pixel_put(data, n, H_PANEL / 2 - sprite, ((int*)data->collet->addr)[kx]);
-			wid--;
-			n++;
+		if (((int*)data->collet->addr)[dk] != 0)
+			my_mlx_pixel_put(data, n, H_PANEL / 2 - sprite, ((int*)data->collet->addr)[dk]);
+				// dk = (int)((tmp - sprite) / tmp * ONE_SIZE) / 2 * ONE_SIZE + (int)(*k * ONE_SIZE);
+				// if (((int*)data->collet->addr)[dk] != 0)
+				// 	my_mlx_pixel_put(data, l, H_PANEL / 2 - sprite, ((int*)data->collet->addr)[dk]);
+				// wid--;
+			// }
+			// 	n++;
+			// 	// if (*k <= 1 - 1 / (sprite * 4) )
+			// 	(k1) += 1 / (sprite * 8);
+			// else
+			// if (dy > 0.2 && dy < 0.8)
+			// {
+			// 	if (((int*)data->collet->addr)[ky] != 0)
+			// 	my_mlx_pixel_put(data, n, H_PANEL / 2 - sprite, ((int*)data->collet->addr)[ky]);
+			// }
+			// else
+			// if (((int*)data->collet->addr)[dk] != 0)
+			// {
+			// 	my_mlx_pixel_put(data, n, H_PANEL / 2 - sprite, ((int*)data->collet->addr)[dk]);
+				wid--;
+			// 	// n++;
+			// }
 		}
-		n = l;
-		if (*k <= 1 - 1 / (sprite * 4) )
-			(*k) += 1 / (sprite * 4);
 		wid = tmp;
-		sprite--;
+	k1 = *k;
+	n = l;
+	// wid = tmp;
+	sprite--;
 	}
 }
 
@@ -203,8 +249,9 @@ void	ft_cast_rays(t_data *data, int color, char str)
 				if (start > (d  - UGOL / 2) )
 				{
 					ft_sprite(data, &l, i);
-					str = 'i';
+					// str = 'i';
 					break;
+					// return ;
 				}
 				// else
 				// {

@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/05/04 09:02:38 by esylva           ###   ########.fr       */
+/*   Updated: 2022/05/04 09:27:38 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,25 @@
 # define MAP_ERROR -10
 
 /* keycodes for ubuntu */
-// # define TURN_LEFT 65361
-// # define TURN_RIGHT 65363
-// # define GO_FORWARD 119
-// # define GO_BACKWARD 115
-// # define STR_LEFT 97
-// # define STR_RIGHT 100
-// # define EXIT 65307
-// # define USE 101
+# define TURN_LEFT 65361
+# define TURN_RIGHT 65363
+# define GO_FORWARD 119
+# define GO_BACKWARD 115
+# define STR_LEFT 97
+# define STR_RIGHT 100
+# define EXIT 65307
+# define USE 101
 
 /* keycodes for Mac */
 
-# define TURN_LEFT 123
-# define TURN_RIGHT 124
-# define GO_FORWARD 13
-# define GO_BACKWARD 1
-# define STR_LEFT 0
-# define STR_RIGHT 2
-# define EXIT 53
-# define USE 14
+// # define TURN_LEFT 123
+// # define TURN_RIGHT 124
+// # define GO_FORWARD 13
+// # define GO_BACKWARD 1
+// # define STR_LEFT 0
+// # define STR_RIGHT 2
+// # define EXIT 53
+// # define USE 14
 
 # define PI 3.14159265
 # define ONE_SIZE 64

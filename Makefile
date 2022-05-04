@@ -5,7 +5,7 @@ HEADER = includes/cub.h
 INCLUDES = -I includes -I libft -I/usr/include -Imlx_linux -O3
 
 SRC_DIR = srcs/
-SRCS_F = main.c init.c free.c
+SRCS_F = main1.c init.c free.c
 
 PARS_DIR = parser/
 PARS_F = parser.c parser_utils.c checker.c parser_utils2.c 

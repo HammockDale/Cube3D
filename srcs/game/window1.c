@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:46:37 by esylva            #+#    #+#             */
-/*   Updated: 2022/05/04 09:09:01 by esylva           ###   ########.fr       */
+/*   Updated: 2022/05/04 09:34:56 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_win_init(t_data *data)
 void	ft_paint(t_data *data)
 {
 
-	printf("y = %f, x= %f\n", data->player->pos_y, data->player->pos_x );
+	// printf("y = %f, x= %f\n", data->player->pos_y, data->player->pos_x );
 	if (data->map->coord[(int)floor(data->player->pos_y )][(int)floor(data->player->pos_x )] == 'L')
 	{
 		data->map->coord[(int)floor(data->player->pos_y )][(int)floor(data->player->pos_x )] = '0';
@@ -54,13 +54,12 @@ void	ft_paint(t_data *data)
 		ft_back(data);
 	else
 		ft_back_bonus(data);
-
-	// ft_cast_rays(data, 65432);
-	// ft_cast_rays(data, 65432);
 	ft_cast_rays(data, 65432, '1');
-	ft_cast_rays(data, 65432, 'L');
 	if (data->bonus)
-		ft_put_minimap(data);	
+	{
+		ft_cast_rays(data, 65432, 'L');
+		ft_put_minimap(data);
+	}
 	//TODO//
 	 mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->window->img, 0, 0);
 }

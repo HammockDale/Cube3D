@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:46:37 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/20 18:14:44 by esylva           ###   ########.fr       */
+/*   Updated: 2022/05/04 09:09:01 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ void	ft_paint(t_data *data)
 		ft_back(data);
 	else
 		ft_back_bonus(data);
+
+	// ft_cast_rays(data, 65432);
+	// ft_cast_rays(data, 65432);
 	ft_cast_rays(data, 65432, '1');
 	ft_cast_rays(data, 65432, 'L');
 	if (data->bonus)
@@ -97,11 +100,11 @@ void	ft_sprite(t_data *data, double *k, int l)
 {
 	// double a, b;
 	double sprite;
-	int *text;
+	// int *text;
 	double	tmp;
 	// double	dx, dy, d;
 
-	text = (int*)data->collet->addr;
+	// text = (int*)data->collet->addr;
 	// a = data->player->ray_x - data->player->pos_x;
 	// b = data->player->ray_y - data->player->pos_y;
 	sprite = (1 / sqrt(powf(data->player->ray_x - data->player->pos_x, 2) + powf(data->player->ray_y - data->player->pos_y, 2)))  * 200;
@@ -338,10 +341,11 @@ int	mouse_move(int keycode, t_data *data)
 
 	x = 0;
 	y = 0;
-	mlx_mouse_get_pos(data->window->win_ptr, &x, &y);
+	mlx_mouse_hide(data->window->mlx_ptr, data->window->win_ptr);
+	mlx_mouse_get_pos(data->window->mlx_ptr, data->window->win_ptr, &x, &y);
 	data->player->look += (double)(PI / 2) / (W_PANEL / 2) * (mouse_x - x);
 	ft_paint(data);
-	mlx_mouse_move(data->window->win_ptr, mouse_x, mouse_y)
+	mlx_mouse_move(data->window->mlx_ptr, data->window->win_ptr, mouse_x, mouse_y);
 	return(keycode);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/20 18:14:18 by esylva           ###   ########.fr       */
+/*   Updated: 2022/05/04 09:02:38 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,8 @@ typedef struct s_data
 	t_image			*east;
 	t_image			*south;
 	t_image			*west;
+	
+	t_image			*collet;
 	t_sprite		*door;
 	t_sprite		*loot;
 	char			bonus;
@@ -216,8 +218,9 @@ int			ft_check_rect_col(char **str, int w, int h);
 /* window.c */
 int			ft_win_init(t_data *data);
 void 		ft_coord(t_data *data);
-void		ft_cast_rays(t_data *data, int color);
 int			key_kb_hook(int keycode, t_data *data);
+// void		ft_cast_rays(t_data *data, int color);
+void		ft_cast_rays(t_data *data, int color, char str);
 
 
 void		ft_img_init(t_data *data);
@@ -265,7 +268,6 @@ void		ft_draw_(t_data *data, double x, double y, int color);
 
 void		ft_draw_player(t_data *data, int color);
 void		ft_paint(t_data *data);
-
 
 // int		key_hook(int keycode, t_map *map);
 // int		ft_player_action(t_map *map);

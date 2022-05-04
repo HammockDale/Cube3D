@@ -1,9 +1,9 @@
 NO img/walls/blue.xpm
- SO img/walls/grey.xpm 
- WE img/walls/brick.xpm     
- EA img/walls/wood.xpm
+                  SO             img/walls/grey.xpm 
+ WE     img/walls/brick.xpm     
+        EA     img/walls/wood.xpm               
  F   	    img/ground.xpm
- C img/walls/brick.xpm
+                        C img/sky.xpm
 
 
 

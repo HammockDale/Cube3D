@@ -1,7 +1,7 @@
 NAME = cub3D
 
 HEADER = includes/cub.h
-INCLUDES = -I includes -I libft -I mlx
+INCLUDES = -I includes -I libft -I mlx -I minilibx_opengl_20191021
 # INCLUDES = -I includes -I libft -I/usr/include -Imlx_linux -O3
 
 SRC_DIR = srcs/
@@ -32,18 +32,22 @@ FLAGS = -Wall -Werror -Wextra
 RM = rm -rf
 
 MAKE_MLX = make -sC mlx
+
 # MAKE_MLX = make -sC mlx_linux
-LINK_MLX = -lmlx -framework OpenGL -framework AppKit
+LINK_MLX = -Lmlx -lmlx -framework OpenGL   -lz   -framework AppKit
 # LINK_MLX = -Lmlx_linux -lmlx_linux -L/usr/lib -lXext -lX11 -lm -lz
 
 MAKE_LIBFT = make -sC libft
 LINK_LIBFT = -Llibft -lft
+
+MAKE_OPENGL = make -sC minilibx_opengl_20191021
 
 all: init $(NAME)
 
 init:
 	@$(MAKE_LIBFT)
 	@$(MAKE_MLX)
+	@$(MAKE_OPENGL)
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
@@ -61,6 +65,7 @@ clean:
 	@$(RM) $(OBJ)
 	@$(MAKE_MLX) clean
 	@$(MAKE_LIBFT) clean
+	@$(MAKE_OPENGL) clean
 
 fclean: clean
 	@$(MAKE_LIBFT) fclean

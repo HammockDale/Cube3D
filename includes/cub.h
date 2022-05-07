@@ -56,7 +56,7 @@
 # define PI 3.14159265
 # define ONE_SIZE 64
 # define WOLL 0x0553300
-# define UGOL PI/3
+# define UGOL PI/2
 # define W_PANEL 1280
 # define H_PANEL 720
 # define W_MAP 210
@@ -164,7 +164,9 @@ typedef struct s_data
 	t_image			*west;
 	t_sprite		*door;
 	t_sprite		*loot;
+	t_image 		*collet;
 	char			bonus;
+	int				*buf;
 }				t_data;
 	
 /* main.c */
@@ -216,13 +218,13 @@ int			ft_check_rect_col(char **str, int w, int h);
 /* window.c */
 int			ft_win_init(t_data *data);
 void 		ft_coord(t_data *data);
-void		ft_cast_rays(t_data *data, int color);
+void		ft_cast_rays(t_data *data, int color, char str);
 int			key_kb_hook(int keycode, t_data *data);
 
 
 void		ft_img_init(t_data *data);
 void		ft_img_bonus_init(t_data *data);
-int			mouse_move(int keycode, t_data *data);
+int    	    mouse_move(int x, int y, t_data *data);
 void		ft_draw_2D_wall(t_data *data);
 
 /* paint_back.c */

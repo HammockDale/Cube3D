@@ -12,6 +12,8 @@
 
 #include "cub.h"
 
+
+
 int	main(int argc, char **argv)
 {
 	int		i;
@@ -59,6 +61,17 @@ int	ft_cube(char *carta, t_data *data)
 	return (0);
 }
 
+int mouse_move(int x, int y, t_data *data)
+{
+    static int mouse_x = W_PANEL / 2;
+    static int mouse_y = H_PANEL / 2;
+	(void) y;
+	data->player->look -= (double)(PI / 2) / (W_PANEL / 2) * (mouse_x - x);
+    ft_paint(data);
+    mlx_mouse_move(data->window->win_ptr, mouse_x, mouse_y);
+return(0);
+}
+
 void	ft_game(t_data *data)
 {
 	ft_paint(data);
@@ -69,7 +82,8 @@ void	ft_game(t_data *data)
 	mlx_hook(data->window->win_ptr, 2, 1L << 0, key_kb_hook, data);
 	// mlx_hook(data->window->win_ptr, 3, 1L << 1, key_kb_release, data);
 	// mlx_hook(data->window->win_ptr, 6, 1L << 2, mouse_move, data);
-	// mlx_hook(data->window->win_ptr, 6, 1L << 6, mouse_move, data); //may be this
+	if (BONUS)
+		mlx_hook(data->window->win_ptr, 6, 1L << 6, mouse_move, data); //may be this
 	mlx_hook(data->window->win_ptr, 17, 1L << 17, ft_exit, data);
 	mlx_loop(data->window->mlx_ptr);
 }

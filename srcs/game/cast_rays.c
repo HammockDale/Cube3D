@@ -124,14 +124,15 @@ void	ft_sprite(t_data *data, double *k, int l)
 	}
 }
 
-int	ft_walls_paint(t_data *data, int i)
+int	ft_walls_paint(t_data *data, int i, double	start)
 {
 	double	wall;
 	double	tmp;
 	int		kx, ky;
 	double	dx, dy;
 
-	wall = (1 / sqrt(powf(data->player->ray_x - data->player->pos_x, 2) + powf(data->player->ray_y - data->player->pos_y, 2)))  * 200;
+	wall = H_PANEL / 2 /(sqrt(powf(data->player->ray_x - data->player->pos_x, 2) + powf(data->player->ray_y - data->player->pos_y, 2)) ) ;
+	wall /= sin(data->player->look - start);
 	if (wall >= H_PANEL / 2)
 	{
 		wall = H_PANEL / 2;
@@ -237,45 +238,45 @@ void	ft_cast_rays(t_data *data, int color, char str)
 		// 	}
 		// 	}
 		// }
-		while ( data->map->coord[(int)(data->player->ray_y)][(int)(data->player->ray_x)] != '1' )
+		while ( data->map->coord[(int)(data->player->ray_y)][(int)(data->player->ray_x)] != '1')
 		{
 			// if (data->player->ray_y < data->map->size_y && data->player->ray_x < data->map->size_x && data->player->ray_y > 0 && data->player->ray_x > 0)
 			// {
 			// 	l = 0;
 			// 	break;
 			// }
-			if (str == 'L'&& data->map->coord[(int)(data->player->ray_y)][(int)(data->player->ray_x)] == 'L')
-			{
-				if (start > (d  - UGOL / 2) )
-				{
-					ft_sprite(data, &l, i);
-					// str = 'i';
-					break;
-					// return ;
-				}
-				// else
-				// {
-				// 	sprite = (1 / sqrt(powf(data->player->ray_x - data->player->pos_x, 2) + powf(data->player->ray_y - data->player->pos_y, 2)))  * 200;
-				// 	l += 1/ (sprite * 2);
-				// 	break;
-				// }
-					// l = 0;
-				// str = 'a';
-				// }
-			// 	data->player->ray_x += cos(start)  ;
-			// data->player->ray_y += sin(start)  ;
-				// data->player->ray_x += 1;
-				// data->player->ray_y += 1;
-				// i += 1;
-			}
+			// if (str == 'L'&& data->map->coord[(int)(data->player->ray_y)][(int)(data->player->ray_x)] == 'L')
+			// {
+			// 	if (start > (d  - UGOL / 2) )
+			// 	{
+			// 		ft_sprite(data, &l, i);
+			// 		// str = 'i';
+			// 		break;
+			// 		// return ;
+			// 	}
+			// 	// else
+			// 	// {
+			// 	// 	sprite = (1 / sqrt(powf(data->player->ray_x - data->player->pos_x, 2) + powf(data->player->ray_y - data->player->pos_y, 2)))  * 200;
+			// 	// 	l += 1/ (sprite * 2);
+			// 	// 	break;
+			// 	// }
+			// 		// l = 0;
+			// 	// str = 'a';
+			// 	// }
+			// // 	data->player->ray_x += cos(start)  ;
+			// // data->player->ray_y += sin(start)  ;
+			// 	// data->player->ray_x += 1;
+			// 	// data->player->ray_y += 1;
+			// 	// i += 1;
+			// }
 			// if (data->map->coord[(int)(data->player->ray_y)][(int)(data->player->ray_x)] == '1')
 			// {
 			// 	// l = 0;
 			// 	break;
 			// }
 			// l = 0;
-			data->player->ray_x += cos(start)  / ONE_SIZE;
-			data->player->ray_y += sin(start)  / ONE_SIZE;
+			data->player->ray_x += cos(start)  / ONE_SIZE / 4;
+			data->player->ray_y += sin(start)  / ONE_SIZE / 4;
 			// my_mlx_pixel_put(data, data->player->ray_x * ONE_SIZE, data->player->ray_y * ONE_SIZE, color);
 		}
 	if (data->player->ray_y < data->map->size_y && data->player->ray_x < data->map->size_x  && data->player->ray_y > 0 && data->player->ray_x > 0 && start > (d  - UGOL / 2) )
@@ -283,7 +284,7 @@ void	ft_cast_rays(t_data *data, int color, char str)
 /* здесь нужна функция вертикального кастинга*/
 		if (str == '1')
 		{
-			if (!ft_walls_paint(data, i))
+			if (!ft_walls_paint(data, i, start))
 			{
 				// i++;
 				// start += UGOL / (W_PANEL);

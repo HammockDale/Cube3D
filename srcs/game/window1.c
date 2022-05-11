@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:46:37 by esylva            #+#    #+#             */
-/*   Updated: 2022/05/04 09:34:56 by esylva           ###   ########.fr       */
+/*   Updated: 2022/05/05 20:00:54 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -331,21 +331,29 @@ void	ft_draw_2D_woll(t_data *data)
 	}
 }
 
-int	mouse_move(int keycode, t_data *data)
+int	mouse_move(int x, int y, t_data *data)
 {
 	static int mouse_x = W_PANEL / 2;
 	static int mouse_y = H_PANEL / 2;
-	int x;
-	int y;
-
-	x = 0;
-	y = 0;
-	mlx_mouse_hide(data->window->mlx_ptr, data->window->win_ptr);
-	mlx_mouse_get_pos(data->window->mlx_ptr, data->window->win_ptr, &x, &y);
-	data->player->look += (double)(PI / 2) / (W_PANEL / 2) * (mouse_x - x);
+	// printf("x = %d, y = %d\n", x, y);
+	// int x;
+	(void) y;
+	// (void) data;
+	// x = 0;
+	// y = 0;
+	// mlx_mouse_hide(data->window->mlx_ptr, data->window->win_ptr);
+	// mlx_mouse_get_pos(data->window->win_ptr, &x, &y);
+	data->player->look -= (double)(PI / 2) / (W_PANEL / 2) * (mouse_x - x);
 	ft_paint(data);
-	mlx_mouse_move(data->window->mlx_ptr, data->window->win_ptr, mouse_x, mouse_y);
-	return(keycode);
+	mlx_mouse_move(data->window->win_ptr, mouse_x, mouse_y);
+	// // mlx_mouse_hide(data->window->mlx_ptr, data->window->win_ptr);
+	// // mlx_mouse_get_pos(data->window->mlx_ptr, data->window->win_ptr, &x, &y);
+	// // data->player->look += (double)(PI / 2) / (W_PANEL / 2) * (mouse_x - x);
+	// // ft_paint(data);
+	// // mlx_mouse_move(data->window->mlx_ptr, data->window->win_ptr, mouse_x, mouse_y);
+	// return(keycode);
+		return(0);
+
 }
 
 

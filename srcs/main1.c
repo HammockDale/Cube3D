@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main1.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:05 by esylva            #+#    #+#             */
-/*   Updated: 2022/05/04 09:26:10 by esylva           ###   ########.fr       */
+/*   Updated: 2022/05/05 19:52:49 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_game(t_data *data)
 	mlx_hook(data->window->win_ptr, 2, 1L << 0, key_kb_hook, data);
 	// mlx_hook(data->window->win_ptr, 3, 1L << 1, key_kb_release, data);
 	// mlx_hook(data->window->win_ptr, 6, 1L << 2, mouse_move, data);
-	// mlx_hook(data->window->win_ptr, 6, 1L << 6, mouse_move, data); //may be this
+	mlx_hook(data->window->win_ptr, 6, 1L << 6, mouse_move, data); //may be this
 	mlx_hook(data->window->win_ptr, 17, 1L << 17, ft_exit, data);
 	mlx_loop(data->window->mlx_ptr);
 }

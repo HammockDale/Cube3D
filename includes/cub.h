@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/05/04 09:27:38 by esylva           ###   ########.fr       */
+/*   Updated: 2022/05/05 19:56:30 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,25 +33,25 @@
 # define MAP_ERROR -10
 
 /* keycodes for ubuntu */
-# define TURN_LEFT 65361
-# define TURN_RIGHT 65363
-# define GO_FORWARD 119
-# define GO_BACKWARD 115
-# define STR_LEFT 97
-# define STR_RIGHT 100
-# define EXIT 65307
-# define USE 101
+// # define TURN_LEFT 65361
+// # define TURN_RIGHT 65363
+// # define GO_FORWARD 119
+// # define GO_BACKWARD 115
+// # define STR_LEFT 97
+// # define STR_RIGHT 100
+// # define EXIT 65307
+// # define USE 101
 
 /* keycodes for Mac */
 
-// # define TURN_LEFT 123
-// # define TURN_RIGHT 124
-// # define GO_FORWARD 13
-// # define GO_BACKWARD 1
-// # define STR_LEFT 0
-// # define STR_RIGHT 2
-// # define EXIT 53
-// # define USE 14
+# define TURN_LEFT 123
+# define TURN_RIGHT 124
+# define GO_FORWARD 13
+# define GO_BACKWARD 1
+# define STR_LEFT 0
+# define STR_RIGHT 2
+# define EXIT 53
+# define USE 14
 
 # define PI 3.14159265
 # define ONE_SIZE 64
@@ -225,8 +225,9 @@ void		ft_cast_rays(t_data *data, int color, char str);
 
 void		ft_img_init(t_data *data);
 void		ft_img_bonus_init(t_data *data);
-int			mouse_move(int keycode, t_data *data);
+// int			mouse_move(int keycode, t_data *data);
 void		ft_draw_2D_wall(t_data *data);
+int			mouse_move(int x, int y, t_data *data);
 
 /* paint_back.c */
 void		ft_back_bonus(t_data *data);

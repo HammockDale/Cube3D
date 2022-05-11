@@ -34,7 +34,7 @@ RM = rm -rf
 MAKE_MLX = make -sC mlx
 
 # MAKE_MLX = make -sC mlx_linux
-LINK_MLX = -Lmlx -lmlx -framework OpenGL   -lz   -framework AppKit
+LINK_MLX = -Lmlx -lmlx -framework OpenGL -lz -framework AppKit
 # LINK_MLX = -Lmlx_linux -lmlx_linux -L/usr/lib -lXext -lX11 -lm -lz
 
 MAKE_LIBFT = make -sC libft

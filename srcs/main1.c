@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:05 by esylva            #+#    #+#             */
-/*   Updated: 2022/05/04 09:26:10 by esylva           ###   ########.fr       */
+/*   Updated: 2022/05/11 15:48:37 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,13 @@ int	ft_cube(char *carta, t_data *data)
 
 int mouse_move(int x, int y, t_data *data)
 {
-    static int mouse_x = W_PANEL / 2;
-    static int mouse_y = H_PANEL / 2;
-	(void) y;
+	static int mouse_x = W_PANEL / 2;
+	static int mouse_y = H_PANEL / 2;
 	data->player->look -= (double)(PI / 2) / (W_PANEL / 2) * (mouse_x - x);
-    ft_paint(data);
-    mlx_mouse_move(data->window->win_ptr, mouse_x, mouse_y);
-return(0);
+	ft_paint(data);
+	if (y > 50)
+		mlx_mouse_move(data->window->win_ptr, mouse_x, mouse_y);
+	return(0);
 }
 
 void	ft_game(t_data *data)
@@ -84,7 +84,7 @@ void	ft_game(t_data *data)
 	// mlx_hook(data->window->win_ptr, 3, 1L << 1, key_kb_release, data);
 	// mlx_hook(data->window->win_ptr, 6, 1L << 2, mouse_move, data);
 	if (BONUS)
-		mlx_hook(data->window->win_ptr, 6, 1L << 6, mouse_move, data); //may be this
+		mlx_hook(data->window->win_ptr, 6, 1L << 6, mouse_move, data);
 	mlx_hook(data->window->win_ptr, 17, 1L << 17, ft_exit, data);
 	mlx_loop(data->window->mlx_ptr);
 }
@@ -132,6 +132,5 @@ int	ft_exit(t_data *data, int keycode)
 		printf("Map is invalid\n");
 		keycode = 3;
 	}
-	// return (keycode);
 	exit (keycode);
 }

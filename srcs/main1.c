@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main1.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:05 by esylva            #+#    #+#             */
-/*   Updated: 2022/05/11 15:48:37 by esylva           ###   ########.fr       */
+/*   Updated: 2022/05/11 20:25:02 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,15 @@ int mouse_move(int x, int y, t_data *data)
 {
 	static int mouse_x = W_PANEL / 2;
 	static int mouse_y = H_PANEL / 2;
-	data->player->look -= (double)(PI / 2) / (W_PANEL / 2) * (mouse_x - x);
-	ft_paint(data);
+	
+	if (x > 0 && x < W_PANEL && y > 0 && y < H_PANEL)
+	{
+		mlx_mouse_hide(data->window->mlx_ptr, data->window->win_ptr);
+		data->player->look -= (double)(PI / 2) / (W_PANEL / 2) * (mouse_x - x);
+		ft_paint(data);
+	}
+	else
+		mlx_mouse_show();
 	if (y > 50)
 		mlx_mouse_move(data->window->win_ptr, mouse_x, mouse_y);
 	return(0);
@@ -74,7 +81,6 @@ int mouse_move(int x, int y, t_data *data)
 
 void	ft_game(t_data *data)
 {
-	mlx_mouse_hide(data->window->mlx_ptr, data->window->win_ptr);
 	ft_paint(data);
 	// ft_button(data);
 

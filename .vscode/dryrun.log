@@ -1,0 +1,6 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/esylva/cub3D/Cube3D'
+make -sC libft
+make -sC mlx
+make: Leaving directory `/Users/esylva/cub3D/Cube3D'
+ 

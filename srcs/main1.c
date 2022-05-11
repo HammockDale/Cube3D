@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:05 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/29 15:28:20 by esylva           ###   ########.fr       */
+/*   Updated: 2022/05/04 09:26:10 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ return(0);
 
 void	ft_game(t_data *data)
 {
+	mlx_mouse_hide(data->window->mlx_ptr, data->window->win_ptr);
 	ft_paint(data);
 	// ft_button(data);
 

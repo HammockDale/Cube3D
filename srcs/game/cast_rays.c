@@ -212,8 +212,12 @@ void	ft_cast_rays(t_data *data, int color, char str)
 
 // printf("\n\n ugol = %f\n\n", d);
 
-	double	start = (d  - UGOL * 1 / 2) ;// - [половина угла обзора]; // начало веера лучей
-	double	end = d + UGOL / 2;//ray.dir + [половина угла обзора]; // край веера лучей
+double	start;
+double	end;
+
+	start  = d;
+	// double	start = (d  - UGOL * 1 / 2) ;// - [половина угла обзора]; // начало веера лучей
+	end = d + UGOL / 2;//ray.dir + [половина угла обзора]; // край веера лучей
 	
 	while (start <= end)
 	{
@@ -279,24 +283,103 @@ void	ft_cast_rays(t_data *data, int color, char str)
 			data->player->ray_y += sin(start)  / ONE_SIZE / 4;
 			// my_mlx_pixel_put(data, data->player->ray_x * ONE_SIZE, data->player->ray_y * ONE_SIZE, color);
 		}
-	if (data->player->ray_y < data->map->size_y && data->player->ray_x < data->map->size_x  && data->player->ray_y > 0 && data->player->ray_x > 0 && start > (d  - UGOL / 2) )
-	{
-/* здесь нужна функция вертикального кастинга*/
-		if (str == '1')
+		if (data->player->ray_y < data->map->size_y && data->player->ray_x < data->map->size_x  && data->player->ray_y > 0 && data->player->ray_x > 0 && start > (d  - UGOL / 2) )
 		{
-			if (!ft_walls_paint(data, i, start))
+/* здесь нужна функция вертикального кастинга*/
+			if (str == '1')
 			{
-				// i++;
-				// start += UGOL / (W_PANEL);
-				// break;;
-				i--;
-				end += UGOL / (W_PANEL);
+				if (!ft_walls_paint(data, i, start))
+				{
+					i--;
+					end += UGOL / (W_PANEL);
+				}
 			}
+			i++;
 		}
-		i++;
-	}
 		start += UGOL / (W_PANEL);//[угол обзора] / [количество лучей];
-		// i -=k;
-		// end += (UGOL / (W_PANEL)) * k;
 	}
+
+// 	start  = d;
+// 	// double	start = (d  - UGOL * 1 / 2) ;// - [половина угла обзора]; // начало веера лучей
+// 	end = d - UGOL / 2;
+// 	while (start >= end)
+// 	{
+// 		data->player->ray_x  = data->player->pos_x; // каждый раз возвращаемся в точку начала
+// 		data->player->ray_y = data->player->pos_y;
+		
+// 		// double sprite;
+// 		// while(str == 'L')
+// 		// {
+// 		// 	data->player->ray_x += cos(start - 0)  / ONE_SIZE;
+// 		// 	data->player->ray_y += sin(start - 0)  / ONE_SIZE;
+// 		// 	if (str == 'L'&& data->map->coord[(int)(data->player->ray_y)][(int)(data->player->ray_x)] != '1')
+// 		// 	{
+// 		// 		sprite = (1 / sqrt(powf(data->player->ray_x - data->player->pos_x, 2) + powf(data->player->ray_y - data->player->pos_y, 2)))  * 200;
+// 		// 		l += 1/ (sprite * 42);
+// 		// 	// l += 0.3;
+// 		// 		printf("asd");
+// 		// 		break;
+// 		// 	if (data->map->coord[(int)(data->player->ray_y)][(int)(data->player->ray_x)] != '1' )
+// 		// 	{
+// 		// 		ft_sprite(data, &l, i);
+// 		// 	}
+// 		// 	}
+// 		// }
+// 		while ( data->map->coord[(int)(data->player->ray_y)][(int)(data->player->ray_x)] != '1')
+// 		{
+// 			// if (data->player->ray_y < data->map->size_y && data->player->ray_x < data->map->size_x && data->player->ray_y > 0 && data->player->ray_x > 0)
+// 			// {
+// 			// 	l = 0;
+// 			// 	break;
+// 			// }
+// 			// if (str == 'L'&& data->map->coord[(int)(data->player->ray_y)][(int)(data->player->ray_x)] == 'L')
+// 			// {
+// 			// 	if (start > (d  - UGOL / 2) )
+// 			// 	{
+// 			// 		ft_sprite(data, &l, i);
+// 			// 		// str = 'i';
+// 			// 		break;
+// 			// 		// return ;
+// 			// 	}
+// 			// 	// else
+// 			// 	// {
+// 			// 	// 	sprite = (1 / sqrt(powf(data->player->ray_x - data->player->pos_x, 2) + powf(data->player->ray_y - data->player->pos_y, 2)))  * 200;
+// 			// 	// 	l += 1/ (sprite * 2);
+// 			// 	// 	break;
+// 			// 	// }
+// 			// 		// l = 0;
+// 			// 	// str = 'a';
+// 			// 	// }
+// 			// // 	data->player->ray_x += cos(start)  ;
+// 			// // data->player->ray_y += sin(start)  ;
+// 			// 	// data->player->ray_x += 1;
+// 			// 	// data->player->ray_y += 1;
+// 			// 	// i += 1;
+// 			// }
+// 			// if (data->map->coord[(int)(data->player->ray_y)][(int)(data->player->ray_x)] == '1')
+// 			// {
+// 			// 	// l = 0;
+// 			// 	break;
+// 			// }
+// 			// l = 0;
+// 			data->player->ray_x += cos(start)  / ONE_SIZE / 4;
+// 			data->player->ray_y += sin(start)  / ONE_SIZE / 4;
+// 			// my_mlx_pixel_put(data, data->player->ray_x * ONE_SIZE, data->player->ray_y * ONE_SIZE, color);
+// 		}
+// 		if (data->player->ray_y < data->map->size_y && data->player->ray_x < data->map->size_x  && data->player->ray_y > 0 && data->player->ray_x > 0 && start > (d  - UGOL / 2) )
+// 		{
+// /* здесь нужна функция вертикального кастинга*/
+// 			if (str == '1')
+// 			{
+// 				if (!ft_walls_paint(data, i, start))
+// 				{
+// 					i--;
+// 					end -= UGOL / (W_PANEL);
+// 				}
+// 			}
+// 			i++;
+// 		}
+// 		start -= UGOL / (W_PANEL);//[угол обзора] / [количество лучей];
+// 	}
+
 }

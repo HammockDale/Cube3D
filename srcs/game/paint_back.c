@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   paint_back.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 08:54:05 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/20 18:15:07 by esylva           ###   ########.fr       */
+/*   Updated: 2022/05/04 09:08:32 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,12 +90,12 @@ void	ft_draw_2D_obj(t_data *data, int x, int y, int size, int color)
 void	ft_cast_mini_rays(t_data *data, int color, double beg_x, double beg_y)
 {
 	(void)color;
-	int i;
+	// int i;
 	double d;
 	double x, y;
 
 
-	i = 0;
+	// i = 0;
 	d = data->player->look - (double)(PI / 2);
 
 	if (d < 0)

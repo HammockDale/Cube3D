@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cast_rays.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hdale <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 22:46:27 by hdale             #+#    #+#             */
-/*   Updated: 2022/05/02 22:46:30 by hdale            ###   ########.fr       */
+/*   Updated: 2022/05/12 19:41:37 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,11 +186,11 @@ int	ft_walls_paint(t_data *data, int i, double	start)
 	// }
 
 }
-
-void	ft_cast_rays(t_data *data, int color, char str)
+// void	ft_cast_rays(t_data *data, int color, char str)
+void	ft_cast_rays(t_data *data, char str)
 {
 	// ft_import_imgxpm(data, data->north->image glb->texturs[0], glb->map.north_texture, &img);
-	(void)color;
+	// (void)color;
 	double d;
 	int i;
 

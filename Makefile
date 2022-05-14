@@ -32,15 +32,15 @@ FLAGS = -Wall -Werror -Wextra
 RM = rm -rf
 
 MAKE_MLX = make -sC mlx
+LINK_MLX = -Lmlx -lmlx -framework OpenGL -framework AppKit -lm -lz
 
 # MAKE_MLX = make -sC mlx_linux
-LINK_MLX = -Lmlx -lmlx -framework OpenGL   -lz   -framework AppKit
 # LINK_MLX = -Lmlx_linux -lmlx_linux -L/usr/lib -lXext -lX11 -lm -lz
 
 MAKE_LIBFT = make -sC libft
 LINK_LIBFT = -Llibft -lft
 
-MAKE_OPENGL = make -sC minilibx_opengl_20191021
+# MAKE_OPENGL = make -sC minilibx_opengl_20191021
 
 all: init $(NAME)
 
@@ -57,7 +57,7 @@ $(OBJ_DIR):
 
 $(NAME): $(OBJ) $(HEADER)
 #	@$(CC) $(FLAGS) $(INCLUDES) $(OBJ) $(LINK_MLX) $(LINK_LIBFT) -o $@
-	$(CC) $(INCLUDES) $(OBJ) $(LINK_LIBFT) $(LINK_MLX) -o $@
+	$(CC) $(INCLUDES) $(LINK_LIBFT) $(LINK_MLX) $(OBJ) -o $@
 	@echo Done!
 
 clean:

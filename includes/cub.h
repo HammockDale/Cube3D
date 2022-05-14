@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/04/20 18:14:18 by esylva           ###   ########.fr       */
+/*   Updated: 2022/05/12 19:41:02 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -218,13 +218,11 @@ int			ft_check_rect_col(char **str, int w, int h);
 /* window.c */
 int			ft_win_init(t_data *data);
 void 		ft_coord(t_data *data);
-void		ft_cast_rays(t_data *data, int color, char str);
 int			key_kb_hook(int keycode, t_data *data);
 
 
 void		ft_img_init(t_data *data);
 void		ft_img_bonus_init(t_data *data);
-int    	    mouse_move(int x, int y, t_data *data);
 void		ft_draw_2D_wall(t_data *data);
 
 /* paint_back.c */
@@ -243,7 +241,8 @@ t_image		*ft_free_image(t_image *image);
 t_sprite	*ft_free_sprite(t_sprite *sprite);
 
 /* action.c */
-void		ft_change_ground(t_data *data);
+int			mouse_move(int x, int y, t_data *data);
+
 
 /* ft_wasd1.c */
 void		ft_go_forward(t_data *data);
@@ -253,8 +252,11 @@ void		ft_str_right(t_data *data);
 void		ft_turn_right(t_data *data);
 void		ft_turn_left(t_data *sdata);
 
-/*other*/
+/* cast_rays.c */
+void		ft_cast_rays(t_data *data, char str);
+// void		ft_cast_rays(t_data *data, int color, char str);
 
+/*other*/
 void		ft_Pup(t_data *data);
 void		ft_Pright(t_data *data);
 void		ft_Pdown(t_data *data);
@@ -269,26 +271,4 @@ void		ft_draw_player(t_data *data, int color);
 void		ft_paint(t_data *data);
 
 
-// int		key_hook(int keycode, t_map *map);
-// int		ft_player_action(t_map *map);
-// void	ft_render_1(t_map *map);
-// int		render_next_frame(t_map *map);
-
-// void	ft_put_img_to_win(t_map *map);
-// void	ft_img_init(t_map *map);
-// int		ft_win_init(t_map *map);
-// void	ft_put_by_sym(t_map *map);
-// void	ft_save_player_position(t_map *map);
-// void	ft_check_player_position(t_map *map);
-// void	ft_check_sym(int x, int y, t_map *map);
-// void	ft_check_lines(t_map *map);
-// void	ft_make_map(t_map *map, int fd);
-// void	ft_make_coord(t_map *map);
-
-// void	ft_check_rect(int sh, int ne, char *line);
-
-// t_map	*ft_map_init(t_map *map);
-
-// void	ft_name_check(char *carta);
-// void	ft_free_all(t_map *map);
 #endif

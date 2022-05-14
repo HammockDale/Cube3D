@@ -119,8 +119,8 @@ int	ft_check_sym(int i, int j, t_data *data)
 
 void	ft_set_look(t_data *data, int i, int j)
 {
-	data->player->pos_x = j;
-	data->player->pos_y = i;
+	data->player->pos_x = j + 0.5;
+	data->player->pos_y = i + 0.5;
 	if (data->map->coord[i][j] == 'N')
 		data->player->look = 0;
 	else if (data->map->coord[i][j] == 'W')

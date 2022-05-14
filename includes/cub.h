@@ -63,7 +63,9 @@
 # define M_GROUND 65355
 # define SCALE 3
 # define SPEED 0.2
-
+# define BARRIER 3
+# define H_WALL W_PANEL/tan(UGOL/2)
+ 
 typedef struct s_image
 {
 	void	*image;

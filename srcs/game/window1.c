@@ -32,22 +32,22 @@ int	ft_win_init(t_data *data)
 void	ft_paint(t_data *data)
 {
 	// printf("y = %f, x= %f\n", data->player->pos_y, data->player->pos_x );
-	if (data->map->coord[(int)floor(data->player->pos_y )][(int)floor(data->player->pos_x )] == 'L')
-	{
-		data->map->coord[(int)floor(data->player->pos_y )][(int)floor(data->player->pos_x )] = '0';
-	}
-	if (data->map->coord[(int)ceil(data->player->pos_y )][(int)ceil(data->player->pos_x)] == 'L')
-	{
-		data->map->coord[(int)ceil(data->player->pos_y )][(int)ceil(data->player->pos_x )] = '0';
-	}
-	if (data->map->coord[(int)floor(data->player->pos_y )][(int)ceil(data->player->pos_x)] == 'L')
-	{
-		data->map->coord[(int)floor(data->player->pos_y )][(int)ceil(data->player->pos_x )] = '0';
-	}
-	if (data->map->coord[(int)ceil(data->player->pos_y )][(int)floor(data->player->pos_x )] == 'L')
-	{
-		data->map->coord[(int)ceil(data->player->pos_y )][(int)floor(data->player->pos_x)] = '0';
-	}
+	// if (data->map->coord[(int)floor(data->player->pos_y )][(int)floor(data->player->pos_x )] == 'L')
+	// {
+	// 	data->map->coord[(int)floor(data->player->pos_y )][(int)floor(data->player->pos_x )] = '0';
+	// }
+	// if (data->map->coord[(int)ceil(data->player->pos_y )][(int)ceil(data->player->pos_x)] == 'L')
+	// {
+	// 	data->map->coord[(int)ceil(data->player->pos_y )][(int)ceil(data->player->pos_x )] = '0';
+	// }
+	// if (data->map->coord[(int)floor(data->player->pos_y )][(int)ceil(data->player->pos_x)] == 'L')
+	// {
+	// 	data->map->coord[(int)floor(data->player->pos_y )][(int)ceil(data->player->pos_x )] = '0';
+	// }
+	// if (data->map->coord[(int)ceil(data->player->pos_y )][(int)floor(data->player->pos_x )] == 'L')
+	// {
+	// 	data->map->coord[(int)ceil(data->player->pos_y )][(int)floor(data->player->pos_x)] = '0';
+	// }
 	mlx_clear_window(data->window->mlx_ptr, data->window->win_ptr);
 	if (!data->bonus)
 		ft_back(data);

@@ -25,7 +25,7 @@ int	mouse_move(int x, int y, t_data *data)
 	}
 	else
 		mlx_mouse_show();
-	if (y > H_PANEL / 3 && y < H_PANEL / 3 * 2 )
+	if (y > H_PANEL / 4 && y < H_PANEL / 4 * 3 )
 		mlx_mouse_move(data->window->win_ptr, mouse_x, mouse_y);
 	return (0);
 }

@@ -25,7 +25,7 @@ all:	${NAME}
 
 ${NAME}:	${OBJS}
 		ar rcs ${NAME} $?
-		${RM} ${OBJS} ${D_FILES}
+#		${RM} ${OBJS} ${D_FILES}
 
 %.o : %.c
 		${CC} ${FLAGS} -c $< -o $@ -MD

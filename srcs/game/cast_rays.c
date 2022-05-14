@@ -146,11 +146,8 @@ int	ft_walls_paint(t_data *data, int i, double	start)
 	{
 		ky = ((int)((tmp - wall) / tmp * ONE_SIZE) / 2 + 0)* ONE_SIZE + (int)(dy * ONE_SIZE);
 		kx = ((int)((tmp - wall) / tmp * ONE_SIZE) / 2 + 0)* ONE_SIZE + (int)(dx * ONE_SIZE);
-		if (data->f_door)
-		{
-			my_mlx_pixel_put(data, i, (int)(H_PANEL / 2 - wall), ((int*)data->door->addr)[ky]);
-			data->f_door = 0;
-		}
+		if (data->f_door == 1)
+			my_mlx_pixel_put(data, i, (int)(H_PANEL / 2 - wall), ((int*)data->door->addr)[kx]);
 		else if ((dy < 0.02 || dy > 0.98) && (dx > 0.98 || dx < 0.02))
 		{
 			return (0);
@@ -167,6 +164,7 @@ int	ft_walls_paint(t_data *data, int i, double	start)
 		
 		wall--;
 	}
+	data->f_door = 0;
 	return (1);
 }
 // void	ft_cast_rays(t_data *data, int color, char str)
@@ -176,10 +174,11 @@ void	ft_cast_rays(t_data *data, char str)
 	double	start;
 	double	end;
 	
+	data->f_door = 0;
+		(void)str;
 	i = 0;
 	start  = data->player->look - (double)(PI / 2)  - UGOL * 1 / 2;
 	end = data->player->look - (double)(PI / 2) + UGOL / 2;
-	data->f_door = 0;
 	while (start <= end)
 	{
 		data->player->ray_x  = data->player->pos_x; 
@@ -191,12 +190,11 @@ void	ft_cast_rays(t_data *data, char str)
 			if (data->map->coord[(int)(data->player->ray_y)][(int)(data->player->ray_x)] == 'D')
 			{
 				data->f_door = 1;
-				// break;
+				break;
 			}
 // ft2()
 			data->player->ray_x += cos(start)  / ONE_SIZE / 4;
 			data->player->ray_y += sin(start)  / ONE_SIZE / 4;
-
 		}
 		if (str == '1')
 		{

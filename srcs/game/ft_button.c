@@ -12,14 +12,42 @@
 
 #include "cub.h"
 
-void		ft_open_door(t_data *data)
+void	ft_open_door(t_data *data)
 {
-	// data->map->y = (int)data->player->pos_y;
-	// data->map->x = (int)data->player->pos_x;
-	if (data->map->coord[data->map->y][data->map->x] == (int) 'D')
-	{	
-		(data->map->coord[data->map->y][data->map->x] = (int) '0');
-	}
+	if (data->map->coord[(int)data->player->pos_y + 1][(int)
+		data->player->pos_x] == 'D')
+		data->map->coord[(int)data->player->pos_y + 1][(int)
+			data->player->pos_x] = '0';
+	if (data->map->coord[(int)
+			data->player->pos_y - 1][(int)data->player->pos_x] == 'D')
+		data->map->coord[(int)
+			data->player->pos_y - 1][(int)data->player->pos_x] = '0';
+	if (data->map->coord[(int)data->player->pos_y][(int)
+		data->player->pos_x - 1] == 'D')
+		data->map->coord[(int)data->player->pos_y][(int)
+			data->player->pos_x - 1] = '0';
+	if (data->map->coord[(int)
+			data->player->pos_y][(int)data->player->pos_x + 1] == 'D')
+		data->map->coord[(int)
+			data->player->pos_y][(int)data->player->pos_x + 1] = '0';
+
+	if (data->map->coord[(int)data->player->pos_y + 1][(int)
+		data->player->pos_x + 1] == 'D')
+		data->map->coord[(int)data->player->pos_y + 1][(int)
+			data->player->pos_x + 1] = '0';
+	if (data->map->coord[(int)
+			data->player->pos_y - 1][(int)data->player->pos_x + 1] == 'D')
+		data->map->coord[(int)
+			data->player->pos_y - 1][(int)data->player->pos_x + 1] = '0';
+	if (data->map->coord[(int)data->player->pos_y - 1][(int)
+		data->player->pos_x - 1] == 'D')
+		data->map->coord[(int)data->player->pos_y - 1][(int)
+			data->player->pos_x - 1] = '0';
+	if (data->map->coord[(int)
+			data->player->pos_y + 1][(int)data->player->pos_x - 1] == 'D')
+		data->map->coord[(int)
+			data->player->pos_y + 1][(int)data->player->pos_x - 1] = '0';
+	ft_paint(data);
 }
 
 void	ft_change_ground(t_data *data)

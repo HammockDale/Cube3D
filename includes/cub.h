@@ -169,7 +169,7 @@ typedef struct s_data
 	t_image 		*collet;
 	char			bonus;
 	int				*buf;
-	char			f_door;
+	int				f_door;
 }				t_data;
 	
 /* main.c */

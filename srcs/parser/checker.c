@@ -131,5 +131,6 @@ void	ft_set_look(t_data *data, int i, int j)
 		data->player->look = PI / 2;
 	data->map->x = j;
 	data->map->y = i;
+	data->map->coord[i][j] = '0';				//TODO
 	return ;
 }

@@ -87,31 +87,35 @@ void	ft_draw_2D_obj(t_data *data, int x, int y, int size, int color)
 	}
 }
 
-void	ft_cast_mini_rays(t_data *data, int color, double beg_x, double beg_y)
-{
-	(void)color;
-	double d;
-	double x, y;
+// void	ft_cast_mini_rays(t_data *data, int color, double beg_x, double beg_y)
+// {
+// 	(void)color;
+// 	(void)beg_x;
+// 	(void)beg_y;
+// 	double d;
+// 	double x, y;
 
-	d = data->player->look - (double)(PI / 2);
-	if (d < 0)
-		d = d + 2 * PI;
+// 	d = data->player->look - (double)(PI / 2);
+// 	if (d < 0)
+// 		d = d + 2 * PI;
 
-	float start = (d  - UGOL / 2) ;
-	float end = d + UGOL / 2;
-	while (start <= end)
-	{
-		x = data->player->pos_x;
-		y = data->player->pos_y;
-		while (data->map->coord[(int)(y + sin(start) / SCALE)][(int)(x + cos(start) / SCALE)] != '1')
-		{
-			x += cos(start) / SCALE;
-			y += sin(start) / SCALE;
-			my_mlx_pixel_put(data, beg_x + x * SCALE ,  beg_y + y * SCALE , color);
-		}
-		start += UGOL / (W_PANEL);
-	}
-}
+// 	float start = (d  - UGOL / 2) ;
+// 	float end = d + UGOL / 2;
+// 	while (start <= end)
+// 	{
+// 		x = data->player->pos_x;
+// 		y = data->player->pos_y;
+// 		while (data->map->coord[(int)(y + sin(start) / SCALE)][(int)(x + cos(start) / SCALE)] != '1'
+// 			&& data->map->coord[(int)(y + sin(start) / SCALE)][(int)(x + cos(start) / SCALE)] != 'D')
+// 		// while (data->map->coord[(int)(y + sin(start) / SCALE)][(int)(x + cos(start) / SCALE)] == '0')
+// 		{
+// 			x += cos(start) / SCALE;
+// 			y += sin(start) / SCALE;
+// 			my_mlx_pixel_put(data, beg_x + x * SCALE ,  beg_y + y * SCALE , color);
+// 		}
+// 		start += UGOL / (W_PANEL);
+// 	}
+// }
 
 void	ft_put_minimap(t_data *data)
 {
@@ -129,16 +133,18 @@ void	ft_put_minimap(t_data *data)
 		x = 0;
 		while (x < data->map->size_x)
 		{
-
 			if (data->map->coord[y][x] == '1')
 				ft_draw_2D_obj(data, beg_x + x * SCALE, beg_y + y * SCALE, SCALE, 0xcacaca);
-			else if (data->map->coord[y][x] == 'N' || data->map->coord[y][x] == 'W'
-				|| data->map->coord[y][x] == 'S' || data->map->coord[y][x] == 'E')
-				ft_cast_mini_rays(data, 0x476aff, (double)beg_x, (double)beg_y);
+			else if (x == (int)data->player->pos_x && y == (int)data->player->pos_y)
+			//	if  (data->map->coord[y][x] == 'N' || data->map->coord[y][x] == 'W'
+			// 	|| data->map->coord[y][x] == 'S' || data->map->coord[y][x] == 'E')
+				ft_draw_2D_obj(data, beg_x + (data->player->pos_x) * SCALE, beg_y
+				+ (data->player->pos_y ) * SCALE, SCALE, 0x000000);
+				// ft_cast_mini_rays(data, 0x476aff, (double)beg_x, (double)beg_y);
 			else if (data->map->coord[y][x] == 'D')
-				ft_draw_2D_obj(data, beg_x + x * SCALE, beg_y + y * SCALE, SCALE, 0xffffff);
-			else if (data->map->coord[y][x] == 'L')
-				ft_draw_2D_obj(data, beg_x + x * SCALE, beg_y + y * SCALE, SCALE, 0x06f666);
+				ft_draw_2D_obj(data, beg_x + x * SCALE, beg_y + y * SCALE, SCALE, 0x0000ff);
+			// else if (data->map->coord[y][x] == 'L')
+			// 	ft_draw_2D_obj(data, beg_x + x * SCALE, beg_y + y * SCALE, SCALE, 0x06f666);
 			else if (data->map->coord[y][x] == 'X')
 				ft_draw_2D_obj(data, beg_x + x * SCALE, beg_y + y * SCALE, SCALE, 0xff0000);
 

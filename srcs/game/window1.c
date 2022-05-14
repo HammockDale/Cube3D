@@ -43,7 +43,6 @@ void	ft_paint(t_data *data)
 	 mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->window->img, 0, 0);
 }
 
-
 void	ft_draw_(t_data *data, double x, double y, int color)
 {
 	double	i;
@@ -56,23 +55,22 @@ void	ft_draw_(t_data *data, double x, double y, int color)
 	{
 		while (j <= y + ONE_SIZE)
 		{
-			my_mlx_pixel_put(data, (int)i + (x  * ONE_SIZE), (int)(j + y  * ONE_SIZE), color);
+			my_mlx_pixel_put(data, (int)i + (x  * ONE_SIZE), (int)(j + y * ONE_SIZE), color);
 			j++;
 		}
 		j =  y;
 		i++;
 	}
 	// mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->window->img, 0, 0);
-
 }
 
-void	ft_draw_player(t_data *data, int color)
-{
-	my_mlx_pixel_put(data, (int)(data->player->pos_x * ONE_SIZE),
-		(int)(data->player->pos_y * ONE_SIZE), color);
-	// ft_cast_rays(data, color, '1');
-	ft_cast_rays(data, '1');
-}
+// void	ft_draw_player(t_data *data, int color)
+// {
+// 	my_mlx_pixel_put(data, (int)(data->player->pos_x * ONE_SIZE),
+// 		(int)(data->player->pos_y * ONE_SIZE), color);
+// 	// ft_cast_rays(data, color, '1');
+// 	ft_cast_rays(data, '1');
+// }
 
 void	ft_draw_2D_woll(t_data *data)
 {
@@ -112,7 +110,7 @@ int	key_kb_hook(int keycode, t_data *data)
 	else if (keycode == USE)
 		ft_open_door(data);
 
-// printf("keycode = %d\n", keycode);
+printf("keycode = %d\n", keycode);
 	if (keycode == EXIT)
 	{
 		mlx_destroy_window(data->window->mlx_ptr, data->window->win_ptr);

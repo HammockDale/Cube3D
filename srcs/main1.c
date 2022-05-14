@@ -91,7 +91,9 @@ void	ft_free_all(t_data *data)
 	if (data->west)
 		data->west = ft_free_image(data->west);
 	if (data->door)
-		data->door = ft_free_sprite(data->door);
+		data->door = ft_free_image(data->door);
+	// if (data->door)
+	// 	data->door = ft_free_sprite(data->door);
 	if (data->loot)
 		data->loot = ft_free_sprite(data->loot);
 

@@ -31,68 +31,17 @@ int	ft_win_init(t_data *data)
 
 void	ft_paint(t_data *data)
 {
-	// printf("y = %f, x= %f\n", data->player->pos_y, data->player->pos_x );
-	// if (data->map->coord[(int)floor(data->player->pos_y )][(int)floor(data->player->pos_x )] == 'L')
-	// {
-	// 	data->map->coord[(int)floor(data->player->pos_y )][(int)floor(data->player->pos_x )] = '0';
-	// }
-	// if (data->map->coord[(int)ceil(data->player->pos_y )][(int)ceil(data->player->pos_x)] == 'L')
-	// {
-	// 	data->map->coord[(int)ceil(data->player->pos_y )][(int)ceil(data->player->pos_x )] = '0';
-	// }
-	// if (data->map->coord[(int)floor(data->player->pos_y )][(int)ceil(data->player->pos_x)] == 'L')
-	// {
-	// 	data->map->coord[(int)floor(data->player->pos_y )][(int)ceil(data->player->pos_x )] = '0';
-	// }
-	// if (data->map->coord[(int)ceil(data->player->pos_y )][(int)floor(data->player->pos_x )] == 'L')
-	// {
-	// 	data->map->coord[(int)ceil(data->player->pos_y )][(int)floor(data->player->pos_x)] = '0';
-	// }
 	mlx_clear_window(data->window->mlx_ptr, data->window->win_ptr);
 	if (!data->bonus)
 		ft_back(data);
 	else
 		ft_back_bonus(data);
-	// ft_cast_rays(data, 65432, '1');
-	// ft_cast_rays(data, 65432, 'L');
 	ft_cast_rays(data, '1');
 	ft_cast_rays(data, 'L');
 	if (data->bonus)
 		ft_put_minimap(data);	
-	//TODO//
 	 mlx_put_image_to_window(data->window->mlx_ptr, data->window->win_ptr, data->window->img, 0, 0);
 }
-
-
-// void	ft_draw_2D_wall(t_data *data)
-// {
-
-// }
-
-
-// void    ft_import_imgxpm(t_data *data, int *texture, char *path, t_img *img)
-
-// {
-//     int y;
-//     int x;
-
-//     img->img = mlx_xpm_file_to_image(data->window->mlx_ptr, path, &img->img_w, &img->img_h);
-//     if (img->img == NULL)
-//         ft_err_exit("xpm file error");
-//     img->data = (int *)mlx_get_data_addr(img->img, &img->bpp, &img->len, &img->endian);
-//     y = 0;
-//     while (y < img->img_h)
-//     {
-//         x = 0;
-//         while (x < img->img_w)
-//         {
-//             texture[img->img_w * y + x] = img->data[img->img_w * y + x];
-//             x++;
-//         }
-//         y++;
-//     }
-//     mlx_destroy_image(data->window->mlx_ptr, img->img);
-// }
 
 
 void	ft_draw_(t_data *data, double x, double y, int color)
@@ -102,7 +51,6 @@ void	ft_draw_(t_data *data, double x, double y, int color)
 
 	i = x;
 	j = y;
-// printf("i = %f && j = %f\n", i, j);
 	// data->window->addr = mlx_get_data_addr(data->window->img, &data->window->bits_per_pixel, &data->window->line_length, &data->window->endian);
 	while (i <= x + ONE_SIZE)
 	{
@@ -147,19 +95,6 @@ void	ft_draw_2D_woll(t_data *data)
 	}
 }
 
-// int	mouse_move(int keycode, t_data *data)
-// {
-// 	static int old = 350;
-// 	(void)data;
-// 	printf("keycode = %d", keycode);
-// 	// if (old < keycode)
-// 	// 	ft_turn_left(data);
-// 	// if (old > keycode)
-// 	// 	ft_turn_right(data);
-// 	old = keycode;
-// 	return(keycode);
-// }
-
 int	key_kb_hook(int keycode, t_data *data)
 {
 	if (keycode == GO_FORWARD)
@@ -191,7 +126,6 @@ void	ft_img_init(t_data *data)
 {
 	if (data->bonus)
 		ft_img_bonus_init(data);
-	// data->north->loc = "/Users/hdale/Desktop/cubic/camila.XPM";
 	data->north->image = mlx_xpm_file_to_image(data->window->mlx_ptr,
 		data->north->loc, &data->north->size_x, &data->north->size_y);
 	data->north->addr = mlx_get_data_addr(data->north->image,
@@ -208,15 +142,6 @@ void	ft_img_init(t_data *data)
 		data->east->loc, &data->east->size_x, &data->east->size_y);
 	data->east->addr = mlx_get_data_addr(data->east->image,
 		&data->east->bitpp, &data->east->line, &data->east->endian);
-		// "img/barrnel.xpm"
-
-		// data->loot = mlx_xpm_file_to_image(vars->mlx, CHAMOMILE,
-		// 	&vars->img_width, &vars->img_height);
-		
-	// data->loot->image = mlx_xpm_file_to_image(data->window->mlx_ptr,
-	// 	data->loot->loc, &data->loot->size_x, &data->loot->size_y);
-	// data->loot->addr = mlx_get_data_addr(data->loot->image,
-	// 	&data->loot->bitpp, &data->loot->line, &data->loot->endian);
 }
 
 void	ft_img_bonus_init(t_data *data)
@@ -229,9 +154,24 @@ void	ft_img_bonus_init(t_data *data)
 			data->cloud->loc, &data->cloud->size_x, &data->cloud->size_y);
 		data->cloud->addr = mlx_get_data_addr(data->cloud->image,
 			&data->cloud->bitpp, &data->cloud->line, &data->cloud->endian);
+		
+		data->door = ft_init_image(data->door);
+		if (!data->door)
+			exit(1);
+		data->door->image = mlx_xpm_file_to_image(data->window->mlx_ptr,
+			"img/walls/eagle.xpm", &data->door->size_x, &data->door->size_y);
+		data->door->addr = mlx_get_data_addr(data->door->image,
+			&data->door->bitpp, &data->door->line, &data->door->endian);
+		// data->door = ft_init_image(data->door);
+		// if (!data->door)
+		// 	exit(6);
+		// data->door->image = mlx_xpm_file_to_image(data->window->mlx_ptr,
+		// 	"img/eagle.xpm", &data->door->size_x, &data->door->size_y);
 
+		// data->door->addr = mlx_get_data_addr(data->door->image,
+		// 	&data->door->bitpp, &data->door->line, &data->door->endian);
+//ytgjyznysq rjl
 		data->collet = ft_init_image(data->collet);
-		// printf("loc = %s", data->east->loc);
 		if (!data->collet)
 			exit(6);
 		data->collet->image = mlx_xpm_file_to_image(data->window->mlx_ptr,
@@ -241,10 +181,3 @@ void	ft_img_bonus_init(t_data *data)
 			&data->collet->bitpp, &data->collet->line, &data->collet->endian);
 	}
 
-// void	process_input(t_all *all)
-// {
-// 	mlx_hook(all->mlx.window, 2, 1L << 0, key_press, all);
-// 	mlx_hook(all->mlx.window, 3, 1L << 1, key_release, all);
-// 	mlx_hook(all->mlx.window, 9, 1L << 21, refresh, all);
-// 	mlx_hook(all->mlx.window, 17, 1L << 17, destroy_window, all);
-// }

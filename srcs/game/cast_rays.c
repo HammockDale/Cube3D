@@ -131,6 +131,8 @@ int	ft_walls_paint(t_data *data, int i, double	start)
 	int		kx, ky;
 	double	dx, dy;
 
+	// if (data->f_door == 1)
+	// 	ft_door_paint(data, i, start);
 	wall = H_PANEL / 3 /(sqrt(powf(data->player->ray_x - data->player->pos_x, 2) + powf(data->player->ray_y - data->player->pos_y, 2)) ) ;
 	wall /= sin(data->player->look - start);
 	if (wall >= H_PANEL / 2)
@@ -142,33 +144,27 @@ int	ft_walls_paint(t_data *data, int i, double	start)
 	tmp = wall;
 	while (wall  > -tmp)
 	{
-		ky = ((int)((tmp - wall) / tmp * ONE_SIZE) / 2 + 0)* ONE_SIZE + (int)(dy * ONE_SIZE) + 0;
-		kx = ((int)((tmp - wall) / tmp * ONE_SIZE) / 2 + 0)* ONE_SIZE + (int)(dx * ONE_SIZE) + 0;
-		// if ( dy > 0.95 && k <= k2 && (int)(data->player->look + PI/2) % (int)(2*PI) < PI)
-		if ((dy < 0.02 || dy > 0.98) && (dx > 0.98 || dx < 0.02))
+		ky = ((int)((tmp - wall) / tmp * ONE_SIZE) / 2 + 0)* ONE_SIZE + (int)(dy * ONE_SIZE);
+		kx = ((int)((tmp - wall) / tmp * ONE_SIZE) / 2 + 0)* ONE_SIZE + (int)(dx * ONE_SIZE);
+		if (data->f_door)
+		{
+			my_mlx_pixel_put(data, i, (int)(H_PANEL / 2 - wall), ((int*)data->door->addr)[ky]);
+			data->f_door = 0;
+		}
+		else if ((dy < 0.02 || dy > 0.98) && (dx > 0.98 || dx < 0.02))
 		{
 			return (0);
 			my_mlx_pixel_put(data, i, H_PANEL / 2 - wall,  0);
 		}
-		else
-		if (dy > 0.98)
-		{
+		else if (dy > 0.98)
 			my_mlx_pixel_put(data, i, (int)(H_PANEL / 2 - wall), ((int*)data->north->addr)[kx]);
-		}
 		else if (dx > 0.98)
-		// // if (dx > 0.95 && (int)(data->player->look + PI) % (int)(2*PI) < PI )
-		{
 			my_mlx_pixel_put(data, i, (int)(H_PANEL / 2 - wall), ((int*)data->south->addr)[ky]);
-		}
 		else if (dy < 0.02)
-		// if ( (int)(data->player->look + PI/2) % (int)(2*PI) > PI)
-		{	
 			my_mlx_pixel_put(data, i, (int)(H_PANEL / 2 - wall), ((int*)data->west->addr)[kx]);
-		}
-		else if (dx < 0.02)
-		{	
+		else if (dx < 0.02)	
 			my_mlx_pixel_put(data, i, (int)(H_PANEL / 2 - wall), ((int*)data->east->addr)[ky]);
-		}
+		
 		wall--;
 	}
 	return (1);
@@ -183,6 +179,7 @@ void	ft_cast_rays(t_data *data, char str)
 	i = 0;
 	start  = data->player->look - (double)(PI / 2)  - UGOL * 1 / 2;
 	end = data->player->look - (double)(PI / 2) + UGOL / 2;
+	data->f_door = 0;
 	while (start <= end)
 	{
 		data->player->ray_x  = data->player->pos_x; 
@@ -191,6 +188,11 @@ void	ft_cast_rays(t_data *data, char str)
 // ft1()
 		while ( data->map->coord[(int)(data->player->ray_y)][(int)(data->player->ray_x)] != '1')
 		{
+			if (data->map->coord[(int)(data->player->ray_y)][(int)(data->player->ray_x)] == 'D')
+			{
+				data->f_door = 1;
+				// break;
+			}
 // ft2()
 			data->player->ray_x += cos(start)  / ONE_SIZE / 4;
 			data->player->ray_y += sin(start)  / ONE_SIZE / 4;

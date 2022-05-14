@@ -108,7 +108,7 @@ int	ft_check_sym(int i, int j, t_data *data)
 		else
 			ft_set_look(data, i, j);
 	}
-	if (data->map->coord[i][j] == 'D' &&
+	if (data->map->coord[i][j] == 'D' && 
 		((data->map->coord[i - 1][j] != '1'
 			&& data->map->coord[i + 1][j] != '1')
 			&& (data->map->coord[i][j - 1] != '1'

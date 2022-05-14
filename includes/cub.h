@@ -94,23 +94,23 @@ typedef struct s_player
 	double		time;
 	double		oldTime;
 
-	double		rayDirX;
-	double		rayDirY;
+	// double		rayDirX;
+	// double		rayDirY;
 
-	int nScreenWidth;
-	int nScreenHeight;
-
-
-	float fPlayerX;
-	float fPlayerY;
-	float fPlayerA ;
+	// int nScreenWidth;
+	// int nScreenHeight;
 
 
-	int nMapHeight ;
-	int nMapWidth ;
+	// float fPlayerX;
+	// float fPlayerY;
+	// float fPlayerA ;
 
-	float fFOV;
-	float	fDepth;
+
+	// int nMapHeight ;
+	// int nMapWidth ;
+
+	// float fFOV;
+	// float	fDepth;
 }				t_player;
 
 // typedef struct s_camera
@@ -164,11 +164,12 @@ typedef struct s_data
 	t_image			*east;
 	t_image			*south;
 	t_image			*west;
-	t_sprite		*door;
+	t_image			*door;
 	t_sprite		*loot;
 	t_image 		*collet;
 	char			bonus;
 	int				*buf;
+	char			f_door;
 }				t_data;
 	
 /* main.c */

@@ -117,26 +117,26 @@ t_player	*ft_init_player(t_player *player)
 	player->planeY = 0.66;
 	player->time = 0;
 	player->oldTime = 0;
-	player->rayDirX = 0;
-	player->rayDirY = 0;
+	// player->rayDirX = 0;
+	// player->rayDirY = 0;
 
-player->nScreenWidth = 120; // Ширина консольного окна
+// player->nScreenWidth = 120; // Ширина консольного окна
 
-player->nScreenHeight = 40; // Высота консольного окна
+// player->nScreenHeight = 40; // Высота консольного окна
 
-player->fPlayerX = 1.0f; // Координата игрока по оси X
+// player->fPlayerX = 1.0f; // Координата игрока по оси X
 
-player->fPlayerY = 1.0f; // Координата игрока по оси Y
+// player->fPlayerY = 1.0f; // Координата игрока по оси Y
 
-player->fPlayerA = 0.0f; // Направление игрока
+// player->fPlayerA = 0.0f; // Направление игрока
 
-player->nMapHeight = 16; // Высота игрового поля
+// player->nMapHeight = 16; // Высота игрового поля
 
-player->nMapWidth = 16;	 // Ширина игрового поля
+// player->nMapWidth = 16;	 // Ширина игрового поля
 
-player->fFOV = PI / 3; // Угол обзора (поле видимости)
+// player->fFOV = PI / 3; // Угол обзора (поле видимости)
 
-player->fDepth = 30.0f;	  // Максимальная дистанция обзора
+// player->fDepth = 30.0f;	  // Максимальная дистанция обзора
 
 	return (player);
 }

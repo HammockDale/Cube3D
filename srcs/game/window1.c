@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:46:37 by esylva            #+#    #+#             */
-/*   Updated: 2022/05/11 20:00:48 by esylva           ###   ########.fr       */
+/*   Updated: 2022/05/12 19:45:14 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	ft_win_init(t_data *data)
 
 void	ft_paint(t_data *data)
 {
-
 	// printf("y = %f, x= %f\n", data->player->pos_y, data->player->pos_x );
 	if (data->map->coord[(int)floor(data->player->pos_y )][(int)floor(data->player->pos_x )] == 'L')
 	{
@@ -54,8 +53,10 @@ void	ft_paint(t_data *data)
 		ft_back(data);
 	else
 		ft_back_bonus(data);
-	ft_cast_rays(data, 65432, '1');
-	ft_cast_rays(data, 65432, 'L');
+	// ft_cast_rays(data, 65432, '1');
+	// ft_cast_rays(data, 65432, 'L');
+	ft_cast_rays(data, '1');
+	ft_cast_rays(data, 'L');
 	if (data->bonus)
 		ft_put_minimap(data);	
 	//TODO//
@@ -119,10 +120,10 @@ void	ft_draw_(t_data *data, double x, double y, int color)
 
 void	ft_draw_player(t_data *data, int color)
 {
-	
-			my_mlx_pixel_put(data, (int)(data->player->pos_x  * ONE_SIZE), (int)(data->player->pos_y * ONE_SIZE), color);
-
-		ft_cast_rays(data, color, '1');
+	my_mlx_pixel_put(data, (int)(data->player->pos_x * ONE_SIZE),
+		(int)(data->player->pos_y * ONE_SIZE), color);
+	// ft_cast_rays(data, color, '1');
+	ft_cast_rays(data, '1');
 }
 
 void	ft_draw_2D_woll(t_data *data)

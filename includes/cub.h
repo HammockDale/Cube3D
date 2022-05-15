@@ -271,7 +271,7 @@ void		ft_turn_left(t_data *sdata);
 /* cast_rays.c */
 int		ft_cycle_paint_walls(t_data *data, int i);
 int		ft_walls_paint(t_data *data, int i, double start);
-void	ft_cast_rays(t_data *data, char str);
+void	ft_cast_rays(t_data *data);
 
 void		ft_cast_rays(t_data *data, char str);
 
@@ -287,7 +287,7 @@ void		ft_paint(t_data *data);
 /* ft_button.c */
 void		ft_open_door(t_data *data);
 void		ft_open_door2(t_data *data);
-
+void		ft_setloot(t_data *data);
 
 
 #endif

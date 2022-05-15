@@ -36,8 +36,8 @@ void	ft_paint(t_data *data)
 		ft_back(data);
 	else
 		ft_back_bonus(data);
-	ft_cast_rays(data, '1');
-	ft_cast_rays(data, 'L');
+	ft_cast_rays(data);
+	// ft_setloot(data);
 	if (data->bonus)
 		ft_put_minimap(data, 0, 0);
 	mlx_put_image_to_window(data->window->mlx_ptr,

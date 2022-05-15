@@ -53,3 +53,6 @@ void	ft_open_door2(t_data *data)
 		data->map->coord[(int)
 			data->player->pos_y + 1][(int)data->player->pos_x - 1] = '0';
 }
+
+
+void	ft_setloot(t_data *data);

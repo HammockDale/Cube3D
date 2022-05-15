@@ -67,7 +67,7 @@ int	ft_walls_paint(t_data *data, int i, double start)
 	return (1);
 }
 
-void	ft_cast_rays(t_data *data, char str)
+void	ft_cast_rays(t_data *data)
 {
 	int		i;
 	double	start;
@@ -95,13 +95,10 @@ void	ft_cast_rays(t_data *data, char str)
 			data->player->ray_x += cos(start) / ONE_SIZE / 4;
 			data->player->ray_y += sin(start) / ONE_SIZE / 4;
 		}
-		if (str == '1')
+		if (!ft_walls_paint(data, i, start))
 		{
-			if (!ft_walls_paint(data, i, start))
-			{
-				i--;
-				end += UGOL / (W_PANEL);
-			}
+			i--;
+			end += UGOL / (W_PANEL);
 		}
 		i++;
 		start += UGOL / (W_PANEL);
@@ -127,13 +124,10 @@ void	ft_cast_rays(t_data *data, char str)
 			data->player->ray_x += cos(start) / ONE_SIZE / 4;
 				data->player->ray_y += sin(start) / ONE_SIZE / 4;
 		}
-		if (str == '1')
+		if (!ft_walls_paint(data, i, start))
 		{
-			if (!ft_walls_paint(data, i, start))
-			{
-				i++;
-				end -= UGOL / (W_PANEL);
-			}
+			i++;
+			end -= UGOL / (W_PANEL);
 		}
 		i--;
 		start -= UGOL / (W_PANEL);

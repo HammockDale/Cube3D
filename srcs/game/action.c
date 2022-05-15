@@ -30,6 +30,7 @@ int	mouse_move(int x, int y, t_data *data)
 		mlx_mouse_move(data->window->win_ptr, mouse_x, mouse_y);
 	return (0);
 }
+
 void	ft_turn_right(t_data *data)
 {
 	data->player->look += PI / 60;
@@ -49,7 +50,6 @@ void	ft_turn_left(t_data *data)
 	}
 	ft_paint(data);
 }
-
 
 t_player	*ft_init_player(t_player *player)
 {

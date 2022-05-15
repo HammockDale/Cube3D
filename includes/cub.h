@@ -274,7 +274,6 @@ int		ft_walls_paint(t_data *data, int i, double start);
 void	ft_cast_rays(t_data *data, char str);
 
 void		ft_cast_rays(t_data *data, char str);
-// void		ft_cast_rays(t_data *data, int color, char str);
 
 /*other*/
 void		ft_Pup(t_data *data);

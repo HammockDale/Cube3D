@@ -18,7 +18,7 @@ PARSER =  $(addprefix $(PARS_DIR), $(PARS_F))
 
 GAME_DIR = game/
 
-GAME_F = window1.c action.c ft_wasd1.c paint_back.c ft_button.c cast_rays.c sprite.c cast_rays_s.c
+GAME_F = window1.c action.c ft_wasd1.c paint_back.c ft_button.c cast_rays.c
 
 # GAME_F = window.c action.c ft_wasd.c paint_back.c ft_button.c cast_rays.c
 GAME = $(addprefix $(GAME_DIR), $(GAME_F))

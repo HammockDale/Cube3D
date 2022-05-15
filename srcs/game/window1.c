@@ -20,7 +20,7 @@ int	ft_win_init(t_data *data)
 				W_PANEL, H_PANEL, "cub3D without bonuses");
 	else
 		data->window->win_ptr = mlx_new_window(data->window->mlx_ptr,
-				W_PANEL, H_PANEL, "CUB3D with BONUSES!");
+				W_PANEL, H_PANEL, "CUB3D with BON14S!");
 	data->window->img = mlx_new_image(data->window->mlx_ptr, W_PANEL, H_PANEL);
 	data->window->addr = mlx_get_data_addr(data->window->img,
 			&data->window->bits_per_pixel, &data->window->line_length,
@@ -37,7 +37,6 @@ void	ft_paint(t_data *data)
 	else
 		ft_back_bonus(data);
 	ft_cast_rays(data);
-	ft_setloot(data);
 	if (data->bonus)
 		ft_put_minimap(data, 0, 0);
 	mlx_put_image_to_window(data->window->mlx_ptr,
@@ -46,21 +45,21 @@ void	ft_paint(t_data *data)
 
 int	key_kb_hook(int keycode, t_data *data)
 {
-	if (keycode == GO_FORWARD)
+	if (keycode == 13)
 		ft_go_forward(data);
-	else if (keycode == STR_LEFT)
+	else if (keycode == 0)
 		ft_str_left(data);
-	else if (keycode == GO_BACKWARD)
+	else if (keycode == 1)
 		ft_go_backward(data);
-	else if (keycode == STR_RIGHT)
+	else if (keycode == 2)
 		ft_str_right(data);
-	else if (keycode == TURN_RIGHT)
+	else if (keycode == 124)
 		ft_turn_right(data);
-	else if (keycode == TURN_LEFT)
+	else if (keycode == 123)
 		ft_turn_left(data);
-	else if (keycode == USE)
+	else if (keycode == 14)
 		ft_open_door(data);
-	if (keycode == EXIT)
+	if (keycode == 53)
 	{
 		mlx_destroy_window(data->window->mlx_ptr, data->window->win_ptr);
 		ft_exit(data, 0);
@@ -107,16 +106,4 @@ void	ft_img_bonus_init(t_data *data)
 			"img/walls/eagle.xpm", &data->door->size_x, &data->door->size_y);
 	data->door->addr = mlx_get_data_addr(data->door->image,
 			&data->door->bitpp, &data->door->line, &data->door->endian);
-
-	ft_sprite_init(data);
-		// exit(INIT_ERROR);
-//ytgjyznysq rjl
-	
-	// data->collet = ft_init_image(data->collet);
-	// if (!data->collet)
-	// 	exit(INIT_ERROR);
-	// data->collet->image = mlx_xpm_file_to_image(data->window->mlx_ptr,
-	// 		"img/barrel.xpm", &data->collet->size_x, &data->collet->size_y);
-	// data->collet->addr = mlx_get_data_addr(data->collet->image,
-	// &data->collet->bitpp, &data->collet->line, &data->collet->endian);
 }

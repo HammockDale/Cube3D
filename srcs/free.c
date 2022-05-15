@@ -46,21 +46,6 @@ t_image	*ft_free_image(t_image *image)
 	return (NULL);
 }
 
-t_sprite	*ft_free_sprite(t_sprite *sprite)
-{
-	int i;
-
-	i = 0;
-	while (i < NUMBER_OF_IMAGES)
-	{
-		if (sprite->sprites[i])
-			ft_free_image(sprite->sprites[i]);
-		i++;
-	}
-	free(sprite);
-	return (NULL);
-}
-
 t_wall	*ft_free_wall(t_wall *wall)
 {
 	free(wall);

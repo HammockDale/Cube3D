@@ -88,23 +88,3 @@ void	ft_str_right(t_data *data)
 		data->player->pos_x += SPEED * sin(d);
 	ft_paint(data);
 }
-
-void	ft_turn_right(t_data *data)
-{
-	data->player->look += PI / 60;
-	if (data->player->look > 2 * PI)
-	{
-		data->player->look -= 2 * PI;
-	}
-	ft_paint(data);
-}
-
-void	ft_turn_left(t_data *data)
-{
-	data->player->look -= PI / 60;
-	if (data->player->look < 0)
-	{
-		data->player->look += 2 * PI;
-	}
-	ft_paint(data);
-}

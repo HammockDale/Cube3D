@@ -63,7 +63,6 @@ void	ft_game(t_data *data)
 	mlx_mouse_hide(data->window->mlx_ptr, data->window->win_ptr);
 	ft_paint(data);
 	mlx_hook(data->window->win_ptr, 2, 1L << 0, key_kb_hook, data);
-	// mlx_hook(data->window->win_ptr, 3, 1L << 1, key_kb_release, data);
 	if (BONUS)
 		mlx_hook(data->window->win_ptr, 6, 1L << 6, mouse_move, data);
 	mlx_hook(data->window->win_ptr, 17, 1L << 17, ft_exit, data);
@@ -94,11 +93,6 @@ void	ft_free_all(t_data *data)
 		data->west = ft_free_image(data->west);
 	if (data->door)
 		data->door = ft_free_image(data->door);
-	if (data->loot)
-		data->loot = ft_free_sprite(data->loot);
-	
-	if (data->collet)
-		data->collet = ft_free_image(data->collet);
 	free (data);
 	data = NULL;
 }
@@ -115,5 +109,5 @@ int	ft_exit(t_data *data, int keycode)
 		printf("Map is invalid\n");
 		keycode = 3;
 	}
-	exit (keycode);
+	exit(keycode);
 }

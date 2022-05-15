@@ -27,11 +27,8 @@ t_data	*ft_data_init(t_data *data)
 	data->south = NULL;
 	data->west = NULL;
 	data->door = NULL;
-	data->loot = NULL;
 	data->mmap = NULL;
 	data->wall = NULL;
-
-	data->collet = NULL;
 	data->bonus = BONUS;
 	if (ft_init_main_struct(data))
 		return (NULL);
@@ -48,9 +45,6 @@ int	ft_init_main_struct(t_data *data)
 		return (INIT_ERROR);
 	data->wall = ft_init_wall(data->wall);
 	if (!data->wall)
-		return (INIT_ERROR);
-	data->loot = ft_init_sprite(data->loot);
-	if (!data->loot)
 		return (INIT_ERROR);
 	return (0);
 }
@@ -108,64 +102,4 @@ t_window	*ft_init_window(t_window *window)
 	window->line_length = 0;
 	window->endian = 0;
 	return (window);
-}
-
-t_player	*ft_init_player(t_player *player)
-{
-	player = (t_player *)malloc(sizeof(t_player));
-	if (!player)
-		return (NULL);
-	player->look = -1;
-	player->pos_x = 0;
-	player->pos_y = 0;
-	player->dirX = -1;
-	player->dirY = 0;
-	player->planeX = 0;
-	player->planeY = 0.66;
-	player->time = 0;
-	player->oldTime = 0;
-	return (player);
-}
-
-t_wall	*ft_init_wall(t_wall *wall)
-{
-	wall = (t_wall *)malloc(sizeof(t_wall));
-	if (!wall)
-		return (NULL);
-	wall->f_door = 0;
-	wall->wall = 0;
-	wall->tmp = 0;
-	wall->kx = 0;
-	wall->ky = 0;
-	wall->dx = 0;
-	wall->dy = 0;
-	return (wall);
-}
-
-t_sprite	*ft_init_sprite(t_sprite *sprite)
-{
-	int i;
-
-	sprite = (t_sprite *)malloc(sizeof(t_sprite));
-	if (!sprite)
-		return (NULL);
-	sprite->i = 0;
-	sprite->status = 0;
-	sprite->sprites = malloc(sizeof(t_image *) * NUMBER_OF_IMAGES);
-	if (!sprite->sprites)
-		return (NULL);
-	i = -1;
-	while (++i < NUMBER_OF_IMAGES)
-	{
-		sprite->sprites[i] = ft_init_image(sprite->sprites[i]);
-		if (!sprite->sprites[i])
-		{
-			while (--i >= 0)
-				free(sprite->sprites[i]);
-			free(sprite->sprites);
-			free(sprite);
-			return (NULL);
-		}
-	}
-	return (sprite);
 }

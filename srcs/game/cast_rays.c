@@ -45,12 +45,13 @@ int	ft_walls_paint(t_data *data, int i, double start)
 					- data->player->pos_x, 2) + powf(data->player->ray_y
 					- data->player->pos_y, 2)));
 	data->wall->wall /= sin(data->player->look - start);
-	if (data->wall->wall >= H_PANEL / 2)
-		data->wall->wall = H_PANEL / 2;
 	data->wall->dx = modf(data->player->ray_x, &data->wall->tmp);
 	data->wall->dy = modf(data->player->ray_y, &data->wall->tmp);
 	data->wall->tmp = data->wall->wall;
-	while (data->wall->wall > -data->wall->tmp)
+	if (data->wall->wall > H_PANEL / 2)
+		data->wall->wall = H_PANEL / 2;
+	while (data->wall->wall > -data->wall->tmp
+		&& data->wall->wall > -H_PANEL / 2)
 	{
 		data->wall->ky = ((int)((data->wall->tmp - data->wall->wall)
 					/ data->wall->tmp * ONE_SIZE) / 2 + 0) * ONE_SIZE
@@ -81,7 +82,7 @@ void	ft_rais(t_data *data, double start)
 			break ;
 		}
 		data->player->ray_x += cos(start) / ONE_SIZE / 4;
-			data->player->ray_y += sin(start) / ONE_SIZE / 4;
+		data->player->ray_y += sin(start) / ONE_SIZE / 4;
 	}
 }
 

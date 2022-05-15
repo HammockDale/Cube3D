@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:46:37 by esylva            #+#    #+#             */
-/*   Updated: 2022/05/15 17:35:40 by esylva           ###   ########.fr       */
+/*   Updated: 2022/05/15 17:41:52 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_paint(t_data *data)
 	else
 		ft_back_bonus(data);
 	ft_cast_rays(data);
-	// ft_setloot(data);
+	ft_setloot(data);
 	if (data->bonus)
 		ft_put_minimap(data, 0, 0);
 	mlx_put_image_to_window(data->window->mlx_ptr,

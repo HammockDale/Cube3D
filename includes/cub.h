@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/05/15 16:27:04 by esylva           ###   ########.fr       */
+/*   Updated: 2022/05/15 17:41:10 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,6 @@ typedef struct s_strite
 
 typedef struct s_data
 {
-	// t_camera		*camera;
 	t_window		*window;
 	t_map			*map;
 	t_player		*player;
@@ -207,15 +206,12 @@ int			ft_check_rect_str(char *str);
 int			ft_check_rect_col(char **str, int w, int h);
 
 
-/* window.c */
+/* window1.c */
 int			ft_win_init(t_data *data);
-void 		ft_coord(t_data *data);
 int			key_kb_hook(int keycode, t_data *data);
-
-
+void		ft_paint(t_data *data);
 void		ft_img_init(t_data *data);
 void		ft_img_bonus_init(t_data *data);
-void		ft_draw_2D_wall(t_data *data);
 
 /* paint_back.c */
 void		ft_back_bonus(t_data *data);
@@ -249,15 +245,11 @@ void		ft_turn_left(t_data *sdata);
 int			ft_cycle_paint_walls(t_data *data, int i);
 int			ft_walls_paint(t_data *data, int i, double start);
 void		ft_cast_rays(t_data *data);
+void		ft_rais(t_data *data, double start);
+void		ft_cast_rays2(t_data *data, int i, double start, double end);
 
 /*other*/
-void		ft_Pup(t_data *data);
-void		ft_Pright(t_data *data);
-void		ft_Pdown(t_data *data);
-void		ft_Pleft(t_data *data);
-void		ft_Pclock(t_data *data);
-void		ft_Pconterclock(t_data *data);
-void		ft_paint(t_data *data);
+
 
 /* ft_button.c */
 void		ft_open_door(t_data *data);

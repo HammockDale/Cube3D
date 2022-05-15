@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 08:53:53 by esylva            #+#    #+#             */
-/*   Updated: 2022/05/15 16:52:20 by esylva           ###   ########.fr       */
+/*   Updated: 2022/05/15 17:48:32 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_open_door2(t_data *data)
 }
 
 
-// void	ft_setloot(t_data *data)
-// {
+void	ft_setloot(t_data *data)
+{
 	
-// }
+}

@@ -143,6 +143,17 @@ typedef struct s_map
 	char	**coord;
 }				t_map;
 
+typedef struct s_wall
+{
+	int			f_door;
+	double		wall;
+	double		tmp;
+	int			kx;
+	int			ky;
+	double		dx;
+	double		dy;
+}				t_wall;
+
 typedef struct s_strite
 {
 	int			*i;
@@ -167,9 +178,9 @@ typedef struct s_data
 	t_image			*door;
 	t_sprite		*loot;
 	t_image 		*collet;
+	t_wall			*wall;
 	char			bonus;
 	int				*buf;
-	int				f_door;
 }				t_data;
 	
 /* main.c */
@@ -192,6 +203,7 @@ int			ft_init_main_struct(t_data *data);
 t_window	*ft_init_window(t_window *window);
 t_player	*ft_init_player(t_player *player);
 
+t_wall		*ft_init_wall(t_wall *wall);
 t_image		*ft_init_image(t_image *wall);
 int			ft_init_map(t_data *data, int hight, int weght);
 
@@ -232,8 +244,8 @@ void		ft_draw_2D_wall(t_data *data);
 void		ft_back_bonus(t_data *data);
 void		ft_back(t_data *data);
 void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void		ft_put_minimap(t_data *data);
-void		ft_draw_2D_obj(t_data *data, int x, int y, int size, int color);
+void		ft_put_minimap(t_data *data, int x, int y);
+void		ft_draw_2d_obj(t_data *data, int x, int y, int color);
 void		ft_cast_mini_rays(t_data *data, int color, double beg_x, double beg_y);
 
 /* free.c */
@@ -266,12 +278,12 @@ void		ft_Pdown(t_data *data);
 void		ft_Pleft(t_data *data);
 void		ft_Pclock(t_data *data);
 void		ft_Pconterclock(t_data *data);
-void		ft_open_door(t_data *data);
-
-void		ft_draw_(t_data *data, double x, double y, int color);
-
-void		ft_draw_player(t_data *data, int color);
 void		ft_paint(t_data *data);
+
+/* ft_button.c */
+void		ft_open_door(t_data *data);
+void		ft_open_door2(t_data *data);
+
 
 
 #endif

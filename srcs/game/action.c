@@ -20,7 +20,7 @@ int	mouse_move(int x, int y, t_data *data)
 	if (x > 0 && x < W_PANEL && y > 0 && y < H_PANEL)
 	{
 		mlx_mouse_hide(data->window->mlx_ptr, data->window->win_ptr);
-		data->player->look -= (double)(PI / 2) / (W_PANEL / 2) * (mouse_x - x);
+		data->player->look -= ((double)(PI / 2) / (W_PANEL / 2) * (mouse_x - x));
 		ft_paint(data);
 	}
 	else

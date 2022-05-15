@@ -29,6 +29,7 @@ t_data	*ft_data_init(t_data *data)
 	data->door = NULL;
 	data->loot = NULL;
 	data->mmap = NULL;
+	data->wall = NULL;
 
 	data->collet = NULL;
 	data->bonus = BONUS;
@@ -44,6 +45,9 @@ int	ft_init_main_struct(t_data *data)
 		return (INIT_ERROR);
 	data->player = ft_init_player(data->player);
 	if (!data->player)
+		return (INIT_ERROR);
+	data->wall = ft_init_wall(data->wall);
+	if (!data->wall)
 		return (INIT_ERROR);
 	return (0);
 }
@@ -117,32 +121,20 @@ t_player	*ft_init_player(t_player *player)
 	player->planeY = 0.66;
 	player->time = 0;
 	player->oldTime = 0;
-	// player->rayDirX = 0;
-	// player->rayDirY = 0;
-
-// player->nScreenWidth = 120; // Ширина консольного окна
-
-// player->nScreenHeight = 40; // Высота консольного окна
-
-// player->fPlayerX = 1.0f; // Координата игрока по оси X
-
-// player->fPlayerY = 1.0f; // Координата игрока по оси Y
-
-// player->fPlayerA = 0.0f; // Направление игрока
-
-// player->nMapHeight = 16; // Высота игрового поля
-
-// player->nMapWidth = 16;	 // Ширина игрового поля
-
-// player->fFOV = PI / 3; // Угол обзора (поле видимости)
-
-// player->fDepth = 30.0f;	  // Максимальная дистанция обзора
-
 	return (player);
 }
 
-// for(int x = 0; x < w; x++) 
-//     { // вычисляем положение и направление луча
-//         double cameraX = 2 * x / double(w) - 1; //координата x в пространстве камеры
-//        double rayDirX = dirX + planeX * cameraX; 
-//       double rayDirY = dirY + planeY * cameraX;
+t_wall	*ft_init_wall(t_wall *wall)
+{
+	wall = (t_wall *)malloc(sizeof(t_wall));
+	if (!wall)
+		return (NULL);
+	wall->f_door = 0;
+	wall->wall = 0;
+	wall->tmp = 0;
+	wall->kx = 0;
+	wall->ky = 0;
+	wall->dx = 0;
+	wall->dy = 0;
+	return (wall);
+}

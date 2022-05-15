@@ -108,8 +108,8 @@ int	ft_check_sym(int i, int j, t_data *data)
 		else
 			ft_set_look(data, i, j);
 	}
-	if (data->map->coord[i][j] == 'D' && 
-		((data->map->coord[i - 1][j] != '1'
+	if (data->map->coord[i][j] == 'D'
+		&& ((data->map->coord[i - 1][j] != '1'
 			&& data->map->coord[i + 1][j] != '1')
 			&& (data->map->coord[i][j - 1] != '1'
 				&& data->map->coord[i][j + 1] != '1')))
@@ -131,6 +131,6 @@ void	ft_set_look(t_data *data, int i, int j)
 		data->player->look = PI / 2;
 	data->map->x = j;
 	data->map->y = i;
-	data->map->coord[i][j] = '0';				//TODO
+	data->map->coord[i][j] = '0';
 	return ;
 }

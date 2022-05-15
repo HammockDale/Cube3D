@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:46:37 by esylva            #+#    #+#             */
-/*   Updated: 2022/05/12 19:45:14 by esylva           ###   ########.fr       */
+/*   Updated: 2022/05/15 17:35:40 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,17 +102,21 @@ void	ft_img_bonus_init(t_data *data)
 			&data->cloud->bitpp, &data->cloud->line, &data->cloud->endian);
 	data->door = ft_init_image(data->door);
 	if (!data->door)
-		exit(1);
+		exit(INIT_ERROR);
 	data->door->image = mlx_xpm_file_to_image(data->window->mlx_ptr,
 			"img/walls/eagle.xpm", &data->door->size_x, &data->door->size_y);
 	data->door->addr = mlx_get_data_addr(data->door->image,
 			&data->door->bitpp, &data->door->line, &data->door->endian);
+
+	ft_sprite_init(data);
+		// exit(INIT_ERROR);
 //ytgjyznysq rjl
-	data->collet = ft_init_image(data->collet);
-	if (!data->collet)
-		exit(6);
-	data->collet->image = mlx_xpm_file_to_image(data->window->mlx_ptr,
-			"img/barrel.xpm", &data->collet->size_x, &data->collet->size_y);
-	data->collet->addr = mlx_get_data_addr(data->collet->image,
-	&data->collet->bitpp, &data->collet->line, &data->collet->endian);
+	
+	// data->collet = ft_init_image(data->collet);
+	// if (!data->collet)
+	// 	exit(INIT_ERROR);
+	// data->collet->image = mlx_xpm_file_to_image(data->window->mlx_ptr,
+	// 		"img/barrel.xpm", &data->collet->size_x, &data->collet->size_y);
+	// data->collet->addr = mlx_get_data_addr(data->collet->image,
+	// &data->collet->bitpp, &data->collet->line, &data->collet->endian);
 }

@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/25 15:13:14 by esylva            #+#    #+#             */
-/*   Updated: 2022/05/15 15:09:28 by esylva           ###   ########.fr       */
+/*   Updated: 2022/05/15 17:21:40 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,15 @@ t_image	*ft_free_image(t_image *image)
 
 t_sprite	*ft_free_sprite(t_sprite *sprite)
 {
+	int i;
+
+	i = 0;
+	while (i < NUMBER_OF_IMAGES)
+	{
+		if (sprite->sprites[i])
+			ft_free_image(sprite->sprites[i]);
+		i++;
+	}
 	free(sprite);
 	return (NULL);
 }

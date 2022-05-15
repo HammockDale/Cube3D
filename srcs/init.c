@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:19 by esylva            #+#    #+#             */
-/*   Updated: 2022/05/04 08:46:40 by esylva           ###   ########.fr       */
+/*   Updated: 2022/05/15 17:10:52 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ int	ft_init_main_struct(t_data *data)
 		return (INIT_ERROR);
 	data->wall = ft_init_wall(data->wall);
 	if (!data->wall)
+		return (INIT_ERROR);
+	data->loot = ft_init_sprite(data->loot);
+	if (!data->loot)
 		return (INIT_ERROR);
 	return (0);
 }
@@ -137,4 +140,32 @@ t_wall	*ft_init_wall(t_wall *wall)
 	wall->dx = 0;
 	wall->dy = 0;
 	return (wall);
+}
+
+t_sprite	*ft_init_sprite(t_sprite *sprite)
+{
+	int i;
+
+	sprite = (t_sprite *)malloc(sizeof(t_sprite));
+	if (!sprite)
+		return (NULL);
+	sprite->i = 0;
+	sprite->status = 0;
+	sprite->sprites = malloc(sizeof(t_image *) * NUMBER_OF_IMAGES);
+	if (!sprite->sprites)
+		return (NULL);
+	i = -1;
+	while (++i < NUMBER_OF_IMAGES)
+	{
+		sprite->sprites[i] = ft_init_image(sprite->sprites[i]);
+		if (!sprite->sprites[i])
+		{
+			while (--i >= 0)
+				free(sprite->sprites[i]);
+			free(sprite->sprites);
+			free(sprite);
+			return (NULL);
+		}
+	}
+	return (sprite);
 }

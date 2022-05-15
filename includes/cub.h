@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/05/12 19:41:02 by esylva           ###   ########.fr       */
+/*   Updated: 2022/05/15 16:27:04 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 # define ARGUMENT_OPEN_ERROR 1
 # define INIT_ERROR 2
 # define MAP_ERROR -10
+# define NUMBER_OF_IMAGES 8
 
 /* keycodes for ubuntu */
 // # define TURN_LEFT 65361
@@ -93,32 +94,7 @@ typedef struct s_player
 	double		look;
 	double		time;
 	double		oldTime;
-
-	// double		rayDirX;
-	// double		rayDirY;
-
-	// int nScreenWidth;
-	// int nScreenHeight;
-
-
-	// float fPlayerX;
-	// float fPlayerY;
-	// float fPlayerA ;
-
-
-	// int nMapHeight ;
-	// int nMapWidth ;
-
-	// float fFOV;
-	// float	fDepth;
 }				t_player;
-
-// typedef struct s_camera
-// {
-
-
-
-// }				t_camera;
 
 typedef struct s_window
 {
@@ -157,7 +133,7 @@ typedef struct s_wall
 typedef struct s_strite
 {
 	int			*i;
-	t_image		*sprites;
+	t_image		**sprites;
 	int			status;
 }				t_sprite;
 
@@ -206,6 +182,7 @@ t_player	*ft_init_player(t_player *player);
 t_wall		*ft_init_wall(t_wall *wall);
 t_image		*ft_init_image(t_image *wall);
 int			ft_init_map(t_data *data, int hight, int weght);
+t_sprite	*ft_init_sprite(t_sprite *sprite);
 
 
 /* parcer.c */
@@ -286,6 +263,9 @@ void		ft_paint(t_data *data);
 void		ft_open_door(t_data *data);
 void		ft_open_door2(t_data *data);
 void		ft_setloot(t_data *data);
+
+/* sprite.c */
+void ft_sprite_init(t_data *data);
 
 
 #endif

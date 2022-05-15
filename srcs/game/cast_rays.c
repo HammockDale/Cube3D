@@ -67,6 +67,42 @@ int	ft_walls_paint(t_data *data, int i, double start)
 	return (1);
 }
 
+void	ft_rais(t_data *data, double start)
+{
+	data->player->ray_x = data->player->pos_x;
+	data->player->ray_y = data->player->pos_y;
+	while (data->map->coord[(int)(data->player->ray_y)][(int)
+		(data->player->ray_x)] != '1')
+	{
+		if (data->map->coord[(int)(data->player->ray_y)][(int)
+			(data->player->ray_x)] == 'D')
+		{
+			data->wall->f_door = 1;
+			break ;
+		}
+		data->player->ray_x += cos(start) / ONE_SIZE / 4;
+			data->player->ray_y += sin(start) / ONE_SIZE / 4;
+	}
+}
+
+void	ft_cast_rays2(t_data *data, int i, double start, double end)
+{
+	i = W_PANEL / 2;
+	start = data->player->look - (double)(PI / 2);
+	end = data->player->look - (double)(PI / 2) - UGOL / 2;
+	while (start >= end)
+	{
+		ft_rais(data, start);
+		if (!ft_walls_paint(data, i, start))
+		{
+			i++;
+			end -= UGOL / (W_PANEL);
+		}
+		i--;
+		start -= UGOL / (W_PANEL);
+	}
+}
+
 void	ft_cast_rays(t_data *data)
 {
 	int		i;
@@ -79,22 +115,7 @@ void	ft_cast_rays(t_data *data)
 	end = data->player->look - (double)(PI / 2) + UGOL / 2;
 	while (start <= end)
 	{
-		data->player->ray_x = data->player->pos_x;
-		data->player->ray_y = data->player->pos_y;
-// ft1()
-		while (data->map->coord[(int)(data->player->ray_y)][(int)
-			(data->player->ray_x)] != '1')
-		{
-			if (data->map->coord[(int)(data->player->ray_y)][(int)
-				(data->player->ray_x)] == 'D')
-			{
-				data->wall->f_door = 1;
-				break ;
-			}
-// ft2()
-			data->player->ray_x += cos(start) / ONE_SIZE / 4;
-			data->player->ray_y += sin(start) / ONE_SIZE / 4;
-		}
+		ft_rais(data, start);
 		if (!ft_walls_paint(data, i, start))
 		{
 			i--;
@@ -103,33 +124,5 @@ void	ft_cast_rays(t_data *data)
 		i++;
 		start += UGOL / (W_PANEL);
 	}
-	i = W_PANEL / 2;
-	start = data->player->look - (double)(PI / 2);
-	end = data->player->look - (double)(PI / 2) - UGOL / 2;
-	while (start >= end)
-	{
-		data->player->ray_x = data->player->pos_x;
-		data->player->ray_y = data->player->pos_y;
-// ft1()
-		while (data->map->coord[(int)(data->player->ray_y)][(int)
-			(data->player->ray_x)] != '1')
-		{
-			if (data->map->coord[(int)(data->player->ray_y)][(int)
-				(data->player->ray_x)] == 'D')
-			{
-				data->wall->f_door = 1;
-				break ;
-			}
-// ft2()
-			data->player->ray_x += cos(start) / ONE_SIZE / 4;
-				data->player->ray_y += sin(start) / ONE_SIZE / 4;
-		}
-		if (!ft_walls_paint(data, i, start))
-		{
-			i++;
-			end -= UGOL / (W_PANEL);
-		}
-		i--;
-		start -= UGOL / (W_PANEL);
-	}
+	ft_cast_rays2(data, i, start, end);
 }

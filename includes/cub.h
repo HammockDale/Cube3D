@@ -269,11 +269,9 @@ void		ft_turn_right(t_data *data);
 void		ft_turn_left(t_data *sdata);
 
 /* cast_rays.c */
-int		ft_cycle_paint_walls(t_data *data, int i);
-int		ft_walls_paint(t_data *data, int i, double start);
-void	ft_cast_rays(t_data *data);
-
-void		ft_cast_rays(t_data *data, char str);
+int			ft_cycle_paint_walls(t_data *data, int i);
+int			ft_walls_paint(t_data *data, int i, double start);
+void		ft_cast_rays(t_data *data);
 
 /*other*/
 void		ft_Pup(t_data *data);

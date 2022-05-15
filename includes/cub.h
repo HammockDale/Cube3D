@@ -254,6 +254,7 @@ t_map		*ft_free_map(t_map *map);
 t_player	*ft_free_player(t_player *player);
 t_image		*ft_free_image(t_image *image);
 t_sprite	*ft_free_sprite(t_sprite *sprite);
+t_wall		*ft_free_wall(t_wall *wall);
 
 /* action.c */
 int			mouse_move(int x, int y, t_data *data);
@@ -268,6 +269,10 @@ void		ft_turn_right(t_data *data);
 void		ft_turn_left(t_data *sdata);
 
 /* cast_rays.c */
+int		ft_cycle_paint_walls(t_data *data, int i);
+int		ft_walls_paint(t_data *data, int i, double start);
+void	ft_cast_rays(t_data *data, char str);
+
 void		ft_cast_rays(t_data *data, char str);
 // void		ft_cast_rays(t_data *data, int color, char str);
 

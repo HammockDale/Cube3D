@@ -1,45 +1,45 @@
 NAME = cub3D
 
-HEADER = includes/cub.h
 
-INCLUDES = -I includes -I libft -I mlx
+HEADERS = \
+	cub.h \
 
-SRC_DIR = srcs/
+SOURCES = \
+	$(addprefix game/, \
+		action.c \
+		cast_rays.c \
+		ft_button.c \
+		ft_wasd1.c \
+		paint_back.c \
+		window1.c \
+	) \
+	$(addprefix parser/, \
+		checker.c \
+		parser.c \
+		parser_utils.c \
+		parser_utils2.c \
+	) \
+	free.c \
+	init.c \
+	main.c
 
-SRCS_F = main1.c init.c free.c
+INC_DIR = includes
+SRC_DIR = srcs
+OBJ_DIR = objs
 
-PARS_DIR = parser/
+INCS = $(addprefix $(INC_DIR)/, $(HEADERS))
+SRCS = $(addprefix $(SRC_DIR)/, $(SOURCES))
+OBJS = $(addprefix $(OBJ_DIR)/, $(SOURCES:.c=.o))
 
-PARS_F = parser.c parser_utils.c checker.c parser_utils2.c
-
-PARSER =  $(addprefix $(PARS_DIR), $(PARS_F))
-
-GAME_DIR = game/
-
-GAME_F = window1.c action.c ft_wasd1.c paint_back.c ft_button.c cast_rays.c
-
-GAME = $(addprefix $(GAME_DIR), $(GAME_F))
-
-SRC_F =  $(addprefix $(SRC_DIR), $(SRCS_F) $(PARSER) $(GAME))
-
-OBJ_DIR = obj/
-
-OBJ_F = $(addprefix $(OBJ_DIR), $(SRCS_F) $(PARS_F) $(GAME_F))
-
-OBJ = $(patsubst %.c, %.o, $(SRC_F))
+INCLUDES = -I$(INC_DIR) -I libft -I mlx
 
 CC = gcc -g
-
 FLAGS = -Wall -Werror -Wextra
-
 RM = rm -rf
-
 MAKE_MLX = make -sC mlx
-
 LINK_MLX = -Lmlx -lmlx -framework OpenGL -framework AppKit -lm -lz
 
 MAKE_LIBFT = make -C libft
-
 LINK_LIBFT = -Llibft -lft
 
 all: init $(NAME)
@@ -48,26 +48,25 @@ init:
 	@$(MAKE_LIBFT)
 	@$(MAKE_MLX)
 
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
-	
-%.o : %.c $(HEADER)
-	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
-
-$(NAME): $(OBJ) $(HEADER)
-	$(CC) $(INCLUDES) $(OBJ) $(LINK_LIBFT) $(LINK_MLX) -o $@
+$(NAME): $(OBJS) $(INCS)
+	$(CC) $(INCLUDES) $(OBJS) $(LINK_LIBFT) $(LINK_MLX) -o $@
 	@echo Done!
 
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCS) Makefile
+	mkdir -p $(@D)
+	$(CC) $(FLAGS) $(INCLUDES) -c $< -o $@
+
 clean:
-	@$(RM) $(OBJ_F) 
-	@$(RM) $(OBJ) 
-	@$(MAKE_MLX) clean  
-	@$(MAKE_LIBFT) clean 
+	$(RM) $(OBJ_DIR)
+	$(MAKE_MLX) clean  
+	$(MAKE_LIBFT) clean 
 
-fclean: clean 
-	@$(MAKE_LIBFT) fclean 
-	@$(RM) $(NAME) 
-
+fclean:
+	$(RM) $(OBJ_DIR)
+	$(MAKE_MLX) clean
+	$(MAKE_LIBFT) fclean
+	$(RM) $(NAME)
+	
 re: fclean all
 
 .PHONY: all init clean flcean re

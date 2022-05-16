@@ -14,42 +14,21 @@
 
 void	ft_open_door(t_data *data)
 {
-	if (data->map->coord[(int)data->player->pos_y + 1][(int)
-		data->player->pos_x] == 'D')
-		data->map->coord[(int)data->player->pos_y + 1][(int)
-			data->player->pos_x] = '0';
-	if (data->map->coord[(int)
-			data->player->pos_y - 1][(int)data->player->pos_x] == 'D')
-		data->map->coord[(int)
-			data->player->pos_y - 1][(int)data->player->pos_x] = '0';
-	if (data->map->coord[(int)data->player->pos_y][(int)
-		data->player->pos_x - 1] == 'D')
-		data->map->coord[(int)data->player->pos_y][(int)
-			data->player->pos_x - 1] = '0';
-	if (data->map->coord[(int)
-			data->player->pos_y][(int)data->player->pos_x + 1] == 'D')
-		data->map->coord[(int)
-			data->player->pos_y][(int)data->player->pos_x + 1] = '0';
-	ft_open_door2(data);
+	if (data->map->coord[(int)(floor)(data->player->pos_y
+		- cos(data->player->look))][(int)(floor)
+		(data->player->pos_x + sin(data->player->look))] == 'D')
+			data->map->coord[(int)(floor)(data->player->pos_y
+				- cos(data->player->look))][(int)(floor)
+			(data->player->pos_x + sin(data->player->look))] = 'd';
+	else if (data->map->coord[(int)(floor)(data->player->pos_y
+		- cos(data->player->look))][(int)(floor)
+			(data->player->pos_x + sin(data->player->look))] == 'd'
+		|| ((int)(floor)(data->player->pos_y
+		- cos(data->player->look)) == data->player->pos_y && (int)(floor)
+			(data->player->pos_x + sin(data->player->look))
+			== data->player->pos_x))
+			data->map->coord[(int)(floor)(data->player->pos_y
+				- cos(data->player->look))][(int)(floor)
+			(data->player->pos_x + sin(data->player->look))] = 'D';
 	ft_paint(data);
-}
-
-void	ft_open_door2(t_data *data)
-{
-	if (data->map->coord[(int)data->player->pos_y + 1][(int)
-		data->player->pos_x + 1] == 'D')
-		data->map->coord[(int)data->player->pos_y + 1][(int)
-			data->player->pos_x + 1] = '0';
-	if (data->map->coord[(int)
-			data->player->pos_y - 1][(int)data->player->pos_x + 1] == 'D')
-		data->map->coord[(int)
-			data->player->pos_y - 1][(int)data->player->pos_x + 1] = '0';
-	if (data->map->coord[(int)data->player->pos_y - 1][(int)
-		data->player->pos_x - 1] == 'D')
-		data->map->coord[(int)data->player->pos_y - 1][(int)
-			data->player->pos_x - 1] = '0';
-	if (data->map->coord[(int)
-			data->player->pos_y + 1][(int)data->player->pos_x - 1] == 'D')
-		data->map->coord[(int)
-			data->player->pos_y + 1][(int)data->player->pos_x - 1] = '0';
 }

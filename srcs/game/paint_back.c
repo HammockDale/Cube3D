@@ -108,7 +108,8 @@ void	ft_put_minimap(t_data *data, int x, int y)
 				== (int)data->player->pos_y)
 				ft_draw_2d_obj(data, beg_x + (data->player->pos_x) * SCALE,
 					beg_y + (data->player->pos_y) * SCALE, 0xff0000);
-			else if (data->map->coord[y][x] == 'D')
+			else if (data->map->coord[y][x] == 'D'
+			|| data->map->coord[y][x] == 'd')
 				ft_draw_2d_obj(data, beg_x + x * SCALE, beg_y
 					+ y * SCALE, 0xf6ff00);
 			x++;

@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/05/15 17:41:10 by esylva           ###   ########.fr       */
+/*   Updated: 2022/05/15 19:46:21 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 
 # define BONUS 1
 # define NO_BONUS_STR "0NSWE"
-# define BONUS_STR "0NSWEDLX"
+# define BONUS_STR "0NSWED"
 # define ARGUMENT_OPEN_ERROR 1
 # define INIT_ERROR 2
 # define MAP_ERROR -10
@@ -92,7 +92,7 @@ typedef struct s_map
 
 typedef struct s_wall
 {
-	int			f_door;
+	int			f_dor;
 	double		wall;
 	double		tmp;
 	int			kx;
@@ -114,7 +114,7 @@ typedef struct s_data
 	t_image			*south;
 	t_image			*west;
 	t_image			*door;
-	t_wall			*wall;
+	t_wall			*wal;
 	char			bonus;
 	int				*buf;
 }				t_data;
@@ -202,7 +202,5 @@ void		ft_cast_rays2(t_data *data, int i, double start, double end);
 
 /* ft_button.c */
 void		ft_open_door(t_data *data);
-void		ft_open_door2(t_data *data);
-void		ft_setloot(t_data *data);
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main1.c                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 23:45:05 by esylva            #+#    #+#             */
-/*   Updated: 2022/05/15 15:08:00 by esylva           ###   ########.fr       */
+/*   Updated: 2022/05/16 19:16:58 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ void	ft_game(t_data *data)
 
 void	ft_free_all(t_data *data)
 {
-	if (data->wall)
-		data->wall = ft_free_wall(data->wall);
+	if (data->wal)
+		data->wal = ft_free_wall(data->wal);
 	if (data->window)
 		data->window = ft_free_window(data->window);
 	if (data->map)

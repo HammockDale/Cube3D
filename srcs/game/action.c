@@ -62,17 +62,17 @@ t_player	*ft_init_player(t_player *player)
 	return (player);
 }
 
-t_wall	*ft_init_wall(t_wall *wall)
+t_wall	*ft_init_wall(t_wall *wal)
 {
-	wall = (t_wall *)malloc(sizeof(t_wall));
-	if (!wall)
+	wal = (t_wall *)malloc(sizeof(t_wall));
+	if (!wal)
 		return (NULL);
-	wall->f_door = 0;
-	wall->wall = 0;
-	wall->tmp = 0;
-	wall->kx = 0;
-	wall->ky = 0;
-	wall->dx = 0;
-	wall->dy = 0;
-	return (wall);
+	wal->f_dor = 0;
+	wal->wall = 0;
+	wal->tmp = 0;
+	wal->kx = 0;
+	wal->ky = 0;
+	wal->dx = 0;
+	wal->dy = 0;
+	return (wal);
 }

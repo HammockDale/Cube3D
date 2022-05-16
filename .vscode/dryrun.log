@@ -1,25 +1,34 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/esylva/cub3D/Cube3D'
 make -C libft
 make -sC mlx
- 
-gcc -g -Wall -Werror -Wextra -I includes -I libft -I mlx -c srcs/main1.c -o srcs/main1.o
-gcc -g -Wall -Werror -Wextra -I includes -I libft -I mlx -c srcs/init.c -o srcs/init.o
-gcc -g -Wall -Werror -Wextra -I includes -I libft -I mlx -c srcs/free.c -o srcs/free.o
-gcc -g -Wall -Werror -Wextra -I includes -I libft -I mlx -c srcs/parser/parser.c -o srcs/parser/parser.o
- 
-gcc -g -Wall -Werror -Wextra -I includes -I libft -I mlx -c srcs/parser/parser_utils.c -o srcs/parser/parser_utils.o
-gcc -g -Wall -Werror -Wextra -I includes -I libft -I mlx -c srcs/parser/checker.c -o srcs/parser/checker.o
-gcc -g -Wall -Werror -Wextra -I includes -I libft -I mlx -c srcs/parser/parser_utils2.c -o srcs/parser/parser_utils2.o
-gcc -g -Wall -Werror -Wextra -I includes -I libft -I mlx -c srcs/game/window1.c -o srcs/game/window1.o
-gcc -g -Wall -Werror -Wextra -I includes -I libft -I mlx -c srcs/game/action.c -o srcs/game/action.o
-gcc -g -Wall -Werror -Wextra -I includes -I libft -I mlx -c srcs/game/ft_wasd1.c -o srcs/game/ft_wasd1.o
-gcc -g -Wall -Werror -Wextra -I includes -I libft -I mlx -c srcs/game/paint_back.c -o srcs/game/paint_back.o
- 
-gcc -g -Wall -Werror -Wextra -I includes -I libft -I mlx -c srcs/game/ft_button.c -o srcs/game/ft_button.o
-gcc -g -Wall -Werror -Wextra -I includes -I libft -I mlx -c srcs/game/cast_rays.c -o srcs/game/cast_rays.o
-gcc -g -Wall -Werror -Wextra -I includes -I libft -I mlx -c srcs/game/sprite.c -o srcs/game/sprite.o
-gcc -g -I includes -I libft -I mlx  srcs/main1.o  srcs/init.o  srcs/free.o  srcs/parser/parser.o  srcs/parser/parser_utils.o  srcs/parser/checker.o  srcs/parser/parser_utils2.o  srcs/game/window1.o  srcs/game/action.o  srcs/game/ft_wasd1.o  srcs/game/paint_back.o  srcs/game/ft_button.o  srcs/game/cast_rays.o  srcs/game/sprite.o -Llibft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit -lm -lz -o cub3D
+mkdir -p objs/game
+gcc -g -Wall -Werror -Wextra -Iincludes -I libft -I mlx -c srcs/game/action.c -o objs/game/action.o
+mkdir -p objs/game
+gcc -g -Wall -Werror -Wextra -Iincludes -I libft -I mlx -c srcs/game/cast_rays.c -o objs/game/cast_rays.o
+mkdir -p objs/game
+gcc -g -Wall -Werror -Wextra -Iincludes -I libft -I mlx -c srcs/game/ft_button.c -o objs/game/ft_button.o
+mkdir -p objs/game
+gcc -g -Wall -Werror -Wextra -Iincludes -I libft -I mlx -c srcs/game/ft_wasd1.c -o objs/game/ft_wasd1.o
+mkdir -p objs/game
+gcc -g -Wall -Werror -Wextra -Iincludes -I libft -I mlx -c srcs/game/paint_back.c -o objs/game/paint_back.o
+mkdir -p objs/game
+gcc -g -Wall -Werror -Wextra -Iincludes -I libft -I mlx -c srcs/game/window1.c -o objs/game/window1.o
+mkdir -p objs/parser
+gcc -g -Wall -Werror -Wextra -Iincludes -I libft -I mlx -c srcs/parser/checker.c -o objs/parser/checker.o
+mkdir -p objs/parser
+gcc -g -Wall -Werror -Wextra -Iincludes -I libft -I mlx -c srcs/parser/parser.c -o objs/parser/parser.o
+mkdir -p objs/parser
+gcc -g -Wall -Werror -Wextra -Iincludes -I libft -I mlx -c srcs/parser/parser_utils.c -o objs/parser/parser_utils.o
+mkdir -p objs/parser
+gcc -g -Wall -Werror -Wextra -Iincludes -I libft -I mlx -c srcs/parser/parser_utils2.c -o objs/parser/parser_utils2.o
+mkdir -p objs
+gcc -g -Wall -Werror -Wextra -Iincludes -I libft -I mlx -c srcs/free.c -o objs/free.o
+mkdir -p objs
+gcc -g -Wall -Werror -Wextra -Iincludes -I libft -I mlx -c srcs/init.c -o objs/init.o
+mkdir -p objs
+gcc -g -Wall -Werror -Wextra -Iincludes -I libft -I mlx -c srcs/main.c -o objs/main.o
+gcc -g -Iincludes -I libft -I mlx objs/game/action.o objs/game/cast_rays.o objs/game/ft_button.o objs/game/ft_wasd1.o objs/game/paint_back.o objs/game/window1.o objs/parser/checker.o objs/parser/parser.o objs/parser/parser_utils.o objs/parser/parser_utils2.o objs/free.o objs/init.o objs/main.o -Llibft -lft -Lmlx -lmlx -framework OpenGL -framework AppKit -lm -lz -o cub3D
 echo Done!
 make: Leaving directory `/Users/esylva/cub3D/Cube3D'
  

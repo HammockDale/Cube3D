@@ -28,7 +28,7 @@ t_data	*ft_data_init(t_data *data)
 	data->west = NULL;
 	data->door = NULL;
 	data->mmap = NULL;
-	data->wall = NULL;
+	data->wal = NULL;
 	data->bonus = BONUS;
 	if (ft_init_main_struct(data))
 		return (NULL);
@@ -43,8 +43,8 @@ int	ft_init_main_struct(t_data *data)
 	data->player = ft_init_player(data->player);
 	if (!data->player)
 		return (INIT_ERROR);
-	data->wall = ft_init_wall(data->wall);
-	if (!data->wall)
+	data->wal = ft_init_wall(data->wal);
+	if (!data->wal)
 		return (INIT_ERROR);
 	return (0);
 }

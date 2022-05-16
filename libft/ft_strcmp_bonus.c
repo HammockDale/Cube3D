@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcmp_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: esylva <esylva@student.21-school.ru>       +#+  +:+       +#+        */
+/*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 03:38:56 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/22 09:27:18 by esylva           ###   ########.fr       */
+/*   Updated: 2022/05/15 20:08:22 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int	ft_strcmp(const char *str1, const char *str2)
 	if (!s1 && !s2)
 		return (0);
 	if (!s1)
-		return(*s2);
+		return (*s2);
 	if (!s2)
-		return(*s1);
+		return (*s1);
 	while (*s1 && *s2)
 	{
 		if (*s1 != *s2)
@@ -34,4 +34,3 @@ int	ft_strcmp(const char *str1, const char *str2)
 	}
 	return (*s1 - *s2);
 }
-

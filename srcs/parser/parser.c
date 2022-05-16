@@ -6,7 +6,7 @@
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 20:39:52 by esylva            #+#    #+#             */
-/*   Updated: 2022/03/27 14:16:28 by esylva           ###   ########.fr       */
+/*   Updated: 2022/05/16 19:17:39 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,11 @@ int	ft_config(t_list **cub, t_data *data)
 	if (i != 6)
 		return (MAP_ERROR);
 	while (!ft_empty_line(tmp->content) && tmp)
+	{
 		tmp = tmp->next;
+		if (tmp == NULL)
+			return (MAP_ERROR);
+	}	
 	if (ft_parse_map(tmp, data))
 		return (MAP_ERROR);
 	return (0);

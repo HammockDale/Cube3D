@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub.h                                              :+:      :+:    :+:   */
+/*   cub_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esylva <esylva@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 12:46:58 by esylva            #+#    #+#             */
-/*   Updated: 2022/05/20 21:24:32 by esylva           ###   ########.fr       */
+/*   Updated: 2022/05/20 21:59:08 by esylva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_H
-# define CUB_H
+#ifndef CUB_BONUS_H
+# define CUB_BONUS_H
 
 # include <mlx.h>
 # include <unistd.h>
@@ -24,7 +24,7 @@
 # include <math.h>
 # include "../libft/libft.h"
 
-# define BONUS 0
+# define BONUS 1
 # define NO_BONUS_STR "0NSWE"
 # define BONUS_STR "0NSWED"
 # define ARGUMENT_OPEN_ERROR 1

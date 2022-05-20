@@ -33,10 +33,10 @@ ${NAME}:	${OBJS}
 include ${wildcard ${D_FILES}}
 
 clean:		
-		${RM} ${OBJS} ${D_FILES}
+		-${RM} ${OBJS} ${D_FILES}
 
 fclean:		clean
-		${RM} ${NAME}
+		-${RM} ${NAME}
 
 re:		fclean all
 
